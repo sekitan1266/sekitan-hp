@@ -1,8 +1,14 @@
 [
-  {"date":"2025-12-21","title":"記事5","summary":"記事5の概要です。","content":"記事5の詳細","published":true},
-  {"date":"2025-12-20","title":"記事4","summary":"記事4の概要です。","content":"記事4の詳細","published":true},
-  {"date":"2025-12-19","title":"記事3","summary":"記事3の概要です。","content":"記事3の詳細","published":true},
-  {"date":"2025-12-18","title":"記事2","summary":"記事2の概要です。","content":"記事2の詳細","published":true},
-  {"date":"2025-12-17","title":"記事1","summary":"記事1の概要です。","content":"記事1の詳細","published":true},
-  {"date":"2025-12-16","title":"記事0","summary":"記事0の概要です。","content":"記事0の詳細","published":true}
+  {"date":"2025-12-21","title":"ニュース12","summary":"テスト用ニュース12の概要","link":"news/2025-12-21-0.html","published":true},
+  {"date":"2025-12-20","title":"ニュース11","summary":"テスト用ニュース11の概要","link":"news/2025-12-20-0.html","published":true},
+  {"date":"2025-12-19","title":"ニュース10","summary":"テスト用ニュース10の概要","link":"news/2025-12-19-0.html","published":true},
+  {"date":"2025-12-18","title":"ニュース9","summary":"テスト用ニュース9の概要","link":"news/2025-12-18-0.html","published":true},
+  {"date":"2025-12-17","title":"ニュース8","summary":"テスト用ニュース8の概要","link":"news/2025-12-17-0.html","published":true},
+  {"date":"2025-12-16","title":"ニュース7","summary":"テスト用ニュース7の概要","link":"news/2025-12-16-0.html","published":true},
+  {"date":"2025-12-15","title":"ニュース6","summary":"テスト用ニュース6の概要","link":"news/2025-12-15-0.html","published":true},
+  {"date":"2025-12-14","title":"ニュース5","summary":"テスト用ニュース5の概要","link":"news/2025-12-14-0.html","published":true},
+  {"date":"2025-12-13","title":"ニュース4","summary":"テスト用ニュース4の概要","link":"news/2025-12-13-0.html","published":true},
+  {"date":"2025-12-12","title":"ニュース3","summary":"テスト用ニュース3の概要","link":"news/2025-12-12-0.html","published":true},
+  {"date":"2025-12-11","title":"ニュース2","summary":"テスト用ニュース2の概要","link":"news/2025-12-11-0.html","published":true},
+  {"date":"2025-12-10","title":"ニュース1","summary":"テスト用ニュース1の概要","link":"news/2025-12-10-0.html","published":true}
 ]
