@@ -25,7 +25,7 @@ function renderPage(page) {
   }
 }
 
-fetch('../data/news.json')
+fetch('data/news.json')
   .then(res => res.json())
   .then(data => {
     articles = data.filter(d => d.published)
