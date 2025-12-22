@@ -37,6 +37,36 @@ function buildDate(y, m, d, isEnd) {
   return `${y}-${mm}-${dd}`;
 }
 
+/* ===== 日数調整（ここが今回の本体） ===== */
+function adjustDaySelect(prefix) {
+  const y = $(prefix + "-year").value;
+  const m = $(prefix + "-month").value;
+  const daySel = $(prefix + "-day");
+
+  if (!y || !m) {
+    return;
+  }
+
+  const maxDay = new Date(Number(y), Number(m), 0).getDate();
+  const current = daySel.value;
+
+  daySel.querySelectorAll("option:not([value=''])")
+    .forEach(o => o.remove());
+
+  for (let d = 1; d <= maxDay; d++) {
+    const opt = document.createElement("option");
+    opt.value = String(d).padStart(2, "0");
+    opt.textContent = d;
+    daySel.appendChild(opt);
+  }
+
+  if (current) {
+    daySel.value = Number(current) <= maxDay
+      ? current
+      : String(maxDay).padStart(2, "0");
+  }
+}
+
 /* ===== カテゴリUI ===== */
 function renderCategoryFilter() {
   const box = $("filter-category");
@@ -96,26 +126,29 @@ function loadFromURL() {
   document.querySelectorAll("#filter-category input")
     .forEach(cb => cb.checked = selectedCategories.has(cb.value));
 
-  /* 日付 */
-  const from = p.get("from");
-  const until = p.get("until");
-
+  /* 日付初期化 */
   ["filter", "until"].forEach(prefix => {
     $(prefix + "-year").value = "";
     $(prefix + "-month").value = "";
     $(prefix + "-day").value = "";
   });
 
+  const from = p.get("from");
+  const until = p.get("until");
+
   if (from) {
     const [y, m, d] = from.split("-");
     $("filter-year").value = y;
     $("filter-month").value = m;
+    adjustDaySelect("filter");
     $("filter-day").value = d;
   }
+
   if (until) {
     const [y, m, d] = until.split("-");
     $("until-year").value = y;
     $("until-month").value = m;
+    adjustDaySelect("until");
     $("until-day").value = d;
   }
 
@@ -193,27 +226,25 @@ function renderPage(page) {
       const div = document.createElement("div");
       div.innerHTML = `
         <strong>${a.date}</strong>
-        ${a.title}<br>
-        ${a.summary || ""}
+        [${CATEGORY_LABELS[a.category] || a.category}]
+        <a href="${a.link}">${a.title}</a><br>
+        ${a.summary}
       `;
       list.appendChild(div);
     });
 
-  // 非常事態モードではページング無効
-  if (!window.emergencyMode) {
-    const p = params();
-    for (let i = 1; i <= total; i++) {
-      const b = document.createElement("button");
-      b.textContent = i;
-      b.disabled = i === currentPage;
-      b.onclick = () => {
-        p.set("page", i);
-        updateURL(p);
-        loadFromURL();
-        renderPage(i);
-      };
-      pag.appendChild(b);
-    }
+  const p = params();
+  for (let i = 1; i <= total; i++) {
+    const b = document.createElement("button");
+    b.textContent = i;
+    b.disabled = i === currentPage;
+    b.onclick = () => {
+      p.set("page", i);
+      updateURL(p);
+      loadFromURL();
+      renderPage(i);
+    };
+    pag.appendChild(b);
   }
 }
 
@@ -225,46 +256,29 @@ function resetFilter() {
 }
 
 /* ===== 初期化 ===== */
-function init() {
-  // まず emergency.json をチェック
-  fetch("data/emergency.json")
-    .then(r => r.json())
-    .then(data => {
-      if (data.emergency) {
-        window.emergencyMode = true;
-        allArticles = data.articles
-          .sort((a, b) => new Date(b.date) - new Date(a.date));
-        renderPage(1);
-      } else {
-        window.emergencyMode = false;
-        fetch("data/news.json")
-          .then(r => r.json())
-          .then(data => {
-            allArticles = data.filter(d => d.published)
-              .sort((a, b) => new Date(b.date) - new Date(a.date));
+fetch("data/news.json")
+  .then(r => r.json())
+  .then(data => {
+    allArticles = data.filter(d => d.published)
+      .sort((a, b) => new Date(b.date) - new Date(a.date));
 
-            renderCategoryFilter();
-            renderYearFilter();
-            loadFromURL();
-            applyFilter();
+    renderCategoryFilter();
+    renderYearFilter();
+    loadFromURL();
+    applyFilter();
 
-            $("filter-reset").addEventListener("click", resetFilter);
+    $("filter-reset").addEventListener("click", resetFilter);
 
-            [
-              "filter-year","filter-month","filter-day",
-              "until-year","until-month","until-day"
-            ].forEach(id =>
-              $(id).addEventListener("change", () => {
-                updateDateURL();
-                loadFromURL();
-                applyFilter();
-              })
-            );
-          })
-          .catch(console.error);
-      }
-    })
-    .catch(console.error);
-}
-
-init();
+    [
+      "filter-year","filter-month","filter-day",
+      "until-year","until-month","until-day"
+    ].forEach(id =>
+      $(id).addEventListener("change", () => {
+        adjustDaySelect(id.startsWith("filter") ? "filter" : "until");
+        updateDateURL();
+        loadFromURL();
+        applyFilter();
+      })
+    );
+  })
+  .catch(console.error);
