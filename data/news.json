@@ -6,6 +6,7 @@
     "published": true,
     "category": "release",
     "summary": "真岡線BVEデータの更新版を公開しました。",
+    "content": "<p>真岡線BVEデータの最新更新版 v1.3 を公開しました。今回の更新では●●を改善しています。</p>",
     "link": "/news/2025-11-20-release.html"
   },
   {
@@ -15,6 +16,7 @@
     "published": true,
     "category": "info",
     "summary": "Newsページの構成を変更しました。",
+    "content": "<p>Newsページの表示順序とフィルタUIを改善しました。ユーザビリティ向上を目的としています。</p>",
     "link": "/news/2025-11-05-info.html"
   },
   {
@@ -24,6 +26,7 @@
     "published": true,
     "category": "incident",
     "summary": "一部ファイルが取得できない状態が発生しました。",
+    "content": "<p>10月30日、一部のファイルがダウンロードできない障害が発生しました。現在は復旧済みです。</p>",
     "link": "/news/2025-10-30-incident.html"
   },
   {
@@ -33,6 +36,7 @@
     "published": true,
     "category": "release",
     "summary": "2025年改正ダイヤに対応しました。",
+    "content": "<p>2025年改正版ダイヤに基づく時刻表データを更新しました。BVEシナリオで使用可能です。</p>",
     "link": "/news/2025-10-15-release.html"
   },
   {
@@ -42,222 +46,7 @@
     "published": true,
     "category": "info",
     "summary": "今後の開発方針についてまとめました。",
+    "content": "<p>今後の開発は、主に精度向上とユーザー利便性改善を重視して進めます。</p>",
     "link": "/news/2025-10-01-info.html"
-  },
-  {
-    "id": "2025-09-20-other",
-    "title": "イベント参加のご報告",
-    "date": "2025-09-20",
-    "published": true,
-    "category": "other",
-    "summary": "即売会イベントに参加しました。",
-    "link": "/news/2025-09-20-other.html"
-  },
-  {
-    "id": "2025-09-05-release",
-    "title": "車両音源 微調整版公開",
-    "date": "2025-09-05",
-    "published": true,
-    "category": "release",
-    "summary": "走行音のバランスを調整しました。",
-    "link": "/news/2025-09-05-release.html"
-  },
-  {
-    "id": "2025-08-25-info",
-    "title": "問い合わせ対応方法の整理",
-    "date": "2025-08-25",
-    "published": true,
-    "category": "info",
-    "summary": "サポート対応フローを明確化しました。",
-    "link": "/news/2025-08-25-info.html"
-  },
-  {
-    "id": "2025-08-10-incident",
-    "title": "GitHub Pages 一時停止について",
-    "date": "2025-08-10",
-    "published": true,
-    "category": "incident",
-    "summary": "GitHub側障害による表示不具合が発生しました。",
-    "link": "/news/2025-08-10-incident.html"
-  },
-  {
-    "id": "2025-07-30-release",
-    "title": "地形データ 精度向上版公開",
-    "date": "2025-07-30",
-    "published": true,
-    "category": "release",
-    "summary": "地形データを高精度化しました。",
-    "link": "/news/2025-07-30-release.html"
-  },
-  {
-    "id": "2025-07-15-info",
-    "title": "開発進捗報告（7月）",
-    "date": "2025-07-15",
-    "published": true,
-    "category": "info",
-    "summary": "7月時点の進捗をまとめました。",
-    "link": "/news/2025-07-15-info.html"
-  },
-  {
-    "id": "2025-07-01-other",
-    "title": "資料収集状況について",
-    "date": "2025-07-01",
-    "published": true,
-    "category": "other",
-    "summary": "現在の資料収集状況を共有します。",
-    "link": "/news/2025-07-01-other.html"
-  },
-  {
-    "id": "2025-06-20-release",
-    "title": "信号配置データ 初期版公開",
-    "date": "2025-06-20",
-    "published": true,
-    "category": "release",
-    "summary": "信号配置データを追加しました。",
-    "link": "/news/2025-06-20-release.html"
-  },
-  {
-    "id": "2025-06-05-info",
-    "title": "サイト開設のお知らせ",
-    "date": "2025-06-05",
-    "published": true,
-    "category": "info",
-    "summary": "sekitan公式サイトを開設しました。",
-    "link": "/news/2025-06-05-info.html"
-  },
-  {
-    "id": "2025-05-25-other",
-    "title": "過去資料の整理完了",
-    "date": "2025-05-25",
-    "published": true,
-    "category": "other",
-    "summary": "主要な過去資料の整理が完了しました。",
-    "link": "/news/2025-05-25-other.html"
-  },
-  {
-    "id": "2025-05-10-release",
-    "title": "試験公開版 データ配布開始",
-    "date": "2025-05-10",
-    "published": true,
-    "category": "release",
-    "summary": "試験公開版の配布を開始しました。",
-    "link": "/news/2025-05-10-release.html"
-  },
-  {
-    "id": "2025-04-25-info",
-    "title": "開発体制変更のお知らせ",
-    "date": "2025-04-25",
-    "published": true,
-    "category": "info",
-    "summary": "開発体制を一部変更しました。",
-    "link": "/news/2025-04-25-info.html"
-  },
-  {
-    "id": "2025-04-10-incident",
-    "title": "配布ファイルの差し替えについて",
-    "date": "2025-04-10",
-    "published": false,
-    "category": "incident",
-    "summary": "誤りがあったため非公開としました。",
-    "link": "/news/2025-04-10-incident.html"
-  },
-  {
-    "id": "2025-03-30-release",
-    "title": "初期α版 公開",
-    "date": "2025-03-30",
-    "published": true,
-    "category": "release",
-    "summary": "初期α版を公開しました。",
-    "link": "/news/2025-03-30-release.html"
-  },
-  {
-    "id": "2025-03-15-info",
-    "title": "プロジェクト引き継ぎについて",
-    "date": "2025-03-15",
-    "published": true,
-    "category": "info",
-    "summary": "プロジェクト引き継ぎを行いました。",
-    "link": "/news/2025-03-15-info.html"
-  },
-  {
-    "id": "2025-03-01-other",
-    "title": "試験運転ログ公開",
-    "date": "2025-03-01",
-    "published": true,
-    "category": "other",
-    "summary": "試験運転時のログを公開しました。",
-    "link": "/news/2025-03-01-other.html"
-  },
-  {
-    "id": "2025-02-20-info",
-    "title": "FAQページ追加",
-    "date": "2025-02-20",
-    "published": true,
-    "category": "info",
-    "summary": "よくある質問ページを追加しました。",
-    "link": "/news/2025-02-20-info.html"
-  },
-  {
-    "id": "2025-02-05-release",
-    "title": "線形データ 調整版公開",
-    "date": "2025-02-05",
-    "published": true,
-    "category": "release",
-    "summary": "線形データを調整しました。",
-    "link": "/news/2025-02-05-release.html"
-  },
-  {
-    "id": "2025-01-25-other",
-    "title": "開発環境構築メモ",
-    "date": "2025-01-25",
-    "published": true,
-    "category": "other",
-    "summary": "開発環境構築時のメモを公開します。",
-    "link": "/news/2025-01-25-other.html"
-  },
-  {
-    "id": "2025-01-10-info",
-    "title": "2025年の活動方針",
-    "date": "2025-01-10",
-    "published": true,
-    "category": "info",
-    "summary": "2025年の活動方針をまとめました。",
-    "link": "/news/2025-01-10-info.html"
-  },
-  {
-    "id": "2024-12-20-release",
-    "title": "β版 公開終了のお知らせ",
-    "date": "2024-12-20",
-    "published": true,
-    "category": "release",
-    "summary": "β版の公開を終了しました。",
-    "link": "/news/2024-12-20-release.html"
-  },
-  {
-    "id": "2024-12-05-info",
-    "title": "年末進捗報告",
-    "date": "2024-12-05",
-    "published": true,
-    "category": "info",
-    "summary": "年末時点の進捗報告です。",
-    "link": "/news/2024-12-05-info.html"
-  },
-  {
-    "id": "2024-11-20-other",
-    "title": "資料提供への感謝",
-    "date": "2024-11-20",
-    "published": true,
-    "category": "other",
-    "summary": "資料提供に感謝します。",
-    "link": "/news/2024-11-20-other.html"
-  },
-  {
-    "id": "2024-11-01-info",
-    "title": "プロジェクト開始のお知らせ",
-    "date": "2024-11-01",
-    "published": true,
-    "category": "info",
-    "summary": "本プロジェクトを開始しました。",
-    "link": "/news/2024-11-01-info.html"
   }
 ]
