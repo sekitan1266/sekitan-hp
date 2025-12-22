@@ -1,10 +1,7 @@
 const $ = id => document.getElementById(id);
-
-// URL から ?link=xxxx を取得
 const params = new URLSearchParams(location.search);
-const articleId = params.get("link");
+const articleId = params.get("id");
 
-// JSON を取得して該当記事を表示
 fetch("data/news.json")
   .then(res => res.json())
   .then(data => {
@@ -19,7 +16,7 @@ fetch("data/news.json")
     detail.innerHTML = `
       <h2>${article.title}</h2>
       <p><strong>日付:</strong> ${article.date}</p>
-      <p><strong>カテゴリ:</strong> ${article.category}</p>
+      <p><strong>カテゴリ:</strong> ${CATEGORY_LABELS[article.category] || article.category}</p>
       <p>${article.summary}</p>
       ${article.content ? `<div>${article.content}</div>` : ""}
     `;
@@ -31,17 +28,3 @@ fetch("data/news.json")
 
 // 戻るボタン
 $("back-button").addEventListener("click", () => history.back());
-
-// renderPage() 内の記事描画部分を修正
-filteredArticles
-  .slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE)
-  .forEach(a => {
-    const div = document.createElement("div");
-    div.innerHTML = `
-      <strong>${a.date}</strong>
-      [${CATEGORY_LABELS[a.category] || a.category}]
-      <a href="news-watch.html?link=${a.id}">${a.title}</a><br>
-      ${a.summary}
-    `;
-    list.appendChild(div);
-  });
