@@ -4,7 +4,7 @@ let allArticles = [];
 let filteredArticles = [];
 let selectedCategories = new Set();
 
-/* カテゴリ表示名（日本語） */
+/* ===== カテゴリ表示名 ===== */
 const CATEGORY_LABELS = {
   info: "お知らせ",
   release: "公開情報",
@@ -12,14 +12,13 @@ const CATEGORY_LABELS = {
   other: "その他"
 };
 
-/* 表示名取得（未定義はそのまま） */
 function getCategoryLabel(cat) {
   return CATEGORY_LABELS[cat] ?? cat;
 }
 
-/* ===== フィルタUI生成 ===== */
+/* ===== カテゴリフィルタ生成 ===== */
 function renderCategoryFilter() {
-  const container = document.getElementById("news-filter");
+  const container = document.getElementById("filter-category");
   container.innerHTML = "";
 
   const categories = [...new Set(allArticles.map(a => a.category))];
@@ -30,7 +29,6 @@ function renderCategoryFilter() {
 
     checkbox.type = "checkbox";
     checkbox.value = cat;
-    checkbox.checked = false;
 
     checkbox.addEventListener("change", () => {
       if (checkbox.checked) {
@@ -44,8 +42,9 @@ function renderCategoryFilter() {
 
     label.appendChild(checkbox);
     label.append(" " + getCategoryLabel(cat));
+
     container.appendChild(label);
-    container.appendChild(document.createTextNode(" "));
+    container.appendChild(document.createElement("br"));
   });
 }
 
@@ -61,11 +60,11 @@ function applyFilter() {
 
 /* ===== ページ描画 ===== */
 function renderPage(page) {
-  const container = document.getElementById("news-list");
+  const list = document.getElementById("news-list");
   const pagination = document.getElementById("pagination");
   const noNews = document.getElementById("no-news");
 
-  container.innerHTML = "";
+  list.innerHTML = "";
   pagination.innerHTML = "";
 
   if (filteredArticles.length === 0) {
@@ -86,7 +85,7 @@ function renderPage(page) {
       <a href="${item.link}">${item.title}</a><br>
       ${item.summary}
     `;
-    container.appendChild(div);
+    list.appendChild(div);
   });
 
   const totalPages = Math.ceil(filteredArticles.length / ITEMS_PER_PAGE);
