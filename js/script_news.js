@@ -6,12 +6,7 @@ let selectedCategories = new Set();
 let currentPage = 1;
 
 /* ===== カテゴリ表示名 ===== */
-const CATEGORY_LABELS = {
-  info: "お知らせ",
-  release: "公開情報",
-  incident: "障害・重要情報",
-  other: "その他"
-};
+
 
 const $ = id => document.getElementById(id);
 
