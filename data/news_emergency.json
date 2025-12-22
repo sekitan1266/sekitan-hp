@@ -1,5 +1,5 @@
 {
-  "emergency": true,
+  "emergency": false,
   "timestamp": "2025-12-22T20:00", 
   "articles": [
     {
@@ -9,3 +9,4 @@
     }
   ]
 }
+
