@@ -1,21 +1,52 @@
 [
   {
-    "id": "20251222-01",
-    "title": "新機能追加",
-    "date": "2025-12-22",
-    "category": "info",
-    "summary": "ニュースの要約です。",
-    "content": "<p>本文はこちらに入ります。</p>",
-    "link": "news-watch.html?id=20251222-01",
-    "published": true
+    "id": "2025-11-20-release",
+    "title": "真岡線データ 更新版 v1.3 公開",
+    "date": "2025-11-20",
+    "published": true,
+    "category": "release",
+    "summary": "真岡線BVEデータの更新版を公開しました。",
+    "content": "<p>真岡線BVEデータの最新更新版 v1.3 を公開しました。今回の更新では●●を改善しています。</p>",
+    "link": "/news/2025-11-20-release.html"
   },
   {
-    "id": "20251220-01",
-    "title": "イベント開催",
-    "date": "2025-12-20",
+    "id": "2025-11-05-info",
+    "title": "サイト構成の一部変更について",
+    "date": "2025-11-05",
+    "published": true,
+    "category": "info",
+    "summary": "Newsページの構成を変更しました。",
+    "content": "<p>Newsページの表示順序とフィルタUIを改善しました。ユーザビリティ向上を目的としています。</p>",
+    "link": "/news/2025-11-05-info.html"
+  },
+  {
+    "id": "2025-10-30-incident",
+    "title": "一時的なダウンロード障害について",
+    "date": "2025-10-30",
+    "published": true,
+    "category": "incident",
+    "summary": "一部ファイルが取得できない状態が発生しました。",
+    "content": "<p>10月30日、一部のファイルがダウンロードできない障害が発生しました。現在は復旧済みです。</p>",
+    "link": "/news/2025-10-30-incident.html"
+  },
+  {
+    "id": "2025-10-15-release",
+    "title": "時刻表データ 2025年改正版対応",
+    "date": "2025-10-15",
+    "published": true,
     "category": "release",
-    "summary": "イベントについての概要。",
-    "content": "<p>イベント詳細はここ。</p>",
-    "published": true
+    "summary": "2025年改正ダイヤに対応しました。",
+    "content": "<p>2025年改正版ダイヤに基づく時刻表データを更新しました。BVEシナリオで使用可能です。</p>",
+    "link": "/news/2025-10-15-release.html"
+  },
+  {
+    "id": "2025-10-01-info",
+    "title": "開発方針に関するお知らせ",
+    "date": "2025-10-01",
+    "published": true,
+    "category": "info",
+    "summary": "今後の開発方針についてまとめました。",
+    "content": "<p>今後の開発は、主に精度向上とユーザー利便性改善を重視して進めます。</p>",
+    "link": "/news/2025-10-01-info.html"
   }
 ]
