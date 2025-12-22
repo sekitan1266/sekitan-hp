@@ -18,60 +18,82 @@
     <div id="filter-category"></div>
   </fieldset>
 
-  <!-- 発表日（将来拡張用・今は未使用） -->
+  <!-- から -->
   <fieldset>
-    <legend>発表日</legend>
+    <legend>から</legend>
     年：
     <select id="filter-year">
       <option value="">--</option>
     </select>
+    －
     月：
     <select id="filter-month">
       <option value="">--</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-      <option value="7">7</option>
-      <option value="8">8</option>
-      <option value="9">9</option>
+      <option value="01">1</option>
+      <option value="02">2</option>
+      <option value="03">3</option>
+      <option value="04">4</option>
+      <option value="05">5</option>
+      <option value="06">6</option>
+      <option value="07">7</option>
+      <option value="08">8</option>
+      <option value="09">9</option>
       <option value="10">10</option>
       <option value="11">11</option>
       <option value="12">12</option>
     </select>
+    －
+    日：
+    <select id="filter-day">
+      <option value="">--</option>
+      <!-- 1〜31 -->
+      <script>
+        for (let i = 1; i <= 31; i++) {
+          document.write(`<option value="${String(i).padStart(2, "0")}">${i}</option>`);
+        }
+      </script>
+    </select>
   </fieldset>
 
-  <!-- 〜まで（将来拡張用） -->
+  <!-- 〜まで -->
   <fieldset>
     <legend>〜まで</legend>
     年：
     <select id="until-year">
       <option value="">--</option>
     </select>
+    －
     月：
     <select id="until-month">
       <option value="">--</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-      <option value="7">7</option>
-      <option value="8">8</option>
-      <option value="9">9</option>
+      <option value="01">1</option>
+      <option value="02">2</option>
+      <option value="03">3</option>
+      <option value="04">4</option>
+      <option value="05">5</option>
+      <option value="06">6</option>
+      <option value="07">7</option>
+      <option value="08">8</option>
+      <option value="09">9</option>
       <option value="10">10</option>
       <option value="11">11</option>
       <option value="12">12</option>
     </select>
+    －
+    日：
+    <select id="until-day">
+      <option value="">--</option>
+      <script>
+        for (let i = 1; i <= 31; i++) {
+          document.write(`<option value="${String(i).padStart(2, "0")}">${i}</option>`);
+        }
+      </script>
+    </select>
   </fieldset>
 
   <button id="filter-reset" type="button">
-  フィルタをすべて解除
+    フィルタをすべて解除
   </button>
-
 
 </section>
 

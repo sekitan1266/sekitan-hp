@@ -17,7 +17,7 @@ function getCategoryLabel(cat) {
   return CATEGORY_LABELS[cat] ?? cat;
 }
 
-/* ===== URL操作ユーティリティ ===== */
+/* ===== URL 操作 ===== */
 function getParams() {
   return new URLSearchParams(location.search);
 }
@@ -44,17 +44,11 @@ function renderCategoryFilter() {
       const params = getParams();
       const cats = new Set((params.get("cat") ?? "").split(",").filter(Boolean));
 
-      if (checkbox.checked) {
-        cats.add(cat);
-      } else {
-        cats.delete(cat);
-      }
+      checkbox.checked ? cats.add(cat) : cats.delete(cat);
 
-      cats.size
-        ? params.set("cat", [...cats].join(","))
-        : params.delete("cat");
+      cats.size ? params.set("cat", [...cats].join(",")) : params.delete("cat");
+      params.delete("page");
 
-      params.delete("page"); // フィルタ変更時は1ページ目
       updateURL(params);
       loadStateFromURL();
       applyFilter();
@@ -62,29 +56,26 @@ function renderCategoryFilter() {
 
     label.appendChild(checkbox);
     label.append(" " + getCategoryLabel(cat));
-
     container.appendChild(label);
     container.appendChild(document.createElement("br"));
   });
 }
 
-/* ===== 年フィルタ生成 ===== */
+/* ===== 年選択肢生成 ===== */
 function renderYearFilter() {
-  const fromYear = document.getElementById("filter-year");
-  const untilYear = document.getElementById("until-year");
-
   const years = [...new Set(
     allArticles.map(a => new Date(a.date).getFullYear())
   )].sort((a, b) => b - a);
 
-  [fromYear, untilYear].forEach(select => {
+  ["filter-year", "until-year"].forEach(id => {
+    const select = document.getElementById(id);
     select.querySelectorAll("option:not([value=''])")
       .forEach(opt => opt.remove());
 
-    years.forEach(year => {
+    years.forEach(y => {
       const opt = document.createElement("option");
-      opt.value = year;
-      opt.textContent = year;
+      opt.value = y;
+      opt.textContent = y;
       select.appendChild(opt);
     });
   });
@@ -96,46 +87,63 @@ function loadStateFromURL() {
 
   /* --- カテゴリ --- */
   selectedCategories.clear();
-  const cats = (params.get("cat") ?? "").split(",").filter(Boolean);
-  cats.forEach(c => selectedCategories.add(c));
+  (params.get("cat") ?? "")
+    .split(",")
+    .filter(Boolean)
+    .forEach(c => selectedCategories.add(c));
 
   document
     .querySelectorAll("#filter-category input[type=checkbox]")
     .forEach(cb => cb.checked = selectedCategories.has(cb.value));
 
-  /* --- 年月 --- */
+  /* --- 日時 --- */
   const from = params.get("from");
   const until = params.get("until");
 
   if (from) {
-    const [y, m] = from.split("-");
+    const [y, m, d] = from.split("-");
     document.getElementById("filter-year").value = y;
-    document.getElementById("filter-month").value = m ?? "";
+    document.getElementById("filter-month").value = m;
+    document.getElementById("filter-day").value = d;
   }
 
   if (until) {
-    const [y, m] = until.split("-");
+    const [y, m, d] = until.split("-");
     document.getElementById("until-year").value = y;
-    document.getElementById("until-month").value = m ?? "";
+    document.getElementById("until-month").value = m;
+    document.getElementById("until-day").value = d;
   }
 
-  /* --- ページ --- */
   currentPage = Number(params.get("page")) || 1;
 }
 
-/* ===== 年月 → URL反映（正規化含む） ===== */
+/* ===== 日時 → URL（正規化込み） ===== */
 function updateDateToURL() {
   const params = getParams();
 
-  const fy = document.getElementById("filter-year").value;
-  const fm = document.getElementById("filter-month").value;
-  const uy = document.getElementById("until-year").value;
-  const um = document.getElementById("until-month").value;
+  function buildDate(y, m, d, isEnd) {
+    if (!y) return null;
+    const mm = m || (isEnd ? "12" : "01");
+    const dd = d || (isEnd
+      ? new Date(y, mm, 0).getDate().toString().padStart(2, "0")
+      : "01");
+    return `${y}-${mm}-${dd}`;
+  }
 
-  let from = fy ? `${fy}-${fm || "01"}` : null;
-  let until = uy ? `${uy}-${um || "12"}` : null;
+  let from = buildDate(
+    filterYear.value,
+    filterMonth.value,
+    filterDay.value,
+    false
+  );
 
-  /* --- 不正範囲の正規化 --- */
+  let until = buildDate(
+    untilYear.value,
+    untilMonth.value,
+    untilDay.value,
+    true
+  );
+
   if (from && until && new Date(from) > new Date(until)) {
     [from, until] = [until, from];
   }
@@ -161,15 +169,12 @@ function applyFilter() {
   const until = params.get("until");
 
   filteredArticles = allArticles.filter(item => {
-    /* カテゴリ */
-    if (selectedCategories.size > 0 && !selectedCategories.has(item.category)) {
-      return false;
-    }
+    if (selectedCategories.size &&
+        !selectedCategories.has(item.category)) return false;
 
-    /* 年月 */
     const d = new Date(item.date);
-    if (from && d < new Date(from + "-01")) return false;
-    if (until && d > new Date(until + "-31")) return false;
+    if (from && d < new Date(from)) return false;
+    if (until && d > new Date(until)) return false;
 
     return true;
   });
@@ -186,7 +191,7 @@ function renderPage(page) {
   list.innerHTML = "";
   pagination.innerHTML = "";
 
-  if (filteredArticles.length === 0) {
+  if (!filteredArticles.length) {
     noNews.style.display = "block";
     return;
   }
@@ -195,26 +200,24 @@ function renderPage(page) {
   const totalPages = Math.ceil(filteredArticles.length / ITEMS_PER_PAGE);
   currentPage = Math.min(page, totalPages);
 
-  const start = (currentPage - 1) * ITEMS_PER_PAGE;
-  const end = start + ITEMS_PER_PAGE;
-
-  filteredArticles.slice(start, end).forEach(item => {
-    const div = document.createElement("div");
-    div.innerHTML = `
-      <strong>${item.date}</strong>
-      [${getCategoryLabel(item.category)}]
-      <a href="${item.link}">${item.title}</a><br>
-      ${item.summary}
-    `;
-    list.appendChild(div);
-  });
+  filteredArticles
+    .slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE)
+    .forEach(item => {
+      const div = document.createElement("div");
+      div.innerHTML = `
+        <strong>${item.date}</strong>
+        [${getCategoryLabel(item.category)}]
+        <a href="${item.link}">${item.title}</a><br>
+        ${item.summary}
+      `;
+      list.appendChild(div);
+    });
 
   const params = getParams();
-
   for (let i = 1; i <= totalPages; i++) {
     const btn = document.createElement("button");
     btn.textContent = i;
-    btn.disabled = (i === currentPage);
+    btn.disabled = i === currentPage;
     btn.onclick = () => {
       params.set("page", i);
       updateURL(params);
@@ -227,10 +230,9 @@ function renderPage(page) {
 
 /* ===== 初期化 ===== */
 fetch("data/news.json")
-  .then(res => res.json())
+  .then(r => r.json())
   .then(data => {
-    allArticles = data
-      .filter(d => d.published)
+    allArticles = data.filter(d => d.published)
       .sort((a, b) => new Date(b.date) - new Date(a.date));
 
     renderCategoryFilter();
@@ -241,13 +243,15 @@ fetch("data/news.json")
     document.getElementById("filter-reset")
       .addEventListener("click", resetFilter);
 
-    ["filter-year", "filter-month", "until-year", "until-month"]
-      .forEach(id => {
-        document.getElementById(id).addEventListener("change", () => {
-          updateDateToURL();
-          loadStateFromURL();
-          applyFilter();
-        });
-      });
+    [
+      filterYear, filterMonth, filterDay,
+      untilYear, untilMonth, untilDay
+    ].forEach(el =>
+      el.addEventListener("change", () => {
+        updateDateToURL();
+        loadStateFromURL();
+        applyFilter();
+      })
+    );
   })
-  .catch(err => console.error("fetch error:", err));
+  .catch(console.error);
