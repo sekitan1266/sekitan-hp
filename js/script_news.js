@@ -17,6 +17,15 @@ function getCategoryLabel(cat) {
   return CATEGORY_LABELS[cat] ?? cat;
 }
 
+/* ===== URL操作ユーティリティ ===== */
+function getParams() {
+  return new URLSearchParams(location.search);
+}
+
+function updateURL(params) {
+  history.replaceState(null, "", "?" + params.toString());
+}
+
 /* ===== カテゴリフィルタ生成 ===== */
 function renderCategoryFilter() {
   const container = document.getElementById("filter-category");
@@ -32,12 +41,22 @@ function renderCategoryFilter() {
     checkbox.value = cat;
 
     checkbox.addEventListener("change", () => {
+      const params = getParams();
+      const cats = new Set((params.get("cat") ?? "").split(",").filter(Boolean));
+
       if (checkbox.checked) {
-        selectedCategories.add(cat);
+        cats.add(cat);
       } else {
-        selectedCategories.delete(cat);
+        cats.delete(cat);
       }
-      currentPage = 1;
+
+      cats.size
+        ? params.set("cat", [...cats].join(","))
+        : params.delete("cat");
+
+      params.delete("page"); // フィルタ変更時は1ページ目
+      updateURL(params);
+      loadStateFromURL();
       applyFilter();
     });
 
@@ -71,28 +90,88 @@ function renderYearFilter() {
   });
 }
 
-/* ===== フィルタ全解除 ===== */
-function resetFilter() {
+/* ===== URL → 状態反映 ===== */
+function loadStateFromURL() {
+  const params = getParams();
+
+  /* --- カテゴリ --- */
   selectedCategories.clear();
+  const cats = (params.get("cat") ?? "").split(",").filter(Boolean);
+  cats.forEach(c => selectedCategories.add(c));
 
   document
     .querySelectorAll("#filter-category input[type=checkbox]")
-    .forEach(cb => cb.checked = false);
+    .forEach(cb => cb.checked = selectedCategories.has(cb.value));
 
-  document.getElementById("filter-year").value = "";
-  document.getElementById("filter-month").value = "";
-  document.getElementById("until-year").value = "";
-  document.getElementById("until-month").value = "";
+  /* --- 年月 --- */
+  const from = params.get("from");
+  const until = params.get("until");
 
-  currentPage = 1;
+  if (from) {
+    const [y, m] = from.split("-");
+    document.getElementById("filter-year").value = y;
+    document.getElementById("filter-month").value = m ?? "";
+  }
+
+  if (until) {
+    const [y, m] = until.split("-");
+    document.getElementById("until-year").value = y;
+    document.getElementById("until-month").value = m ?? "";
+  }
+
+  /* --- ページ --- */
+  currentPage = Number(params.get("page")) || 1;
+}
+
+/* ===== 年月 → URL反映（正規化含む） ===== */
+function updateDateToURL() {
+  const params = getParams();
+
+  const fy = document.getElementById("filter-year").value;
+  const fm = document.getElementById("filter-month").value;
+  const uy = document.getElementById("until-year").value;
+  const um = document.getElementById("until-month").value;
+
+  let from = fy ? `${fy}-${fm || "01"}` : null;
+  let until = uy ? `${uy}-${um || "12"}` : null;
+
+  /* --- 不正範囲の正規化 --- */
+  if (from && until && new Date(from) > new Date(until)) {
+    [from, until] = [until, from];
+  }
+
+  from ? params.set("from", from) : params.delete("from");
+  until ? params.set("until", until) : params.delete("until");
+
+  params.delete("page");
+  updateURL(params);
+}
+
+/* ===== フィルタ全解除 ===== */
+function resetFilter() {
+  updateURL(new URLSearchParams());
+  loadStateFromURL();
   applyFilter();
 }
 
-/* ===== フィルタ処理（現時点ではカテゴリのみ） ===== */
+/* ===== フィルタ処理 ===== */
 function applyFilter() {
+  const params = getParams();
+  const from = params.get("from");
+  const until = params.get("until");
+
   filteredArticles = allArticles.filter(item => {
-    if (selectedCategories.size === 0) return true;
-    return selectedCategories.has(item.category);
+    /* カテゴリ */
+    if (selectedCategories.size > 0 && !selectedCategories.has(item.category)) {
+      return false;
+    }
+
+    /* 年月 */
+    const d = new Date(item.date);
+    if (from && d < new Date(from + "-01")) return false;
+    if (until && d > new Date(until + "-31")) return false;
+
+    return true;
   });
 
   renderPage(currentPage);
@@ -110,11 +189,13 @@ function renderPage(page) {
   if (filteredArticles.length === 0) {
     noNews.style.display = "block";
     return;
-  } else {
-    noNews.style.display = "none";
   }
+  noNews.style.display = "none";
 
-  const start = (page - 1) * ITEMS_PER_PAGE;
+  const totalPages = Math.ceil(filteredArticles.length / ITEMS_PER_PAGE);
+  currentPage = Math.min(page, totalPages);
+
+  const start = (currentPage - 1) * ITEMS_PER_PAGE;
   const end = start + ITEMS_PER_PAGE;
 
   filteredArticles.slice(start, end).forEach(item => {
@@ -128,13 +209,16 @@ function renderPage(page) {
     list.appendChild(div);
   });
 
-  const totalPages = Math.ceil(filteredArticles.length / ITEMS_PER_PAGE);
+  const params = getParams();
+
   for (let i = 1; i <= totalPages; i++) {
     const btn = document.createElement("button");
     btn.textContent = i;
-    btn.disabled = (i === page);
+    btn.disabled = (i === currentPage);
     btn.onclick = () => {
-      currentPage = i;
+      params.set("page", i);
+      updateURL(params);
+      loadStateFromURL();
       renderPage(i);
     };
     pagination.appendChild(btn);
@@ -151,10 +235,19 @@ fetch("data/news.json")
 
     renderCategoryFilter();
     renderYearFilter();
+    loadStateFromURL();
     applyFilter();
 
-    document
-      .getElementById("filter-reset")
+    document.getElementById("filter-reset")
       .addEventListener("click", resetFilter);
+
+    ["filter-year", "filter-month", "until-year", "until-month"]
+      .forEach(id => {
+        document.getElementById(id).addEventListener("change", () => {
+          updateDateToURL();
+          loadStateFromURL();
+          applyFilter();
+        });
+      });
   })
   .catch(err => console.error("fetch error:", err));
