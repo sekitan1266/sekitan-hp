@@ -48,6 +48,26 @@ function renderCategoryFilter() {
   });
 }
 
+/* ===== フィルタ全解除 ===== */
+function resetFilter() {
+  /* カテゴリ解除（内部状態） */
+  selectedCategories.clear();
+
+  /* カテゴリ解除（UI） */
+  document
+    .querySelectorAll("#filter-category input[type=checkbox]")
+    .forEach(cb => cb.checked = false);
+
+  /* 年月解除 */
+  document.getElementById("filter-year").value = "";
+  document.getElementById("filter-month").value = "";
+  document.getElementById("until-year").value = "";
+  document.getElementById("until-month").value = "";
+
+  currentPage = 1;
+  applyFilter();
+}
+
 /* ===== フィルタ処理 ===== */
 function applyFilter() {
   filteredArticles = allArticles.filter(item => {
@@ -111,5 +131,10 @@ fetch("data/news.json")
 
     renderCategoryFilter();
     applyFilter();
+
+    /* フィルタ解除ボタン */
+    document
+      .getElementById("filter-reset")
+      .addEventListener("click", resetFilter);
   })
   .catch(err => console.error("fetch error:", err));
