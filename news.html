@@ -9,17 +9,16 @@
 
 <h1>News</h1>
 
-<!-- フィルタUI -->
+<!-- ===== フィルタUI ===== -->
 <section id="news-filter">
 
+  <!-- カテゴリ（JSで自動生成） -->
   <fieldset>
     <legend>カテゴリ</legend>
-    <label><input type="checkbox" value="info"> INFO</label>
-    <label><input type="checkbox" value="release"> RELEASE</label>
-    <label><input type="checkbox" value="incident"> INCIDENT</label>
-    <label><input type="checkbox" value="other"> OTHER</label>
+    <div id="filter-category"></div>
   </fieldset>
 
+  <!-- 発表日 -->
   <fieldset>
     <legend>発表日</legend>
     年：
@@ -45,6 +44,7 @@
     </select>
   </fieldset>
 
+  <!-- 〜まで -->
   <fieldset>
     <legend>〜まで</legend>
     年：
@@ -72,7 +72,15 @@
 
 </section>
 
+<!-- ===== 一覧 ===== -->
 <div id="news-list"></div>
+
+<!-- 0件時表示 -->
+<div id="no-news" style="display:none;">
+  該当するお知らせはありません。
+</div>
+
+<!-- ページング -->
 <div id="pagination"></div>
 
 <script src="js/script_news.js"></script>
