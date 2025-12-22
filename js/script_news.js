@@ -1,4 +1,5 @@
 const ITEMS_PER_PAGE = 5;
+
 let currentPage = 1;
 let allArticles = [];
 let filteredArticles = [];
@@ -48,17 +49,36 @@ function renderCategoryFilter() {
   });
 }
 
+/* ===== 年フィルタ生成 ===== */
+function renderYearFilter() {
+  const fromYear = document.getElementById("filter-year");
+  const untilYear = document.getElementById("until-year");
+
+  const years = [...new Set(
+    allArticles.map(a => new Date(a.date).getFullYear())
+  )].sort((a, b) => b - a);
+
+  [fromYear, untilYear].forEach(select => {
+    select.querySelectorAll("option:not([value=''])")
+      .forEach(opt => opt.remove());
+
+    years.forEach(year => {
+      const opt = document.createElement("option");
+      opt.value = year;
+      opt.textContent = year;
+      select.appendChild(opt);
+    });
+  });
+}
+
 /* ===== フィルタ全解除 ===== */
 function resetFilter() {
-  /* カテゴリ解除（内部状態） */
   selectedCategories.clear();
 
-  /* カテゴリ解除（UI） */
   document
     .querySelectorAll("#filter-category input[type=checkbox]")
     .forEach(cb => cb.checked = false);
 
-  /* 年月解除 */
   document.getElementById("filter-year").value = "";
   document.getElementById("filter-month").value = "";
   document.getElementById("until-year").value = "";
@@ -68,7 +88,7 @@ function resetFilter() {
   applyFilter();
 }
 
-/* ===== フィルタ処理 ===== */
+/* ===== フィルタ処理（現時点ではカテゴリのみ） ===== */
 function applyFilter() {
   filteredArticles = allArticles.filter(item => {
     if (selectedCategories.size === 0) return true;
@@ -130,9 +150,9 @@ fetch("data/news.json")
       .sort((a, b) => new Date(b.date) - new Date(a.date));
 
     renderCategoryFilter();
+    renderYearFilter();
     applyFilter();
 
-    /* フィルタ解除ボタン */
     document
       .getElementById("filter-reset")
       .addEventListener("click", resetFilter);
