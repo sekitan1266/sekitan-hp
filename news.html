@@ -2,17 +2,79 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>News - sekitan</title>
+  <title>News | sekitan</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    #pagination button { margin: 0 2px; }
-  </style>
 </head>
 <body>
-  <h1>News</h1>
-  <div id="news-list"></div>
-  <div id="pagination"></div>
 
-  <script src="js/script_news.js"></script>
+<h1>News</h1>
+
+<!-- フィルタUI -->
+<section id="news-filter">
+
+  <fieldset>
+    <legend>カテゴリ</legend>
+    <label><input type="checkbox" value="info"> INFO</label>
+    <label><input type="checkbox" value="release"> RELEASE</label>
+    <label><input type="checkbox" value="incident"> INCIDENT</label>
+    <label><input type="checkbox" value="other"> OTHER</label>
+  </fieldset>
+
+  <fieldset>
+    <legend>発表日</legend>
+    年：
+    <select id="filter-year">
+      <option value="">--</option>
+    </select>
+
+    月：
+    <select id="filter-month">
+      <option value="">--</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+      <option value="11">11</option>
+      <option value="12">12</option>
+    </select>
+  </fieldset>
+
+  <fieldset>
+    <legend>〜まで</legend>
+    年：
+    <select id="until-year">
+      <option value="">--</option>
+    </select>
+
+    月：
+    <select id="until-month">
+      <option value="">--</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+      <option value="11">11</option>
+      <option value="12">12</option>
+    </select>
+  </fieldset>
+
+</section>
+
+<div id="news-list"></div>
+<div id="pagination"></div>
+
+<script src="js/script_news.js"></script>
 </body>
 </html>
