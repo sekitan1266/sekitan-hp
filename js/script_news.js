@@ -37,6 +37,36 @@ function buildDate(y, m, d, isEnd) {
   return `${y}-${mm}-${dd}`;
 }
 
+/* ===== 日数調整（ここが今回の本体） ===== */
+function adjustDaySelect(prefix) {
+  const y = $(prefix + "-year").value;
+  const m = $(prefix + "-month").value;
+  const daySel = $(prefix + "-day");
+
+  if (!y || !m) {
+    return;
+  }
+
+  const maxDay = new Date(Number(y), Number(m), 0).getDate();
+  const current = daySel.value;
+
+  daySel.querySelectorAll("option:not([value=''])")
+    .forEach(o => o.remove());
+
+  for (let d = 1; d <= maxDay; d++) {
+    const opt = document.createElement("option");
+    opt.value = String(d).padStart(2, "0");
+    opt.textContent = d;
+    daySel.appendChild(opt);
+  }
+
+  if (current) {
+    daySel.value = Number(current) <= maxDay
+      ? current
+      : String(maxDay).padStart(2, "0");
+  }
+}
+
 /* ===== カテゴリUI ===== */
 function renderCategoryFilter() {
   const box = $("filter-category");
@@ -96,26 +126,29 @@ function loadFromURL() {
   document.querySelectorAll("#filter-category input")
     .forEach(cb => cb.checked = selectedCategories.has(cb.value));
 
-  /* 日付 */
-  const from = p.get("from");
-  const until = p.get("until");
-
+  /* 日付初期化 */
   ["filter", "until"].forEach(prefix => {
     $(prefix + "-year").value = "";
     $(prefix + "-month").value = "";
     $(prefix + "-day").value = "";
   });
 
+  const from = p.get("from");
+  const until = p.get("until");
+
   if (from) {
     const [y, m, d] = from.split("-");
     $("filter-year").value = y;
     $("filter-month").value = m;
+    adjustDaySelect("filter");
     $("filter-day").value = d;
   }
+
   if (until) {
     const [y, m, d] = until.split("-");
     $("until-year").value = y;
     $("until-month").value = m;
+    adjustDaySelect("until");
     $("until-day").value = d;
   }
 
@@ -241,6 +274,7 @@ fetch("data/news.json")
       "until-year","until-month","until-day"
     ].forEach(id =>
       $(id).addEventListener("change", () => {
+        adjustDaySelect(id.startsWith("filter") ? "filter" : "until");
         updateDateURL();
         loadFromURL();
         applyFilter();
