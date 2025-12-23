@@ -5,9 +5,6 @@ let filteredArticles = [];
 let selectedCategories = new Set();
 let currentPage = 1;
 
-/* ===== カテゴリ表示名 ===== */
-
-
 const $ = id => document.getElementById(id);
 
 /* ===== URL ===== */
@@ -32,15 +29,13 @@ function buildDate(y, m, d, isEnd) {
   return `${y}-${mm}-${dd}`;
 }
 
-/* ===== 日数調整（ここが今回の本体） ===== */
+/* ===== 日数調整 ===== */
 function adjustDaySelect(prefix) {
   const y = $(prefix + "-year").value;
   const m = $(prefix + "-month").value;
   const daySel = $(prefix + "-day");
 
-  if (!y || !m) {
-    return;
-  }
+  if (!y || !m) return;
 
   const maxDay = new Date(Number(y), Number(m), 0).getDate();
   const current = daySel.value;
@@ -113,7 +108,6 @@ function renderYearFilter() {
 function loadFromURL() {
   const p = params();
 
-  /* カテゴリ */
   selectedCategories.clear();
   (p.get("cat") || "").split(",").filter(Boolean)
     .forEach(c => selectedCategories.add(c));
@@ -121,7 +115,6 @@ function loadFromURL() {
   document.querySelectorAll("#filter-category input")
     .forEach(cb => cb.checked = selectedCategories.has(cb.value));
 
-  /* 日付初期化 */
   ["filter", "until"].forEach(prefix => {
     $(prefix + "-year").value = "";
     $(prefix + "-month").value = "";
@@ -219,10 +212,15 @@ function renderPage(page) {
     .slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE)
     .forEach(a => {
       const div = document.createElement("div");
+
+      const href = a.link
+        ? a.link
+        : `news-watch.html?id=${a.id}`;
+
       div.innerHTML = `
         <strong>${a.date}</strong>
         [${CATEGORY_LABELS[a.category] || a.category}]
-        <a href="${a.link}">${a.title}</a><br>
+        <a href="${href}">${a.title}</a><br>
         ${a.summary}
       `;
       list.appendChild(div);

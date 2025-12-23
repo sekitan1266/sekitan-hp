@@ -17,5 +17,14 @@
     "summary": "イベントについての概要。",
     "content": "<p>イベント詳細はここ。</p>",
     "published": true
+  },
+  {
+    "id": "20251210-01",
+    "title": "イベント開催",
+    "date": "2025-12-10",
+    "category": "release",
+    "summary": "試験",
+    "content": "<p>手飯に売ってみる</p>",
+    "published": true
   }
 ]
