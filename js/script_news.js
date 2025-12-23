@@ -1,4 +1,5 @@
-const ITEMS_PER_PAGE = 5;
+/* ===== 設定 ===== */
+let itemsPerPage = 5;   // ← 定数ではなく状態にする
 
 let allArticles = [];
 let filteredArticles = [];
@@ -140,10 +141,13 @@ function loadFromURL() {
     $("until-day").value = d;
   }
 
+  itemsPerPage = Number(p.get("per")) || itemsPerPage;
+  $("items-per-page").value = itemsPerPage;
+
   currentPage = Number(p.get("page")) || 1;
 }
 
-/* ===== UI → URL（日付） ===== */
+/* ===== UI → URL（日付・件数） ===== */
 function updateDateURL() {
   const p = params();
 
@@ -205,11 +209,11 @@ function renderPage(page) {
   }
   none.style.display = "none";
 
-  const total = Math.ceil(filteredArticles.length / ITEMS_PER_PAGE);
+  const total = Math.ceil(filteredArticles.length / itemsPerPage);
   currentPage = Math.min(page, total);
 
   filteredArticles
-    .slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE)
+    .slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
     .forEach(a => {
       const div = document.createElement("div");
 
@@ -261,6 +265,16 @@ fetch("data/news.json")
     applyFilter();
 
     $("filter-reset").addEventListener("click", resetFilter);
+
+    $("items-per-page").addEventListener("change", e => {
+      const p = params();
+      itemsPerPage = Number(e.target.value);
+      p.set("per", itemsPerPage);
+      p.delete("page");
+      updateURL(p);
+      loadFromURL();
+      applyFilter();
+    });
 
     [
       "filter-year","filter-month","filter-day",

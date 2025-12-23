@@ -9,8 +9,17 @@
 
 <h1>News</h1>
 
-<!-- ===== フィルタUI ===== -->
 <section id="news-filter">
+
+  <!-- 表示件数 -->
+  <fieldset>
+    <legend>表示件数</legend>
+    <select id="items-per-page">
+      <option value="5">5件</option>
+      <option value="10">10件</option>
+      <option value="20">20件</option>
+    </select>
+  </fieldset>
 
   <!-- カテゴリ -->
   <fieldset>
@@ -21,10 +30,7 @@
   <!-- から -->
   <fieldset>
     <legend>から</legend>
-    <select id="filter-year">
-      <option value="">--</option>
-    </select>年
-
+    <select id="filter-year"><option value="">--</option></select>年
     <select id="filter-month">
       <option value="">--</option>
       <option value="01">1</option>
@@ -40,27 +46,13 @@
       <option value="11">11</option>
       <option value="12">12</option>
     </select>月
-
-    <select id="filter-day">
-      <option value="">--</option>
-      <!-- 1〜31 -->
-      <script>
-        for (let i = 1; i <= 31; i++) {
-          document.write(
-            `<option value="${String(i).padStart(2,"0")}">${i}</option>`
-          );
-        }
-      </script>
-    </select>日
+    <select id="filter-day"><option value="">--</option></select>日
   </fieldset>
 
   <!-- 〜まで -->
   <fieldset>
     <legend>〜まで</legend>
-    <select id="until-year">
-      <option value="">--</option>
-    </select>年
-
+    <select id="until-year"><option value="">--</option></select>年
     <select id="until-month">
       <option value="">--</option>
       <option value="01">1</option>
@@ -76,35 +68,21 @@
       <option value="11">11</option>
       <option value="12">12</option>
     </select>月
-
-    <select id="until-day">
-      <option value="">--</option>
-      <script>
-        for (let i = 1; i <= 31; i++) {
-          document.write(
-            `<option value="${String(i).padStart(2,"0")}">${i}</option>`
-          );
-        }
-      </script>
-    </select>日
+    <select id="until-day"><option value="">--</option></select>日
   </fieldset>
 
-  <!-- フィルタ解除 -->
   <button id="filter-reset" type="button">
     フィルタをすべて解除
   </button>
 
 </section>
 
-<!-- ===== 一覧 ===== -->
 <div id="news-list"></div>
 
-<!-- 0件時表示 -->
 <div id="no-news" style="display:none;">
   該当するお知らせはありません。
 </div>
 
-<!-- ページング -->
 <div id="pagination"></div>
 
 <script src="js/script_news-constants.js"></script>
