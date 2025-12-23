@@ -1,12 +1,10 @@
-const ITEMS_PER_PAGE = 5;
+const ITEMS_PER_PAGE_DEFAULT = 5;
 
 let allArticles = [];
 let filteredArticles = [];
 let selectedCategories = new Set();
 let currentPage = 1;
-
-/* ===== カテゴリ表示名 ===== */
-
+let itemsPerPage = ITEMS_PER_PAGE_DEFAULT;
 
 const $ = id => document.getElementById(id);
 
@@ -32,15 +30,13 @@ function buildDate(y, m, d, isEnd) {
   return `${y}-${mm}-${dd}`;
 }
 
-/* ===== 日数調整（ここが今回の本体） ===== */
+/* ===== 日数調整 ===== */
 function adjustDaySelect(prefix) {
   const y = $(prefix + "-year").value;
   const m = $(prefix + "-month").value;
   const daySel = $(prefix + "-day");
 
-  if (!y || !m) {
-    return;
-  }
+  if (!y || !m) return;
 
   const maxDay = new Date(Number(y), Number(m), 0).getDate();
   const current = daySel.value;
@@ -113,7 +109,6 @@ function renderYearFilter() {
 function loadFromURL() {
   const p = params();
 
-  /* カテゴリ */
   selectedCategories.clear();
   (p.get("cat") || "").split(",").filter(Boolean)
     .forEach(c => selectedCategories.add(c));
@@ -121,7 +116,6 @@ function loadFromURL() {
   document.querySelectorAll("#filter-category input")
     .forEach(cb => cb.checked = selectedCategories.has(cb.value));
 
-  /* 日付初期化 */
   ["filter", "until"].forEach(prefix => {
     $(prefix + "-year").value = "";
     $(prefix + "-month").value = "";
@@ -147,10 +141,13 @@ function loadFromURL() {
     $("until-day").value = d;
   }
 
+  itemsPerPage = Number(p.get("ipp")) || ITEMS_PER_PAGE_DEFAULT;
+  $("items-per-page").value = itemsPerPage;
+
   currentPage = Number(p.get("page")) || 1;
 }
 
-/* ===== UI → URL（日付） ===== */
+/* ===== 日付URL更新 ===== */
 function updateDateURL() {
   const p = params();
 
@@ -178,7 +175,7 @@ function updateDateURL() {
   updateURL(p);
 }
 
-/* ===== フィルタ処理 ===== */
+/* ===== フィルタ ===== */
 function applyFilter() {
   const p = params();
   const from = p.get("from");
@@ -212,17 +209,19 @@ function renderPage(page) {
   }
   none.style.display = "none";
 
-  const total = Math.ceil(filteredArticles.length / ITEMS_PER_PAGE);
+  const total = Math.ceil(filteredArticles.length / itemsPerPage);
   currentPage = Math.min(page, total);
 
   filteredArticles
-    .slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE)
+    .slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
     .forEach(a => {
       const div = document.createElement("div");
+      const href = a.link ? a.link : `news-watch.html?id=${a.id}`;
+
       div.innerHTML = `
         <strong>${a.date}</strong>
         [${CATEGORY_LABELS[a.category] || a.category}]
-        <a href="${a.link}">${a.title}</a><br>
+        <a href="${href}">${a.title}</a><br>
         ${a.summary}
       `;
       list.appendChild(div);
@@ -263,6 +262,16 @@ fetch("data/news.json")
     applyFilter();
 
     $("filter-reset").addEventListener("click", resetFilter);
+
+    $("items-per-page").addEventListener("change", e => {
+      const p = params();
+      itemsPerPage = Number(e.target.value);
+      p.set("ipp", itemsPerPage);
+      p.delete("page");
+      updateURL(p);
+      loadFromURL();
+      renderPage(1);
+    });
 
     [
       "filter-year","filter-month","filter-day",
