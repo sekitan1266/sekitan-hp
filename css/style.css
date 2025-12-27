@@ -89,3 +89,69 @@ h1 {
   margin: 24px auto 40px;
   padding: 0 16px;
 }
+
+.news-item {
+  display: flex;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid #a0a0a0;
+}
+
+.news-date {
+  min-width: 90px;
+  padding-left: 12px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #000;
+  position: relative;
+}
+
+.news-date::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 6px;
+  height: 100%;
+  border-radius: 4px;
+  background: linear-gradient(
+    135deg,
+    #1e90ff,
+    #00a86b
+  );
+}
+
+.news-body {
+  flex: 1;
+}
+
+.news-meta {
+  font-size: 0.8rem;
+  color: #444;
+  margin-bottom: 4px;
+}
+
+.news-title {
+  display: inline-block;
+  color: #000;
+  text-decoration: none;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.news-summary {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+#pagination button {
+  margin-right: 4px;
+  padding: 4px 8px;
+  font-size: 0.9rem;
+}
+
+#pagination button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}

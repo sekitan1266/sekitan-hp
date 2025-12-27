@@ -11,19 +11,30 @@ const $ = id => document.getElementById(id);
 function params() {
   return new URLSearchParams(location.search);
 }
+
 function updateURL(p) {
   history.replaceState(null, "", "?" + p.toString());
+}
+
+/* ===== 日付表示（YYYY-MM-DD → YYYY.MM.DD） ===== */
+function formatDate(dateStr) {
+  return dateStr.replace(/-/g, ".");
 }
 
 /* ===== 日付組み立て ===== */
 function buildDate(y, m, d, isEnd) {
   if (!y) return null;
+
   const mm = m || (isEnd ? "12" : "01");
   const dd = d || (
     isEnd
-      ? new Date(Number(y), Number(mm), 0).getDate().toString().padStart(2, "0")
+      ? new Date(Number(y), Number(mm), 0)
+          .getDate()
+          .toString()
+          .padStart(2, "0")
       : "01"
   );
+
   return `${y}-${mm}-${dd}`;
 }
 
@@ -68,11 +79,16 @@ function renderCategoryFilter() {
 
     cb.addEventListener("change", () => {
       const p = params();
-      const set = new Set((p.get("cat") || "").split(",").filter(Boolean));
+      const set = new Set(
+        (p.get("cat") || "").split(",").filter(Boolean)
+      );
 
       cb.checked ? set.add(cat) : set.delete(cat);
 
-      set.size ? p.set("cat", [...set].join(",")) : p.delete("cat");
+      set.size
+        ? p.set("cat", [...set].join(","))
+        : p.delete("cat");
+
       p.delete("page");
 
       updateURL(p);
@@ -111,11 +127,14 @@ function loadFromURL() {
   const p = params();
 
   selectedCategories.clear();
-  (p.get("cat") || "").split(",").filter(Boolean)
+  (p.get("cat") || "")
+    .split(",")
+    .filter(Boolean)
     .forEach(c => selectedCategories.add(c));
 
-  document.querySelectorAll("#filter-category input")
-    .forEach(cb => cb.checked = selectedCategories.has(cb.value));
+  document
+    .querySelectorAll("#filter-category input")
+    .forEach(cb => (cb.checked = selectedCategories.has(cb.value)));
 
   ["filter", "until"].forEach(prefix => {
     $(prefix + "-year").value = "";
@@ -181,7 +200,10 @@ function applyFilter() {
   const until = p.get("until");
 
   filteredArticles = allArticles.filter(a => {
-    if (selectedCategories.size && !selectedCategories.has(a.category)) return false;
+    if (
+      selectedCategories.size &&
+      !selectedCategories.has(a.category)
+    ) return false;
 
     const d = new Date(a.date);
     if (from && d < new Date(from)) return false;
@@ -212,17 +234,26 @@ function renderPage(page) {
   currentPage = Math.min(page, total);
 
   filteredArticles
-    .slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
+    .slice(
+      (currentPage - 1) * itemsPerPage,
+      currentPage * itemsPerPage
+    )
     .forEach(a => {
       const div = document.createElement("div");
       const href = a.link || `news-watch.html?id=${a.id}`;
 
+      div.className = "news-item";
       div.innerHTML = `
-        <strong>${a.date}</strong>
-        [${CATEGORY_LABELS[a.category] || a.category}]
-        <a href="${href}">${a.title}</a><br>
-        ${a.summary}
+        <div class="news-date">${formatDate(a.date)}</div>
+        <div class="news-body">
+          <div class="news-meta">
+            [${CATEGORY_LABELS[a.category] || a.category}]
+          </div>
+          <a class="news-title" href="${href}">${a.title}</a>
+          <div class="news-summary">${a.summary}</div>
+        </div>
       `;
+
       list.appendChild(div);
     });
 
@@ -231,12 +262,14 @@ function renderPage(page) {
     const b = document.createElement("button");
     b.textContent = i;
     b.disabled = i === currentPage;
+
     b.onclick = () => {
       p.set("page", i);
       updateURL(p);
       loadFromURL();
       renderPage(i);
     };
+
     pag.appendChild(b);
   }
 }
