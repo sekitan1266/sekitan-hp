@@ -43,8 +43,12 @@ h1 {
   max-width: 960px;
   margin: 0 auto 24px;
   padding: 16px;
+
+  /* 上線グラデーション（border-image 不使用） */
+  background:
+    linear-gradient(#fff, #fff) padding-box,
+    var(--accent-gradient) border-box;
   border-top: 3px solid transparent;
-  border-image: var(--accent-gradient) 1;
 }
 
 #news-filter fieldset {
@@ -66,35 +70,44 @@ h1 {
   padding: 6px 10px;
 }
 
-/* reset button */
+/* =========================
+   Reset Button
+========================= */
 
 #filter-reset {
   margin-top: 8px;
   font-weight: 600;
-  color: #fff;
-  background: var(--accent-gradient);
-  border: 2px solid transparent;
-  border-radius: 6px;
   cursor: pointer;
 
-  /* 枠線をグラデーションに固定 */
-  border-image: var(--accent-gradient) 1;
+  border-radius: 6px;
+  border: 2px solid transparent;
+
+  /* グラデーション枠（二層 background） */
+  background:
+    linear-gradient(var(--accent-gradient), var(--accent-gradient)) padding-box,
+    var(--accent-gradient) border-box;
+
+  color: #fff;
+
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
 
   transition:
-    background-color 0.3s ease,
+    background 0.3s ease,
     color 0.3s ease;
 }
 
 #filter-reset:hover {
-  background: #fff;
+  background:
+    linear-gradient(#fff, #fff) padding-box,
+    var(--accent-gradient) border-box;
 
-  /* 文字をグラデーションに */
-  background-image: var(--accent-gradient);
+  background-image:
+    var(--accent-gradient);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
-
 
 /* =========================
    News List
@@ -137,13 +150,10 @@ h1 {
   border-radius: 12px;
   overflow: hidden;
 
-  /* hover animation */
   transition:
     transform 0.5s ease,
     box-shadow 0.5s ease;
 }
-
-/* 反転なし・浮き上がりのみ */
 
 .news-item-link:hover .news-item {
   transform: translateY(-2px);
@@ -151,7 +161,7 @@ h1 {
 }
 
 /* =========================
-   Date + accent line
+   Date + Accent Line
 ========================= */
 
 .news-date {
@@ -182,16 +192,12 @@ h1 {
   flex: 1;
 }
 
-/* meta + title row */
-
 .news-meta {
   display: inline-block;
   margin-right: 8px;
   font-size: 0.8rem;
   color: #444;
 }
-
-/* title with gradient text */
 
 .news-title {
   font-weight: 700;
@@ -200,8 +206,6 @@ h1 {
   background-clip: text;
   color: transparent;
 }
-
-/* summary */
 
 .news-summary {
   margin-top: 4px;
