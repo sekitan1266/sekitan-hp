@@ -1,5 +1,5 @@
 /* ===== 状態 ===== */
-const itemsPerPage = 5; // 固定値（UIなし）
+const itemsPerPage = 8; // 固定値（UIなし）
 let allArticles = [];
 let filteredArticles = [];
 let selectedCategories = new Set();
@@ -239,22 +239,26 @@ function renderPage(page) {
       currentPage * itemsPerPage
     )
     .forEach(a => {
-      const div = document.createElement("div");
+      const link = document.createElement("a");
       const href = a.link || `news-watch.html?id=${a.id}`;
 
-      div.className = "news-item";
-      div.innerHTML = `
-        <div class="news-date">${formatDate(a.date)}</div>
-        <div class="news-body">
-          <div class="news-meta">
-            [${CATEGORY_LABELS[a.category] || a.category}]
+      link.href = href;
+      link.className = "news-item-link";
+
+      link.innerHTML = `
+        <div class="news-item">
+          <div class="news-date">${formatDate(a.date)}</div>
+          <div class="news-body">
+            <div class="news-meta">
+              [${CATEGORY_LABELS[a.category] || a.category}]
+            </div>
+            <span class="news-title">${a.title}</span>
+            <div class="news-summary">${a.summary}</div>
           </div>
-          <a class="news-title" href="${href}">${a.title}</a>
-          <div class="news-summary">${a.summary}</div>
         </div>
       `;
 
-      list.appendChild(div);
+      list.appendChild(link);
     });
 
   const p = params();
