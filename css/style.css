@@ -2,6 +2,13 @@
    Base
 ========================= */
 
+:root {
+  --accent-gradient: linear-gradient(135deg, #1e90ff, #00a86b);
+  --border-color: #a0a0a0;
+  --text-main: #000;
+  --text-sub: #555;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -9,7 +16,7 @@
 body {
   margin: 0;
   background-color: #fff;
-  color: #000;
+  color: var(--text-main);
   font-family:
     "Yu Gothic",
     "游ゴシック体",
@@ -36,8 +43,8 @@ h1 {
   max-width: 960px;
   margin: 0 auto 24px;
   padding: 16px;
-  border-top: 3px solid;
-  border-image: linear-gradient(135deg, #1e90ff, #00a86b) 1;
+  border-top: 3px solid transparent;
+  border-image: var(--accent-gradient) 1;
 }
 
 #news-filter fieldset {
@@ -59,33 +66,21 @@ h1 {
   padding: 6px 10px;
 }
 
-/* ===== reset button ===== */
+/* reset button */
 
 #filter-reset {
   margin-top: 8px;
-  padding: 8px 14px;
   font-weight: 600;
-  cursor: pointer;
-
-  background: linear-gradient(135deg, #1e90ff, #00a86b);
   color: #fff;
-
+  background: var(--accent-gradient);
   border: 2px solid transparent;
   border-radius: 6px;
-
-  transition:
-    background-color 0.25s ease,
-    color 0.25s ease,
-    box-shadow 0.25s ease;
+  cursor: pointer;
+  transition: opacity 0.5s ease;
 }
 
 #filter-reset:hover {
-  background: #fff;
-  color: #1e90ff;
-
-  border-image: linear-gradient(135deg, #1e90ff, #00a86b) 1;
-
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  opacity: 0.85;
 }
 
 /* =========================
@@ -103,11 +98,11 @@ h1 {
   margin: 32px auto;
   padding: 16px;
   text-align: center;
-  color: #555;
+  color: var(--text-sub);
 }
 
 /* =========================
-   News Item (全体リンク)
+   News Item
 ========================= */
 
 .news-item-link {
@@ -116,28 +111,29 @@ h1 {
   text-decoration: none;
 }
 
-/* item base */
-
 .news-item {
   display: flex;
   gap: 16px;
   padding: 16px;
-  border-bottom: 1px solid #a0a0a0;
+  border-bottom: 1px solid var(--border-color);
+  border-radius: 12px;
+  overflow: hidden;
 
+  /* hover animation */
   transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
+    transform 0.5s ease,
+    box-shadow 0.5s ease;
 }
 
-/* hover animation（色反転なし） */
+/* 反転なし・浮き上がりのみ */
 
 .news-item-link:hover .news-item {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
 }
 
 /* =========================
-   Date + Gradient Bar
+   Date + accent line
 ========================= */
 
 .news-date {
@@ -146,7 +142,7 @@ h1 {
   padding-left: 12px;
   font-size: 0.9rem;
   font-weight: 500;
-  color: #000;
+  color: var(--text-main);
 }
 
 .news-date::before {
@@ -157,12 +153,7 @@ h1 {
   width: 6px;
   height: 100%;
   border-radius: 4px;
-  background: linear-gradient(135deg, #1e90ff, #00a86b);
-  transition: width 0.2s ease;
-}
-
-.news-item-link:hover .news-date::before {
-  width: 8px;
+  background: var(--accent-gradient);
 }
 
 /* =========================
@@ -173,7 +164,7 @@ h1 {
   flex: 1;
 }
 
-/* title row */
+/* meta + title row */
 
 .news-meta {
   display: inline-block;
@@ -182,10 +173,14 @@ h1 {
   color: #444;
 }
 
+/* title with gradient text */
+
 .news-title {
-  display: inline;
   font-weight: 700;
-  color: #000;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 /* summary */
@@ -193,8 +188,7 @@ h1 {
 .news-summary {
   margin-top: 4px;
   font-size: 0.9rem;
-  color: #555;
-  line-height: 1.6;
+  color: var(--text-sub);
 }
 
 /* =========================
