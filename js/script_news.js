@@ -1,6 +1,5 @@
-/* ===== 設定 ===== */
-let itemsPerPage = 5;   // ← 定数ではなく状態にする
-
+/* ===== 状態 ===== */
+const itemsPerPage = 5; // 固定値（UIなし）
 let allArticles = [];
 let filteredArticles = [];
 let selectedCategories = new Set();
@@ -19,14 +18,12 @@ function updateURL(p) {
 /* ===== 日付組み立て ===== */
 function buildDate(y, m, d, isEnd) {
   if (!y) return null;
-
   const mm = m || (isEnd ? "12" : "01");
   const dd = d || (
     isEnd
       ? new Date(Number(y), Number(mm), 0).getDate().toString().padStart(2, "0")
       : "01"
   );
-
   return `${y}-${mm}-${dd}`;
 }
 
@@ -35,14 +32,12 @@ function adjustDaySelect(prefix) {
   const y = $(prefix + "-year").value;
   const m = $(prefix + "-month").value;
   const daySel = $(prefix + "-day");
-
   if (!y || !m) return;
 
   const maxDay = new Date(Number(y), Number(m), 0).getDate();
   const current = daySel.value;
 
-  daySel.querySelectorAll("option:not([value=''])")
-    .forEach(o => o.remove());
+  daySel.querySelectorAll("option:not([value=''])").forEach(o => o.remove());
 
   for (let d = 1; d <= maxDay; d++) {
     const opt = document.createElement("option");
@@ -52,9 +47,10 @@ function adjustDaySelect(prefix) {
   }
 
   if (current) {
-    daySel.value = Number(current) <= maxDay
-      ? current
-      : String(maxDay).padStart(2, "0");
+    daySel.value =
+      Number(current) <= maxDay
+        ? current
+        : String(maxDay).padStart(2, "0");
   }
 }
 
@@ -66,15 +62,19 @@ function renderCategoryFilter() {
   [...new Set(allArticles.map(a => a.category))].forEach(cat => {
     const label = document.createElement("label");
     const cb = document.createElement("input");
+
     cb.type = "checkbox";
     cb.value = cat;
 
     cb.addEventListener("change", () => {
       const p = params();
       const set = new Set((p.get("cat") || "").split(",").filter(Boolean));
+
       cb.checked ? set.add(cat) : set.delete(cat);
+
       set.size ? p.set("cat", [...set].join(",")) : p.delete("cat");
       p.delete("page");
+
       updateURL(p);
       loadFromURL();
       applyFilter();
@@ -96,6 +96,7 @@ function renderYearFilter() {
   ["filter-year", "until-year"].forEach(id => {
     const sel = $(id);
     sel.querySelectorAll("option:not([value=''])").forEach(o => o.remove());
+
     years.forEach(y => {
       const o = document.createElement("option");
       o.value = y;
@@ -141,13 +142,10 @@ function loadFromURL() {
     $("until-day").value = d;
   }
 
-  itemsPerPage = Number(p.get("per")) || itemsPerPage;
-  $("items-per-page").value = itemsPerPage;
-
   currentPage = Number(p.get("page")) || 1;
 }
 
-/* ===== UI → URL（日付・件数） ===== */
+/* ===== 日付 → URL ===== */
 function updateDateURL() {
   const p = params();
 
@@ -157,6 +155,7 @@ function updateDateURL() {
     $("filter-day").value,
     false
   );
+
   let until = buildDate(
     $("until-year").value,
     $("until-month").value,
@@ -170,24 +169,24 @@ function updateDateURL() {
 
   from ? p.set("from", from) : p.delete("from");
   until ? p.set("until", until) : p.delete("until");
-
   p.delete("page");
+
   updateURL(p);
 }
 
-/* ===== フィルタ処理 ===== */
+/* ===== フィルタ ===== */
 function applyFilter() {
   const p = params();
   const from = p.get("from");
   const until = p.get("until");
 
   filteredArticles = allArticles.filter(a => {
-    if (selectedCategories.size && !selectedCategories.has(a.category))
-      return false;
+    if (selectedCategories.size && !selectedCategories.has(a.category)) return false;
 
     const d = new Date(a.date);
     if (from && d < new Date(from)) return false;
     if (until && d > new Date(until)) return false;
+
     return true;
   });
 
@@ -216,10 +215,7 @@ function renderPage(page) {
     .slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
     .forEach(a => {
       const div = document.createElement("div");
-
-      const href = a.link
-        ? a.link
-        : `news-watch.html?id=${a.id}`;
+      const href = a.link || `news-watch.html?id=${a.id}`;
 
       div.innerHTML = `
         <strong>${a.date}</strong>
@@ -256,7 +252,8 @@ function resetFilter() {
 fetch("data/news.json")
   .then(r => r.json())
   .then(data => {
-    allArticles = data.filter(d => d.published)
+    allArticles = data
+      .filter(d => d.published)
       .sort((a, b) => new Date(b.date) - new Date(a.date));
 
     renderCategoryFilter();
@@ -265,16 +262,6 @@ fetch("data/news.json")
     applyFilter();
 
     $("filter-reset").addEventListener("click", resetFilter);
-
-    $("items-per-page").addEventListener("change", e => {
-      const p = params();
-      itemsPerPage = Number(e.target.value);
-      p.set("per", itemsPerPage);
-      p.delete("page");
-      updateURL(p);
-      loadFromURL();
-      applyFilter();
-    });
 
     [
       "filter-year","filter-month","filter-day",

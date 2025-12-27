@@ -9,10 +9,9 @@ body {
   background-color: #fff;
   color: #000;
   font-family:
-    "Noto Sans JP",
-    "游ゴシック体",
     "Yu Gothic",
-    YuGothic,
+    "游ゴシック体",
+    "Noto Sans JP",
     sans-serif;
   line-height: 1.7;
 }
