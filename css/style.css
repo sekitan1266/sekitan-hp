@@ -59,22 +59,33 @@ h1 {
   padding: 6px 10px;
 }
 
-/* reset button */
+/* ===== reset button ===== */
 
 #filter-reset {
   margin-top: 8px;
+  padding: 8px 14px;
   font-weight: 600;
-  color: #fff;
-  background: linear-gradient(135deg, #1e90ff, #00a86b);
-  border: 2px solid #1e90ff;
-  border-radius: 6px;
   cursor: pointer;
-  transition: background-color 0.2s, color 0.2s;
+
+  background: linear-gradient(135deg, #1e90ff, #00a86b);
+  color: #fff;
+
+  border: 2px solid transparent;
+  border-radius: 6px;
+
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 #filter-reset:hover {
   background: #fff;
   color: #1e90ff;
+
+  border-image: linear-gradient(135deg, #1e90ff, #00a86b) 1;
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
 }
 
 /* =========================
@@ -96,7 +107,7 @@ h1 {
 }
 
 /* =========================
-   News Item
+   News Item (全体リンク)
 ========================= */
 
 .news-item-link {
@@ -105,27 +116,29 @@ h1 {
   text-decoration: none;
 }
 
+/* item base */
+
 .news-item {
   display: flex;
   gap: 16px;
   padding: 16px;
   border-bottom: 1px solid #a0a0a0;
-  transition: background-color 0.2s, color 0.2s;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
+
+/* hover animation（色反転なし） */
 
 .news-item-link:hover .news-item {
-  background-color: #000;
-  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-.news-item-link:hover .news-title,
-.news-item-link:hover .news-summary,
-.news-item-link:hover .news-meta,
-.news-item-link:hover .news-date {
-  color: #fff;
-}
-
-/* date + vertical line */
+/* =========================
+   Date + Gradient Bar
+========================= */
 
 .news-date {
   position: relative;
@@ -133,6 +146,7 @@ h1 {
   padding-left: 12px;
   font-size: 0.9rem;
   font-weight: 500;
+  color: #000;
 }
 
 .news-date::before {
@@ -144,9 +158,16 @@ h1 {
   height: 100%;
   border-radius: 4px;
   background: linear-gradient(135deg, #1e90ff, #00a86b);
+  transition: width 0.2s ease;
 }
 
-/* body */
+.news-item-link:hover .news-date::before {
+  width: 8px;
+}
+
+/* =========================
+   Body
+========================= */
 
 .news-body {
   flex: 1;
@@ -164,6 +185,7 @@ h1 {
 .news-title {
   display: inline;
   font-weight: 700;
+  color: #000;
 }
 
 /* summary */
@@ -172,6 +194,7 @@ h1 {
   margin-top: 4px;
   font-size: 0.9rem;
   color: #555;
+  line-height: 1.6;
 }
 
 /* =========================
