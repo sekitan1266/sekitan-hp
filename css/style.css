@@ -1,0 +1,92 @@
+/*Base*/
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: #fff;
+  color: #000;
+  font-family:
+    "Noto Sans JP",
+    "游ゴシック体",
+    "Yu Gothic",
+    YuGothic,
+    sans-serif;
+  line-height: 1.7;
+}
+
+h1 {
+  margin: 24px 16px 16px;
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+#news-filter {
+  max-width: 960px;
+  margin: 0 auto 24px;
+  padding: 16px;
+  border-top: 3px solid;
+  border-image: linear-gradient(
+    135deg,
+    #1e90ff,
+    #00a86b
+  ) 1;
+}
+
+#news-filter fieldset {
+  border: 1px solid #ccc;
+  padding: 12px;
+  margin-bottom: 12px;
+}
+
+#news-filter legend {
+  padding: 0 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+#news-filter select,
+#news-filter button {
+  font-family: inherit;
+  font-size: 0.9rem;
+  padding: 4px 6px;
+}
+
+#filter-reset {
+  margin-top: 8px;
+  background: linear-gradient(
+    135deg,
+    #1e90ff,
+    #00a86b
+  );
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+#filter-reset:hover {
+  opacity: 0.85;
+}
+
+#news-list {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+#no-news {
+  max-width: 960px;
+  margin: 32px auto;
+  padding: 16px;
+  text-align: center;
+  color: #555;
+}
+
+#pagination {
+  max-width: 960px;
+  margin: 24px auto 40px;
+  padding: 0 16px;
+}
