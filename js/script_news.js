@@ -215,67 +215,78 @@ function applyFilter() {
   renderPage(currentPage);
 }
 
-/* ===== 描画 ===== */
+/* ===== 描画（フェード対応） ===== */
 function renderPage(page) {
   const list = $("news-list");
   const pag = $("pagination");
   const none = $("no-news");
 
-  list.innerHTML = "";
-  pag.innerHTML = "";
+  // フェード開始
+  list.classList.add("is-switching");
 
-  if (!filteredArticles.length) {
-    none.style.display = "block";
-    return;
-  }
-  none.style.display = "none";
+  requestAnimationFrame(() => {
+    list.innerHTML = "";
+    pag.innerHTML = "";
 
-  const total = Math.ceil(filteredArticles.length / itemsPerPage);
-  currentPage = Math.min(page, total);
+    if (!filteredArticles.length) {
+      none.style.display = "block";
+      list.classList.remove("is-switching");
+      return;
+    }
+    none.style.display = "none";
 
-  filteredArticles
-    .slice(
-      (currentPage - 1) * itemsPerPage,
-      currentPage * itemsPerPage
-    )
-    .forEach(a => {
-      const link = document.createElement("a");
-      const href = a.link || `news-watch.html?id=${a.id}`;
+    const total = Math.ceil(filteredArticles.length / itemsPerPage);
+    currentPage = Math.min(page, total);
 
-      link.href = href;
-      link.className = "news-item-link";
+    filteredArticles
+      .slice(
+        (currentPage - 1) * itemsPerPage,
+        currentPage * itemsPerPage
+      )
+      .forEach(a => {
+        const link = document.createElement("a");
+        const href = a.link || `news-watch.html?id=${a.id}`;
 
-      link.innerHTML = `
-        <div class="news-item">
-          <div class="news-date">${formatDate(a.date)}</div>
-          <div class="news-body">
-            <div class="news-meta">
-              [${CATEGORY_LABELS[a.category] || a.category}]
+        link.href = href;
+        link.className = "news-item-link";
+
+        link.innerHTML = `
+          <div class="news-item">
+            <div class="news-date">${formatDate(a.date)}</div>
+            <div class="news-body">
+              <div class="news-meta">
+                [${CATEGORY_LABELS[a.category] || a.category}]
+              </div>
+              <span class="news-title">${a.title}</span>
+              <div class="news-summary">${a.summary}</div>
             </div>
-            <span class="news-title">${a.title}</span>
-            <div class="news-summary">${a.summary}</div>
           </div>
-        </div>
-      `;
+        `;
 
-      list.appendChild(link);
-    });
+        list.appendChild(link);
+      });
 
-  const p = params();
-  for (let i = 1; i <= total; i++) {
-    const b = document.createElement("button");
-    b.textContent = i;
-    b.disabled = i === currentPage;
+    const p = params();
+    for (let i = 1; i <= total; i++) {
+      const b = document.createElement("button");
+      b.textContent = i;
+      b.disabled = i === currentPage;
 
-    b.onclick = () => {
-      p.set("page", i);
-      updateURL(p);
-      loadFromURL();
-      renderPage(i);
-    };
+      b.onclick = () => {
+        p.set("page", i);
+        updateURL(p);
+        loadFromURL();
+        renderPage(i);
+      };
 
-    pag.appendChild(b);
-  }
+      pag.appendChild(b);
+    }
+
+    // フェード解除
+    setTimeout(() => {
+      list.classList.remove("is-switching");
+    }, 200);
+  });
 }
 
 /* ===== 全解除 ===== */

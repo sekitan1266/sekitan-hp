@@ -76,12 +76,25 @@ h1 {
   border: 2px solid transparent;
   border-radius: 6px;
   cursor: pointer;
-  transition: opacity 0.5s ease;
+
+  /* 枠線をグラデーションに固定 */
+  border-image: var(--accent-gradient) 1;
+
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 #filter-reset:hover {
-  opacity: 0.85;
+  background: #fff;
+
+  /* 文字をグラデーションに */
+  background-image: var(--accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
+
 
 /* =========================
    News List
@@ -91,6 +104,11 @@ h1 {
   max-width: 960px;
   margin: 0 auto;
   padding: 0 16px;
+  transition: opacity 0.2s ease;
+}
+
+#news-list.is-switching {
+  opacity: 0;
 }
 
 #no-news {
