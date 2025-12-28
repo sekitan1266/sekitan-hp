@@ -99,10 +99,11 @@ body {
 .news-nav a {
   text-decoration: none;
   color: var(--accent-gradient);
+  font-weight: 600;
 }
 
 /* =========================
-   SNSシェア
+   SNSシェア（X） 
 ========================= */
 
 .share-buttons {
@@ -112,12 +113,33 @@ body {
 }
 
 .share-buttons a {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  font-weight: 600;
   text-decoration: none;
-  color: var(--accent-gradient);
+
+  border: var(--border-w) solid transparent;
+  border-radius: var(--radius-sm);
+
+  background: var(--accent-gradient);
+  color: #fff;
+  transition: background 0.25s ease, color 0.25s ease;
 }
 
-.share-buttons i {
-  margin-right: 0.3rem;
+.share-buttons a:hover {
+  background: #fff;
+  color: transparent;
+  background-image: var(--accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.share-buttons a i {
+  font-size: 1rem;
+  line-height: 1;
 }
 
 /* =========================

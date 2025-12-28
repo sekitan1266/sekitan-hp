@@ -20,16 +20,22 @@ fetch("data/news.json")
     }
 
     detail.innerHTML = `
-      <h2>${article.title}</h2>
-      <p><strong>日付:</strong> ${article.date}</p>
-      <p><strong>カテゴリ:</strong> ${CATEGORY_LABELS[article.category] || article.category}</p>
-      <p>${article.summary}</p>
-      ${article.content ? `<div>${article.content}</div>` : ""}
+      <header class="news-header">
+        <p class="news-meta">
+          <time datetime="${article.date}">${article.date}</time>
+          <span class="news-category">${CATEGORY_LABELS[article.category] || article.category}</span>
+        </p>
+        <h1 class="news-title">${article.title}</h1>
+      </header>
+
+      <section class="news-body">
+        ${article.content || ""}
+      </section>
     `;
 
-    /* ===== 前後記事 ===== */
-    const nav = document.createElement("div");
-    nav.id = "article-nav";
+    /* ===== 前後記事ナビ ===== */
+    const nav = document.createElement("nav");
+    nav.className = "news-nav";
 
     if (articles[index - 1]) {
       const prev = document.createElement("a");
@@ -47,20 +53,21 @@ fetch("data/news.json")
 
     detail.appendChild(nav);
 
-    /* ===== SNS シェア ===== */
+    /* ===== SNSシェア（X） ===== */
     const share = document.createElement("div");
-    share.id = "share-buttons";
+    share.className = "share-buttons";
 
     const url = encodeURIComponent(location.href);
     const text = encodeURIComponent(article.title);
 
     share.innerHTML = `
       <a href="https://twitter.com/intent/tweet?text=${text}&url=${url}" target="_blank">
-        Xでシェア
+        <i class="fab fa-x-twitter"></i> Xでシェア
       </a>
     `;
 
     detail.appendChild(share);
+
   })
   .catch(err => {
     console.error(err);
