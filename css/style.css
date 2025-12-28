@@ -7,6 +7,10 @@
   --border-color: #a0a0a0;
   --text-main: #000;
   --text-sub: #555;
+
+  /* 角丸を一元管理（ホバー時基準） */
+  --radius-sm: 6px;
+  --radius-md: 12px;
 }
 
 * {
@@ -43,8 +47,6 @@ h1 {
   max-width: 960px;
   margin: 0 auto 24px;
   padding: 16px;
-
-  /* 上線グラデーション（border-image 不使用） */
   background:
     linear-gradient(#fff, #fff) padding-box,
     var(--accent-gradient) border-box;
@@ -71,86 +73,67 @@ h1 {
 }
 
 /* =========================
-   Reset Button
+   Filter Reset Button
 ========================= */
 
 #filter-reset {
   margin-top: 8px;
   padding: 6px 14px;
-  font-weight: 600;
   font-size: 0.9rem;
+  font-weight: 600;
   cursor: pointer;
 
-  border-radius: 6px;
-  border: 2px solid transparent;
-
-  /* 通常時：全面グラデーション */
-  background:
-    var(--accent-gradient) padding-box,
-    var(--accent-gradient) border-box;
-
+  /* 通常時 */
+  background: var(--accent-gradient);
   color: #fff;
 
+  /* サイズ・角丸固定 */
+  border: 2px solid transparent;
+  border-radius: var(--radius-sm);
+
+  background-clip: padding-box;
+  position: relative;
+
   transition:
-    background 0.3s ease,
-    color 0.3s ease;
+    background 0.25s ease,
+    color 0.25s ease;
 }
 
-/* ホバー時：白背景 + グラデ枠 */
-#filter-reset:hover {
-  background:
-    #fff padding-box,
-    var(--accent-gradient) border-box;
+/* グラデ枠線（常時存在・非表示） */
+#filter-reset::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 2px;
+
+  border-radius: var(--radius-sm);
+  background: var(--accent-gradient);
+
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+
+  pointer-events: none;
+  opacity: 0;
+
+  transition: opacity 0.25s ease;
 }
 
-/* ホバー時のみ文字をグラデーションに */
+/* ホバー時 */
 #filter-reset:hover {
-  background-image:
-    #fff,
-    var(--accent-gradient);
-}
-
-#filter-reset:hover {
+  background: #fff;
   color: transparent;
-  background-clip: padding-box, border-box;
-  -webkit-background-clip: padding-box, border-box;
+
+  background-image: var(--accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
 }
 
-#filter-reset:hover {
-  /* 文字用 */
-  -webkit-text-fill-color: transparent;
+#filter-reset:hover::before {
+  opacity: 1;
 }
-
-#filter-reset:hover {
-  background-image:
-    #fff,
-    var(--accent-gradient);
-}
-
-#filter-reset:hover {
-  /* 文字のグラデーション */
-  background:
-    #fff padding-box,
-    var(--accent-gradient) border-box;
-}
-
-#filter-reset:hover {
-  background-clip: padding-box, border-box;
-}
-
-/* 文字だけにグラデを当てる */
-#filter-reset:hover {
-  background-image:
-    linear-gradient(#fff, #fff),
-    var(--accent-gradient);
-}
-
-#filter-reset:hover {
-  -webkit-background-clip: padding-box, text;
-  background-clip: padding-box, text;
-}
-
-
 
 /* =========================
    News List
@@ -189,13 +172,14 @@ h1 {
   display: flex;
   gap: 16px;
   padding: 16px;
+
   border-bottom: 1px solid var(--border-color);
-  border-radius: 12px;
+  border-radius: var(--radius-md);
   overflow: hidden;
 
   transition:
-    transform 0.5s ease,
-    box-shadow 0.5s ease;
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
 }
 
 .news-item-link:hover .news-item {
@@ -213,7 +197,6 @@ h1 {
   padding-left: 12px;
   font-size: 0.9rem;
   font-weight: 500;
-  color: var(--text-main);
 }
 
 .news-date::before {
