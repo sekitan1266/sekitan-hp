@@ -6,19 +6,21 @@
   width: 100%;
   background-color: #fff;
   border-bottom: 2px solid var(--border-color);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+
   position: sticky;
   top: 0;
   z-index: 1000;
 }
 
 #site-header .header-inner {
-  max-width: 1024px; /* 幅を広げた */
+  max-width: 1024px;
   margin: 0 auto;
   padding: 12px 16px;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   font-family:
     "Yu Gothic",
     "游ゴシック体",
@@ -55,30 +57,25 @@
   align-items: center;
 }
 
+/* ナビリンク */
 #site-header nav a {
-  position: relative;
-  margin: 0 12px;
   text-decoration: none;
   font-size: 0.95rem;
   font-weight: 500;
   color: var(--text-main);
+
+  padding: 0 14px;
   transition: color 0.25s ease;
-  padding: 0 8px;
 }
 
-/* ナビリンク間に縦線を追加 */
-#site-header nav a:not(:last-child)::after {
-  content: "";
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+/* 区切り線（リンク間専用要素） */
+#site-header nav .nav-separator {
   width: 1px;
-  height: 16px;
+  height: 1.6em; /* 文字より少し長め */
   background-color: var(--border-color);
 }
 
-/* ホバー時にアクセントグラデーション風 */
+/* ホバー時：文字のみグラデーション */
 #site-header nav a:hover {
   background: var(--accent-gradient);
   -webkit-background-clip: text;
