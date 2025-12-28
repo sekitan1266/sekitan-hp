@@ -71,8 +71,8 @@
 
 /* 区切り線（完全固定幅） */
 #site-header nav .nav-separator {
-  width: 2px;                 /* 太さを明示的に固定 */
-  height: 2em;              /* 文字より少し長め */
+  width: 1px;                 /* 太さを明示的に固定 */
+  height: 3.5em;              /* 文字より少し長め */
   background-color: var(--border-color);
   flex-shrink: 0;
 }
