@@ -1,3 +1,7 @@
+main {
+  padding-top: 72px;
+}
+
 /* =========================
    Header Base
 ========================= */
@@ -5,7 +9,6 @@
 #site-header {
   width: 100%;
   background-color: #fff;
-  border-bottom: 2px solid var(--border-color);
 
   position: fixed;      /* 常に画面上部に固定 */
   top: 0;
