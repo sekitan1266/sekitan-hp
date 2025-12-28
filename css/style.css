@@ -82,15 +82,12 @@ h1 {
   border-radius: 6px;
   border: 2px solid transparent;
 
-  /* グラデーション枠（二層 background） */
+  /* 通常時：グラデ背景 + 角丸 */
   background:
-    linear-gradient(var(--accent-gradient), var(--accent-gradient)) padding-box,
-    var(--accent-gradient) border-box;
+    var(--accent-gradient) padding-box,
+    transparent border-box;
 
   color: #fff;
-
-  background-origin: border-box;
-  background-clip: padding-box, border-box;
 
   transition:
     background 0.3s ease,
@@ -98,16 +95,18 @@ h1 {
 }
 
 #filter-reset:hover {
+  /* ホバー時：白背景 + グラデ枠 */
   background:
-    linear-gradient(#fff, #fff) padding-box,
+    #fff padding-box,
     var(--accent-gradient) border-box;
 
-  background-image:
-    var(--accent-gradient);
+  /* 文字をグラデーションに */
+  background-image: var(--accent-gradient);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
+
 
 /* =========================
    News List
