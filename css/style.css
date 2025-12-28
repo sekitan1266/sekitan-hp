@@ -76,29 +76,24 @@ h1 {
 
 #filter-reset {
   margin-top: 8px;
+  padding: 6px 14px;
   font-weight: 600;
+  font-size: 0.9rem;
   cursor: pointer;
 
   border-radius: 6px;
   border: 2px solid transparent;
 
-  /* 通常時：グラデ背景 */
+  /* 通常時：全面グラデーション */
   background:
     var(--accent-gradient) padding-box,
-    transparent border-box;
+    var(--accent-gradient) border-box;
 
   color: #fff;
 
   transition:
     background 0.3s ease,
     color 0.3s ease;
-}
-
-/* 文字（通常時） */
-#filter-reset span {
-  display: inline-block;
-  color: #fff;
-  transition: color 0.3s ease;
 }
 
 /* ホバー時：白背景 + グラデ枠 */
@@ -108,12 +103,51 @@ h1 {
     var(--accent-gradient) border-box;
 }
 
-/* ホバー時：文字をグラデに */
-#filter-reset:hover span {
-  background: var(--accent-gradient);
-  -webkit-background-clip: text;
-  background-clip: text;
+/* ホバー時のみ文字をグラデーションに */
+#filter-reset:hover {
+  background-image:
+    #fff,
+    var(--accent-gradient);
+}
+
+#filter-reset:hover {
   color: transparent;
+  background-clip: padding-box, border-box;
+  -webkit-background-clip: padding-box, border-box;
+}
+
+#filter-reset:hover {
+  /* 文字用 */
+  -webkit-text-fill-color: transparent;
+}
+
+#filter-reset:hover {
+  background-image:
+    #fff,
+    var(--accent-gradient);
+}
+
+#filter-reset:hover {
+  /* 文字のグラデーション */
+  background:
+    #fff padding-box,
+    var(--accent-gradient) border-box;
+}
+
+#filter-reset:hover {
+  background-clip: padding-box, border-box;
+}
+
+/* 文字だけにグラデを当てる */
+#filter-reset:hover {
+  background-image:
+    linear-gradient(#fff, #fff),
+    var(--accent-gradient);
+}
+
+#filter-reset:hover {
+  -webkit-background-clip: padding-box, text;
+  background-clip: padding-box, text;
 }
 
 
