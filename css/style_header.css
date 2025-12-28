@@ -13,7 +13,7 @@
 }
 
 #site-header .header-inner {
-  max-width: 960px;
+  max-width: 1024px; /* 幅を広げた */
   margin: 0 auto;
   padding: 12px 16px;
   display: flex;
@@ -50,17 +50,32 @@
    Navigation
 ========================= */
 
+#site-header nav {
+  display: flex;
+  align-items: center;
+}
+
 #site-header nav a {
-  margin-left: 20px;
+  position: relative;
+  margin: 0 12px;
   text-decoration: none;
   font-size: 0.95rem;
   font-weight: 500;
   color: var(--text-main);
   transition: color 0.25s ease;
+  padding: 0 8px;
 }
 
-#site-header nav a:first-child {
-  margin-left: 0;
+/* ナビリンク間に縦線を追加 */
+#site-header nav a:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 16px;
+  background-color: var(--border-color);
 }
 
 /* ホバー時にアクセントグラデーション風 */
