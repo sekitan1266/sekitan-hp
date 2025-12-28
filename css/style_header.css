@@ -7,8 +7,9 @@
   background-color: #fff;
   border-bottom: 2px solid var(--border-color);
 
-  position: sticky;
+  position: fixed;      /* 常に画面上部に固定 */
   top: 0;
+  left: 0;
   z-index: 1000;
 }
 
@@ -68,11 +69,12 @@
   transition: color 0.25s ease;
 }
 
-/* 区切り線（リンク間専用要素） */
+/* 区切り線（完全固定幅） */
 #site-header nav .nav-separator {
-  width: 1px;
-  height: 1.6em; /* 文字より少し長め */
+  width: 2px;                 /* 太さを明示的に固定 */
+  height: 2em;              /* 文字より少し長め */
   background-color: var(--border-color);
+  flex-shrink: 0;
 }
 
 /* ホバー時：文字のみグラデーション */
