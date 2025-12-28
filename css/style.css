@@ -8,9 +8,12 @@
   --text-main: #000;
   --text-sub: #555;
 
-  /* 角丸を一元管理（ホバー時基準） */
+  /* 角丸管理（基準値） */
   --radius-sm: 6px;
   --radius-md: 12px;
+
+  /* 枠線太さ */
+  --border-w: 2px;
 }
 
 * {
@@ -47,6 +50,7 @@ h1 {
   max-width: 960px;
   margin: 0 auto 24px;
   padding: 16px;
+
   background:
     linear-gradient(#fff, #fff) padding-box,
     var(--accent-gradient) border-box;
@@ -73,40 +77,39 @@ h1 {
 }
 
 /* =========================
-   Filter Reset Button
+   Filter Reset Button（完全固定版）
 ========================= */
 
 #filter-reset {
   margin-top: 8px;
-  padding: 6px 14px;
-  font-size: 0.9rem;
+  padding: 4px 10px;
+  font-size: 0.8rem;
   font-weight: 600;
   cursor: pointer;
 
-  /* 通常時 */
-  background: var(--accent-gradient);
+  /* 通常時：枠線領域まで含めてグラデーションで塗る */
+  background: var(--accent-gradient) border-box; 
   color: #fff;
 
-  /* サイズ・角丸固定 */
-  border: 2px solid transparent;
+  /* サイズ固定のための設定 */
+  border: var(--border-w) solid transparent;
   border-radius: var(--radius-sm);
 
-  background-clip: padding-box;
   position: relative;
-
-  transition:
-    background 0.25s ease,
-    color 0.25s ease;
+  transition: background 0.25s ease, color 0.25s ease;
 }
 
-/* グラデ枠線（常時存在・非表示） */
+/* グラデーション枠線 */
 #filter-reset::before {
   content: "";
   position: absolute;
-  inset: 0;
-  padding: 2px;
+  /* 親のボーダー領域（-2px）にぴったり合わせる */
+  inset: calc(var(--border-w) * -1);
 
-  border-radius: var(--radius-sm);
+  padding: var(--border-w);
+  /* 親の角丸をそのまま継承 */
+  border-radius: inherit; 
+
   background: var(--accent-gradient);
 
   -webkit-mask:
@@ -117,15 +120,16 @@ h1 {
 
   pointer-events: none;
   opacity: 0;
-
   transition: opacity 0.25s ease;
 }
 
 /* ホバー時 */
 #filter-reset:hover {
-  background: #fff;
+  /* 背景を白にする（padding-boxのみ白くし、枠線部分は::beforeに任せる） */
+  background: #fff padding-box;
+  
+  /* テキストをグラデーションにする */
   color: transparent;
-
   background-image: var(--accent-gradient);
   -webkit-background-clip: text;
   background-clip: text;
@@ -134,6 +138,7 @@ h1 {
 #filter-reset:hover::before {
   opacity: 1;
 }
+
 
 /* =========================
    News List
