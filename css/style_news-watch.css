@@ -1,0 +1,147 @@
+/* =========================
+   Base (news-watch)
+========================= */
+
+:root {
+  --accent-gradient: linear-gradient(135deg, #1e90ff, #00a86b);
+  --border-color: #a0a0a0;
+  --text-main: #000;
+  --text-sub: #555;
+
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --border-w: 2px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: #fff;
+  color: var(--text-main);
+  font-family:
+    "Yu Gothic",
+    "游ゴシック体",
+    "Noto Sans JP",
+    sans-serif;
+  line-height: 1.7;
+}
+
+/* =========================
+   News Watch Article
+========================= */
+
+.news-watch {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.news-article {
+  line-height: 1.8;
+}
+
+/* ===== Header ===== */
+.news-header {
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1rem;
+}
+
+.news-meta {
+  font-size: 0.9rem;
+  color: var(--text-sub);
+  margin-bottom: 0.5rem;
+}
+
+.news-meta time {
+  margin-right: 1rem;
+}
+
+.news-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ===== Body ===== */
+.news-body p,
+.news-body li {
+  font-size: 1rem;
+  line-height: 1.8;
+  margin-bottom: 1.2rem;
+}
+
+.news-body h2 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.news-body ul {
+  padding-left: 1.5rem;
+}
+
+/* =========================
+   前後記事ナビ
+========================= */
+
+.news-nav {
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem 0 1rem;
+}
+
+.news-nav a {
+  text-decoration: none;
+  color: var(--accent-gradient);
+}
+
+/* =========================
+   SNSシェア
+========================= */
+
+.share-buttons {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.share-buttons a {
+  text-decoration: none;
+  color: var(--accent-gradient);
+}
+
+.share-buttons i {
+  margin-right: 0.3rem;
+}
+
+/* =========================
+   戻るボタン
+========================= */
+
+#back-button {
+  display: block;
+  margin: 2rem auto 0;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: var(--border-w) solid transparent;
+  border-radius: var(--radius-sm);
+  background: var(--accent-gradient);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+#back-button:hover {
+  background: #fff;
+  color: transparent;
+  background-image: var(--accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
