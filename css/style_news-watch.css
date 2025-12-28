@@ -63,11 +63,17 @@ body {
 .news-title {
   font-size: 1.8rem;
   font-weight: 700;
+
+  /* 文字だけにグラデーション */
   background: var(--accent-gradient);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+
+  /* 文字の見え方安定用 */
+  display: inline-block;
 }
+
 
 /* ===== Body ===== */
 .news-body p,
