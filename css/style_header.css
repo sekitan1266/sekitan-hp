@@ -1,0 +1,72 @@
+/* =========================
+   Header Base
+========================= */
+
+#site-header {
+  width: 100%;
+  background-color: #fff;
+  border-bottom: 2px solid var(--border-color);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+#site-header .header-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family:
+    "Yu Gothic",
+    "游ゴシック体",
+    "Noto Sans JP",
+    sans-serif;
+}
+
+/* =========================
+   Site Title
+========================= */
+
+#site-header h1 {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 700;
+
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+#site-header h1 a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* =========================
+   Navigation
+========================= */
+
+#site-header nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-main);
+  transition: color 0.25s ease;
+}
+
+#site-header nav a:first-child {
+  margin-left: 0;
+}
+
+/* ホバー時にアクセントグラデーション風 */
+#site-header nav a:hover {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
