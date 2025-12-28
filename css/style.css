@@ -82,7 +82,7 @@ h1 {
   border-radius: 6px;
   border: 2px solid transparent;
 
-  /* 通常時：グラデ背景 + 角丸 */
+  /* 通常時：グラデ背景 */
   background:
     var(--accent-gradient) padding-box,
     transparent border-box;
@@ -94,18 +94,28 @@ h1 {
     color 0.3s ease;
 }
 
+/* 文字（通常時） */
+#filter-reset span {
+  display: inline-block;
+  color: #fff;
+  transition: color 0.3s ease;
+}
+
+/* ホバー時：白背景 + グラデ枠 */
 #filter-reset:hover {
-  /* ホバー時：白背景 + グラデ枠 */
   background:
     #fff padding-box,
     var(--accent-gradient) border-box;
+}
 
-  /* 文字をグラデーションに */
-  background-image: var(--accent-gradient);
+/* ホバー時：文字をグラデに */
+#filter-reset:hover span {
+  background: var(--accent-gradient);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
+
 
 
 /* =========================
