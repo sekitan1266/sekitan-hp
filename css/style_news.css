@@ -1,0 +1,201 @@
+/* =========================
+   News Filter
+========================= */
+
+#news-filter {
+  max-width: 960px;
+  margin: 0 auto 24px;
+  padding: 16px;
+
+  background:
+    linear-gradient(#fff, #fff) padding-box,
+    var(--accent-gradient) border-box;
+  border-top: 3px solid transparent;
+}
+
+#news-filter fieldset {
+  margin-bottom: 12px;
+  padding: 12px;
+  border: 1px solid #ccc;
+}
+
+#news-filter legend {
+  padding: 0 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+#news-filter select,
+#news-filter button {
+  font-family: inherit;
+  font-size: 0.9rem;
+  padding: 6px 10px;
+}
+
+/* =========================
+   Filter Reset Button
+========================= */
+
+#filter-reset {
+  margin-top: 8px;
+  padding: 4px 10px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+
+  background: var(--accent-gradient) border-box;
+  color: #fff;
+
+  border: var(--border-w) solid transparent;
+  border-radius: var(--radius-sm);
+
+  position: relative;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+#filter-reset::before {
+  content: "";
+  position: absolute;
+  inset: calc(var(--border-w) * -1);
+
+  padding: var(--border-w);
+  border-radius: inherit;
+  background: var(--accent-gradient);
+
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+#filter-reset:hover {
+  background: #fff padding-box;
+  color: transparent;
+  background-image: var(--accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+#filter-reset:hover::before {
+  opacity: 1;
+}
+
+/* =========================
+   News List
+========================= */
+
+#news-list {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 16px;
+  transition: opacity 0.2s ease;
+}
+
+#news-list.is-switching {
+  opacity: 0;
+}
+
+#no-news {
+  max-width: 960px;
+  margin: 32px auto;
+  padding: 16px;
+  text-align: center;
+  color: var(--text-sub);
+}
+
+/* =========================
+   News Item
+========================= */
+
+.news-item-link {
+  display: block;
+}
+
+.news-item {
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+
+  border-bottom: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.news-item-link:hover .news-item {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* =========================
+   Date + Accent Line
+========================= */
+
+.news-date {
+  position: relative;
+  min-width: 90px;
+  padding-left: 12px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.news-date::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  border-radius: 4px;
+  background: var(--accent-gradient);
+}
+
+/* =========================
+   News Body
+========================= */
+
+.news-body {
+  flex: 1;
+}
+
+.news-meta {
+  display: inline-block;
+  margin-right: 8px;
+  font-size: 0.8rem;
+  color: #444;
+}
+
+.news-title {
+  font-weight: 700;
+}
+
+.news-summary {
+  margin-top: 4px;
+  font-size: 0.9rem;
+  color: var(--text-sub);
+}
+
+/* =========================
+   Pagination
+========================= */
+
+#pagination {
+  max-width: 960px;
+  margin: 24px auto 40px;
+  padding: 0 16px;
+}
+
+#pagination button {
+  margin-right: 4px;
+  padding: 4px 8px;
+  font-size: 0.9rem;
+}
+
+#pagination button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
