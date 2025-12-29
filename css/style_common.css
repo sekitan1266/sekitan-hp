@@ -12,8 +12,11 @@
   --radius-sm: 6px;
   --radius-md: 12px;
 
-  /* 枠線太さ（1px運用に切替可） */
+  /* 枠線太さ（1px運用） */
   --border-w: 1px;
+
+  /* 固定ヘッダー高さ（重要） */
+  --header-height: 72px;
 }
 
 /* =========================
@@ -26,6 +29,7 @@
 
 body {
   margin: 0;
+  padding-top: var(--header-height); /* ← 追加：ヘッダー分オフセット */
   background-color: #fff;
   color: var(--text-main);
   font-family:
