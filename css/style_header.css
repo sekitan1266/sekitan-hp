@@ -19,7 +19,7 @@ main {
 #site-header .header-inner {
   max-width: 1024px;
   margin: 0 auto;
-  padding: 16px 8px;
+  padding: 16px 4px;
 
   display: flex;
   align-items: center;
@@ -76,7 +76,7 @@ main {
 /* 区切り線（完全固定幅） */
 #site-header nav .nav-separator {
   width: 2px;                 /* 実体は2pxで安定させる */
-  height: 1.8em;              /* 文字より少し長め */
+  height: 2.5em;              /* 文字より少し長め */
   background-color: var(--border-color);
 
   transform: scaleX(0.5);     /* 見た目だけ1pxにする */
