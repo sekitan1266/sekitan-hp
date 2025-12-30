@@ -17,9 +17,9 @@ main {
 }
 
 #site-header .header-inner {
-  max-width: 1024px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 16px 4px;
+  padding: 16px 20px;
 
   display: flex;
   align-items: center;
