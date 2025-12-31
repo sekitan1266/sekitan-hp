@@ -1,6 +1,6 @@
 const headerPlaceholder = document.getElementById("header-placeholder");
 
-fetch("../header.html")
+fetch("../header1.html")
   .then(res => res.text())
   .then(html => {
     headerPlaceholder.innerHTML = html;
