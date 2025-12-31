@@ -19,9 +19,13 @@
 
 /* ヘッダーの .header-inner と余白設定を同期 */
 #site-footer .footer-inner {
-  max-width: 1200px; /* ヘッダーに合わせる */
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;   /* ヘッダーの左右paddingに合わせる */
+  /* 左右の余白をヘッダーの padding: 16px 20px の 20px 部分と同期 */
+  padding: 0 20px; 
+  
+  /* コンテンツが 1200px 未満の時も、常に左右 20px の隙間を維持する */
+  width: 100%;
 }
 
 /* =========================
