@@ -1,5 +1,5 @@
 /* =========================
-   Design Tokens / Variables
+    Design Tokens / Variables
 ========================= */
 
 :root {
@@ -12,15 +12,18 @@
   --radius-sm: 6px;
   --radius-md: 12px;
 
-  /* 枠線太さ（1px運用） */
-  --border-w: 1px;
+  /* 枠線太さ（ニュース側の2pxに合わせるなら2px） */
+  --border-w: 2px;
 
-  /* 固定ヘッダー高さ（重要） */
+  /* 固定ヘッダー高さ */
   --header-height: 72px;
+
+  /* コンテンツ最大幅 */
+  --content-width: 960px;
 }
 
 /* =========================
-   Reset / Base
+    Reset / Base
 ========================= */
 
 * {
@@ -29,7 +32,7 @@
 
 body {
   margin: 0;
-  padding-top: var(--header-height); /* ← 追加：ヘッダー分オフセット */
+  padding-top: var(--header-height);
   background-color: #fff;
   color: var(--text-main);
   font-family:
@@ -41,32 +44,56 @@ body {
 }
 
 /* =========================
-   Headings
+    Layout Container（★重要：ここを追加）
+========================= */
+
+/* mainタグや、左右中央に寄せたい要素にこのクラスを付与するか、
+   直接 main { ... } に指定します。
+*/
+main, .container {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 16px; /* 画面端ギリギリにならないための余白 */
+}
+
+/* =========================
+    Headings
 ========================= */
 
 h1 {
-  margin: 24px 16px 16px;
+  /* 共通の余白設定 */
+  margin: 32px 0 24px;
   font-size: 1.6rem;
   font-weight: 600;
 }
 
+h2 {
+  margin: 24px 0 16px;
+  font-size: 1.4rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 8px;
+}
+
 /* =========================
-   Link Base
+    Link Base
 ========================= */
 
 a {
   color: inherit;
   text-decoration: none;
+  transition: opacity 0.3s;
+}
+
+a:hover {
+  opacity: 0.7;
 }
 
 /* =========================
-   Card / Hover Utility
+    Utility Classes
 ========================= */
 
 .hover-lift {
-  transition:
-    transform 0.4s ease,
-    box-shadow 0.4s ease;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .hover-lift:hover {
@@ -74,13 +101,10 @@ a {
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
 }
 
-/* =========================
-   Gradient Text Utility
-========================= */
-
 .text-gradient {
   background: var(--accent-gradient);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  font-weight: bold;
 }
