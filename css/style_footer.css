@@ -33,7 +33,7 @@
 }
 
 .footer-logo {
-  font-size: 1.8rem; /* 少し大きく */
+  font-size: 24px; /* 少し大きく */
   font-weight: 800;
   letter-spacing: -0.02em;
 }
@@ -41,7 +41,7 @@
 .footer-nav {
   display: flex;
   gap: 15px;
-  font-size: 0.9rem;
+  font-size: 16px;
 }
 
 .footer-nav a:hover {
