@@ -4,7 +4,7 @@
 
 #site-footer {
   width: 100%;
-  background-color: #f5f5f5; /* グレー背景 */
+  background-color: #f5f5f5;
   color: var(--text-main);
   padding: 40px 0 20px;
   margin-top: 60px;
@@ -17,14 +17,13 @@
     sans-serif;
 }
 
-/* ヘッダーの .header-inner と余白設定を同期 */
+/* ヘッダーの挙動と完全に一致させるための修正 */
 #site-footer .footer-inner {
-  max-width: 1200px;
+  /* 1200px + 左右余白40px = 1240px を最大幅とする */
+  max-width: 1240px; 
   margin: 0 auto;
-  /* 左右の余白をヘッダーの padding: 16px 20px の 20px 部分と同期 */
-  padding: 0 20px; 
-  
-  /* コンテンツが 1200px 未満の時も、常に左右 20px の隙間を維持する */
+  /* これで画面が狭まっても、常に左右20pxの空きが保証されます */
+  padding: 0 20px;
   width: 100%;
 }
 
@@ -52,11 +51,12 @@
   font-size: 24px;
   font-weight: 800;
   letter-spacing: -0.02em;
-  /* ロゴもヘッダー同様グラデーションにする場合 */
   background: var(--accent-gradient);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  /* インラインブロックにしないとグラデーションが切れることがあるため追加 */
+  display: inline-block;
 }
 
 .footer-nav {
@@ -83,10 +83,13 @@
   display: flex;
   gap: 20px;
   font-size: 1.5rem;
+  align-items: center; /* アイコンとテキストの高さを揃える */
 }
 
 .sns-links a {
   transition: transform 0.25s ease, filter 0.25s ease;
+  line-height: 1;
+  display: flex;
 }
 
 .sns-links a:hover {
@@ -97,7 +100,6 @@
 .ofuse-text {
   font-size: 0.95rem;
   font-weight: 700;
-  line-height: 1;
 }
 
 /* =========================
@@ -107,7 +109,7 @@
 .footer-bottom {
   border-top: 1px solid #ddd;
   padding-top: 16px;
-  text-align: left; /* 左寄せ指定 */
+  text-align: left;
 }
 
 .copyright {
