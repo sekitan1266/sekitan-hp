@@ -45,7 +45,7 @@
 }
 
 .footer-logo {
-  font-size: 1.8rem;
+  font-size: 24px;
   font-weight: 800;
   letter-spacing: -0.02em;
   /* ロゴもヘッダー同様グラデーションにする場合 */
@@ -61,7 +61,7 @@
 }
 
 .footer-nav a {
-  font-size: 0.9rem;
+  font-size: 16px;
   font-weight: 500;
   transition: opacity 0.25s ease;
 }
