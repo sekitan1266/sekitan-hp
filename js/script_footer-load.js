@@ -1,22 +1,25 @@
-// HTML側で定義した relPath を使って fetch 先を決める
-const footerPath = (typeof relPath !== 'undefined') ? relPath + "footer.html" : "footer.html";
+// script_footer-load.js
 
-fetch(footerPath)
-  .then(res => res.text())
-  .then(html => {
-    // 1. フッターの中身を挿入
-    document.getElementById("footer-placeholder").innerHTML = html;
+const relPathVal = (typeof relPath !== 'undefined') ? relPath : "./";
+const footerPlaceholder = document.getElementById("footer-placeholder");
 
-    // 2. 【重要】挿入した後のリンク（aタグ）のパスも relPath で補正する
-    const footer = document.getElementById("footer-placeholder");
-    const links = footer.querySelectorAll("a");
-    
-    links.forEach(link => {
-      const href = link.getAttribute("href");
-      // 外部リンク（http...）でなければ、パスを補正
-      if (href && !href.startsWith("http") && !href.startsWith("#")) {
-        link.setAttribute("href", relPath + href);
-      }
-    });
-  })
-  .catch(err => console.error("フッターの読み込みに失敗しました", err));
+if (footerPlaceholder) {
+  fetch(relPathVal + "footer.html")
+    .then(res => {
+      if (!res.ok) throw new Error("Network response was not ok");
+      return res.text();
+    })
+    .then(html => {
+      footerPlaceholder.innerHTML = html;
+
+      // リンクのパス補正
+      const links = footerPlaceholder.querySelectorAll("a");
+      links.forEach(link => {
+        const href = link.getAttribute("href");
+        if (href && !href.startsWith("http") && !href.startsWith("#") && !href.startsWith("mailto")) {
+          link.setAttribute("href", relPathVal + href);
+        }
+      });
+    })
+    .catch(err => console.error("フッターの読み込みに失敗しました", err));
+}
