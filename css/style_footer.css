@@ -1,0 +1,50 @@
+#site-footer {
+  background-color: #f4f4f4; /* 明るめのグレー */
+  color: var(--text-main);
+  padding: 40px 16px 20px;
+  margin-top: 60px; /* コンテンツとの間隔 */
+}
+
+.footer-upper {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.footer-left .footer-logo {
+  font-size: 1.4rem;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.footer-sub-nav {
+  display: flex;
+  gap: 16px;
+  font-size: 0.9rem;
+  flex-wrap: wrap;
+}
+
+.footer-sub-nav a:hover {
+  text-decoration: underline;
+}
+
+.footer-right .sns-links {
+  display: flex;
+  gap: 20px;
+  font-size: 1.5rem; /* アイコンを少し大きく */
+}
+
+.footer-bottom {
+  max-width: var(--content-width);
+  margin: 24px auto 0;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--text-sub);
+}
