@@ -6,25 +6,29 @@
   width: 100%;
   background-color: #f5f5f5;
   color: var(--text-main);
-  padding: 40px 0 20px;
+  /* 上下の余白のみ。左右は inner で制御 */
+  padding: 40px 0 20px; 
   margin-top: 60px;
   border-top: 1px solid var(--border-color);
   
-  font-family:
-    "Yu Gothic",
-    "游ゴシック体",
-    "Noto Sans JP",
-    sans-serif;
+  font-family: "Yu Gothic", "游ゴシック体", "Noto Sans JP", sans-serif;
 }
 
-/* ヘッダーの挙動と完全に一致させるための修正 */
+/* 修正の核：
+   max-width を 1200px に固定しつつ、
+   左右に 20px (計40px) のマージン領域を「内側」に作り出します。
+*/
 #site-footer .footer-inner {
-  /* 1200px + 左右余白40px = 1240px を最大幅とする */
-  max-width: 1240px; 
-  margin: 0 auto;
-  /* これで画面が狭まっても、常に左右20pxの空きが保証されます */
-  padding: 0 20px;
-  width: 100%;
+  /* 最大幅を1200pxに固定 */
+  max-width: 1200px;
+  /* 左右中央寄せ */
+  margin-left: auto;
+  margin-right: auto;
+  /* padding ではなく、計算された幅で制御 */
+  width: calc(100% - 40px); 
+  
+  /* 念のため padding を 0 にリセットして競合を防ぐ */
+  padding: 0 !important;
 }
 
 /* =========================
@@ -55,7 +59,6 @@
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  /* インラインブロックにしないとグラデーションが切れることがあるため追加 */
   display: inline-block;
 }
 
@@ -67,12 +70,12 @@
 .footer-nav a {
   font-size: 16px;
   font-weight: 500;
-  transition: opacity 0.25s ease;
 }
 
+/* ホバー時の装飾を完全無効化 */
 .footer-nav a:hover {
-  text-decoration: underline;
-  opacity: 0.7;
+  text-decoration: none !important;
+  opacity: 1 !important;
 }
 
 /* =========================
@@ -83,7 +86,7 @@
   display: flex;
   gap: 20px;
   font-size: 1.5rem;
-  align-items: center; /* アイコンとテキストの高さを揃える */
+  align-items: center;
 }
 
 .sns-links a {
@@ -95,6 +98,7 @@
 .sns-links a:hover {
   transform: translateY(-2px);
   filter: brightness(1.2);
+  opacity: 1 !important;
 }
 
 .ofuse-text {
