@@ -18,7 +18,7 @@
    max-width を 1200px に固定しつつ、
    左右に 20px (計40px) のマージン領域を「内側」に作り出します。
 */
-#site-footer .footer-inner {
+#site-footer .footer-container {
   /* 最大幅を1200pxに固定 */
   max-width: 1200px;
   /* 左右中央寄せ */
