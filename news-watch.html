@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <meta charset="UTF-8">
   <title>News Watch | sekitan</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-<!--  <link rel="stylesheet" href="css/base.css">  -->
+  <!--  <link rel="stylesheet" href="css/base.css">  -->
   <link rel="stylesheet" href="css/style_news-watch.css">
 
   <!-- Font Awesome for SNS icons -->
@@ -16,31 +17,34 @@
 
   <!-- 共通フッター用スタイル -->
   <link rel="stylesheet" href="css/style_footer.css">
-  
+
 </head>
+
 <body>
   <div id="header-placeholder"></div>
 
-<main class="news-watch">
+  <main class="news-watch">
 
-  <article class="news-article" id="news-detail">
-    読み込み中…
-  </article>
+    <article class="news-article" id="news-detail">
+      読み込み中…
+    </article>
 
-  <button id="back-button">戻る</button>
+    <button id="back-button">戻る</button>
 
-</main>
+  </main>
 
   <div id="footer-placeholder"></div>
 
-<!-- ニュース読み込み用JS -->
-<script src="js/script_news-constants.js"></script>
-<script src="js/script_news-watch.js"></script>
+  <!-- ニュース読み込み用JS -->
+  <script src="js/script_news-constants.js"></script>
+  <script src="js/script_news-watch.js"></script>
 
-<!-- 共通ヘッダー・フッター読み込み用JS -->
-<script>const relPath = "./";</script>
-<script src="./js/script_header-load.js" defer></script>
-<script src="./js/script_footer-load.js"></script>
+  <!-- 共通ヘッダー・フッター読み込み用JS -->
+  <script>const relPath = "./";</script>
+  <script src="./js/script_header-load.js" defer></script>
+  <script src="./js/script_header.js" defer></script> <!-- ヘッダー制御用（ハンバーガーメニュー等） -->
+  <script src="./js/script_footer-load.js"></script>
 
 </body>
+
 </html>

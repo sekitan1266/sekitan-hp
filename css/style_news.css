@@ -92,10 +92,16 @@ h1 {
 
 .filter-label {
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
   font-size: 0.85rem;
   font-weight: 500;
   color: var(--text-sub);
+}
+
+.filter-hint {
+  margin: 0 0 10px;
+  font-size: 0.75rem;
+  color: #888;
 }
 
 .date-selects {
@@ -121,28 +127,28 @@ h1 {
 #filter-category {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 8px;
 }
 
-#filter-category label {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  padding: 4px 10px;
-  font-size: 0.8rem;
+/* カテゴリトグルボタン */
+.category-btn {
+  padding: 6px 14px;
+  font-size: 0.85rem;
+  font-weight: 500;
   background: #fff;
   border: 1px solid #ddd;
   border-radius: 20px;
   cursor: pointer;
   transition: all 0.2s ease;
+  color: var(--text-main);
 }
 
-#filter-category label:hover {
+.category-btn:hover {
   border-color: #1e90ff;
+  background: #f0f8ff;
 }
 
-#filter-category input[type="checkbox"]:checked+span,
-#filter-category label:has(input:checked) {
+.category-btn.is-selected {
   background: var(--accent-gradient);
   color: #fff;
   border-color: transparent;

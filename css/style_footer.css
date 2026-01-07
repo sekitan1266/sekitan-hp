@@ -120,3 +120,42 @@
   font-size: 0.8rem;
   color: var(--text-sub);
 }
+
+/* =========================
+    Responsive (Mobile)
+========================= */
+
+@media (max-width: 768px) {
+  #site-footer {
+    padding: 24px 0 16px;
+  }
+
+  .footer-upper {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .footer-left-group {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .footer-nav {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .footer-nav a {
+    font-size: 14px;
+  }
+
+  .sns-links {
+    gap: 16px;
+  }
+
+  .footer-logo {
+    font-size: 20px;
+  }
+}

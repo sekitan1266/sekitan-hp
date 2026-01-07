@@ -2,7 +2,8 @@
   <div class="header-inner">
     <h1><a href="./" class="nav-link">sekitan</a></h1>
 
-    <nav>
+    <!-- デスクトップ用ナビ -->
+    <nav class="desktop-nav">
       <a href="./">Home</a>
       <span class="nav-separator"></span>
 
@@ -17,5 +18,26 @@
 
       <a href="profile.html">Profile</a>
     </nav>
+
+    <!-- ハンバーガーボタン（モバイル用） -->
+    <button class="hamburger-btn" id="hamburger-btn" aria-label="メニューを開く">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+  </div>
+
+  <!-- モバイル用ナビモーダル -->
+  <div class="mobile-nav-overlay" id="mobile-nav-overlay">
+    <div class="mobile-nav-modal">
+      <button class="mobile-nav-close" id="mobile-nav-close" aria-label="メニューを閉じる">×</button>
+      <nav class="mobile-nav-links">
+        <a href="./">Home</a>
+        <a href="news.html">News</a>
+        <a href="project-moka.html">Project moka</a>
+        <a href="support.html">Support</a>
+        <a href="profile.html">Profile</a>
+      </nav>
+    </div>
   </div>
 </header>

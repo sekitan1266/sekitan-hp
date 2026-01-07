@@ -29,9 +29,9 @@ function buildDate(y, m, d, isEnd) {
   const dd = d || (
     isEnd
       ? new Date(Number(y), Number(mm), 0)
-          .getDate()
-          .toString()
-          .padStart(2, "0")
+        .getDate()
+        .toString()
+        .padStart(2, "0")
       : "01"
   );
 
@@ -65,25 +65,34 @@ function adjustDaySelect(prefix) {
   }
 }
 
-/* ===== カテゴリUI ===== */
+/* ===== カテゴリUI（トグルボタン形式） ===== */
 function renderCategoryFilter() {
   const box = $("filter-category");
   box.innerHTML = "";
 
-  [...new Set(allArticles.map(a => a.category))].forEach(cat => {
-    const label = document.createElement("label");
-    const cb = document.createElement("input");
+  const categories = [...new Set(allArticles.map(a => a.category))];
 
-    cb.type = "checkbox";
-    cb.value = cat;
+  categories.forEach(cat => {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "category-btn";
+    btn.dataset.category = cat;
+    btn.textContent = CATEGORY_LABELS[cat] || cat;
 
-    cb.addEventListener("change", () => {
+    btn.addEventListener("click", () => {
       const p = params();
       const set = new Set(
         (p.get("cat") || "").split(",").filter(Boolean)
       );
 
-      cb.checked ? set.add(cat) : set.delete(cat);
+      // トグル処理
+      if (set.has(cat)) {
+        set.delete(cat);
+        btn.classList.remove("is-selected");
+      } else {
+        set.add(cat);
+        btn.classList.add("is-selected");
+      }
 
       set.size
         ? p.set("cat", [...set].join(","))
@@ -96,10 +105,7 @@ function renderCategoryFilter() {
       applyFilter();
     });
 
-    label.appendChild(cb);
-    label.append(" " + (CATEGORY_LABELS[cat] || cat));
-    box.appendChild(label);
-    box.appendChild(document.createElement("br"));
+    box.appendChild(btn);
   });
 }
 
@@ -133,8 +139,14 @@ function loadFromURL() {
     .forEach(c => selectedCategories.add(c));
 
   document
-    .querySelectorAll("#filter-category input")
-    .forEach(cb => (cb.checked = selectedCategories.has(cb.value)));
+    .querySelectorAll("#filter-category .category-btn")
+    .forEach(btn => {
+      if (selectedCategories.has(btn.dataset.category)) {
+        btn.classList.add("is-selected");
+      } else {
+        btn.classList.remove("is-selected");
+      }
+    });
 
   ["filter", "until"].forEach(prefix => {
     $(prefix + "-year").value = "";
@@ -312,8 +324,8 @@ fetch("data/news.json")
     $("filter-reset").addEventListener("click", resetFilter);
 
     [
-      "filter-year","filter-month","filter-day",
-      "until-year","until-month","until-day"
+      "filter-year", "filter-month", "filter-day",
+      "until-year", "until-month", "until-day"
     ].forEach(id =>
       $(id).addEventListener("change", () => {
         adjustDaySelect(id.startsWith("filter") ? "filter" : "until");
