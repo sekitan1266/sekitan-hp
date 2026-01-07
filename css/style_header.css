@@ -10,7 +10,8 @@ main {
   width: 100%;
   background-color: #fff;
 
-  position: fixed;      /* 常に画面上部に固定 */
+  position: fixed;
+  /* 常に画面上部に固定 */
   top: 0;
   left: 0;
   z-index: 1000;
@@ -52,6 +53,12 @@ main {
   color: inherit;
 }
 
+/* ロゴホバー時に何も変化させない */
+#site-header h1 a:hover {
+  opacity: 1 !important;
+  filter: none !important;
+}
+
 /* =========================
    Navigation
 ========================= */
@@ -75,11 +82,14 @@ main {
 
 /* 区切り線（完全固定幅） */
 #site-header nav .nav-separator {
-  width: 2px;                 /* 実体は2pxで安定させる */
-  height: 2.5em;              /* 文字より少し長め */
+  width: 2px;
+  /* 実体は2pxで安定させる */
+  height: 2.5em;
+  /* 文字より少し長め */
   background-color: var(--border-color);
 
-  transform: scaleX(0.5);     /* 見た目だけ1pxにする */
+  transform: scaleX(0.5);
+  /* 見た目だけ1pxにする */
   transform-origin: center;
 
   flex-shrink: 0;
@@ -92,4 +102,7 @@ main {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  /* 薄くならないように設定 */
+  opacity: 1 !important;
+  filter: none !important;
 }

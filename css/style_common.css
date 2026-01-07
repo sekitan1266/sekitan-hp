@@ -12,7 +12,7 @@
   --radius-sm: 6px;
   --radius-md: 12px;
 
-  /* 枠線太さ（ニュース側の2pxに合わせるなら2px） */
+  /* 枠線太さ */
   --border-w: 2px;
 
   /* 固定ヘッダー高さ */
@@ -41,131 +41,28 @@ body {
     "Noto Sans JP",
     sans-serif;
   line-height: 1.7;
-}
 
-/* =========================
-    Layout Container（★重要：ここを追加）
-========================= */
-
-/* mainタグや、左右中央に寄せたい要素にこのクラスを付与するか、
-   直接 main { ... } に指定します。
-*/
-main,
-.container {
-  max-width: var(--content-width);
-  margin: 0 auto;
-  padding: 0 16px;
-  /* 画面端ギリギリにならないための余白 */
-}
-
-/* =========================
-    Headings
-========================= */
-
-h1 {
-  /* 共通の余白設定 */
-  margin: 32px 0 24px;
-  font-size: 1.6rem;
-  font-weight: 600;
-}
-
-h2 {
-  margin: 24px 0 16px;
-  font-size: 1.4rem;
-  border-bottom: 1px solid var(--border-color);
-  padding-bottom: 8px;
-}
-
-/* =========================
-    Link Base
-========================= */
-
-a {
-  color: inherit;
-  text-decoration: none;
-  transition: opacity 0.3s;
-}
-
-a:hover {
-  opacity: 1;
-}
-
-/* =========================
-    Utility Classes
-========================= */
-
-.hover-lift {
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-
-.hover-lift:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
-}
-
-.text-gradient {
-  background: var(--accent-gradient);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  font-weight: bold;
-}
-
-/* =========================
-    Design Tokens / Variables
-========================= */
-
-:root {
-  --accent-gradient: linear-gradient(135deg, #1e90ff, #00a86b);
-  --border-color: #a0a0a0;
-  --text-main: #000;
-  --text-sub: #555;
-
-  /* 角丸管理 */
-  --radius-sm: 6px;
-  --radius-md: 12px;
-
-  /* 枠線太さ（ニュース側の2pxに合わせる） */
-  --border-w: 2px;
-
-  /* 固定ヘッダー高さ */
-  --header-height: 72px;
-
-  /* コンテンツ最大幅 */
-  --content-width: 960px;
-}
-
-/* =========================
-    Reset / Base
-========================= */
-
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  padding-top: var(--header-height);
-  background-color: #fff;
-  color: var(--text-main);
-  font-family:
-    "Yu Gothic",
-    "游ゴシック体",
-    "Noto Sans JP",
-    sans-serif;
-  line-height: 1.7;
+  /* スティッキーフッター設定 */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 /* =========================
     Layout Container
 ========================= */
 
-/* mainタグや、中央寄せにしたい要素に適用。左右に適切な余白を確保します。 */
+main {
+  /* スティッキーフッター設定：コンテンツが少なくても押し広げる */
+  flex: 1;
+}
+
 main,
 .container {
   max-width: var(--content-width);
   margin: 0 auto;
   padding: 0 16px;
+  width: 100%;
 }
 
 /* =========================
@@ -195,22 +92,15 @@ a {
   transition: opacity 0.3s, filter 0.3s;
 }
 
-/* 通常のリンクはホバーで薄くしない */
+/* 全てのリンクでホバー時に薄くならないように設定 */
 a:hover {
-  opacity: 1;
+  opacity: 1 !important;
+  filter: none !important;
 }
 
-/* グラデーション文字、ヘッダーのリンク、SNSボタンなどは
-  透明度を変えると消えてしまうため、opacityを解除して明るさで変化をつけます。
+/* 特殊なホバー演出が必要なもの（明るくするなど）があれば個別に指定するが、
+   現在はユーザーの要望により一括で無効化
 */
-.text-gradient:hover,
-.nav-link:hover,
-.sns-btn:hover,
-#filter-reset:hover {
-  opacity: 1;
-  filter: brightness(1.2);
-  /* 少し明るくする */
-}
 
 /* =========================
     Utility Classes
@@ -232,5 +122,4 @@ a:hover {
   color: transparent;
   font-weight: bold;
   display: inline-block;
-  /* 確実にグラデーションを描画させる */
 }
