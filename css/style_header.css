@@ -123,70 +123,98 @@ main {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  /* 背景をぼかして高級感を出す */
   z-index: 1050;
   opacity: 0;
   transition: opacity 0.3s ease;
+
+  /* 中央配置の設定 */
+  align-items: center;
+  justify-content: center;
 }
 
 .mobile-nav-overlay.is-active {
-  display: block;
+  display: flex;
+  /* flexに変更して中央寄せを有効にする */
   opacity: 1;
 }
 
 .mobile-nav-modal {
-  position: fixed;
-  top: 0;
-  right: -280px;
-  width: 280px;
-  height: 100%;
+  position: relative;
+  width: 85%;
+  max-width: 320px;
   background: #fff;
-  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
-  z-index: 1060;
-  transition: right 0.3s ease;
-  padding: 24px;
+  border-radius: var(--radius-md);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  padding: 40px 24px 30px;
+
+  /* ふわっと出すためのアニメーション設定 */
+  transform: scale(0.9);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .mobile-nav-overlay.is-active .mobile-nav-modal {
-  right: 0;
+  transform: scale(1);
 }
 
 .mobile-nav-close {
   position: absolute;
-  top: 16px;
-  right: 16px;
-  width: 36px;
-  height: 36px;
+  top: 12px;
+  right: 12px;
+  width: 32px;
+  height: 32px;
   border: none;
-  background: transparent;
-  font-size: 24px;
+  background: #f5f5f5;
+  border-radius: 50%;
+  font-size: 20px;
+  line-height: 1;
   cursor: pointer;
   color: var(--text-main);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+}
+
+.mobile-nav-close:hover {
+  background: #eee;
 }
 
 .mobile-nav-links {
   display: flex;
   flex-direction: column;
-  gap: 0;
-  margin-top: 60px;
+  gap: 8px;
 }
 
 .mobile-nav-links a {
   display: block;
-  padding: 16px 0;
+  padding: 14px;
   font-size: 1.1rem;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--text-main);
   text-decoration: none;
-  border-bottom: 1px solid #eee;
-  transition: color 0.25s ease;
+  border-radius: var(--radius-sm);
+  text-align: center;
+  transition: all 0.25s ease;
 }
 
-.mobile-nav-links a:hover {
+/* タップ/ホバー時：ヘッダーと同じグラデーション演出 */
+.mobile-nav-links a:hover,
+.mobile-nav-links a:active {
   background: var(--accent-gradient);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  transform: scale(1.05);
+  /* わずかに大きくしてタップ感重出 */
+}
+
+/* モーダル表示時に背後のハンバーガーボタンを消すための設定 */
+#site-header:has(.mobile-nav-overlay.is-active) .hamburger-btn {
+  opacity: 0;
+  pointer-events: none;
 }
 
 /* =========================
