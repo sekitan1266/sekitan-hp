@@ -166,7 +166,22 @@ h1 {
   border-color: transparent;
 }
 
-/* クリアボタン：非ホバー時はグラデーション枚線、ホバー時は全体グラデーション */
+.news-hint {
+  font-size: 0.85rem;
+  color: var(--text-sub);
+  margin-top: -16px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.news-hint i {
+  color: #1e90ff;
+  font-size: 0.9rem;
+}
+
+/* クリアボタン：非ホバー時はグラデーション枠線、ホバー時は全体グラデーション */
 #filter-reset {
   width: 100%;
   margin-top: 10px;
@@ -177,18 +192,37 @@ h1 {
   border: 2px solid transparent;
   border-radius: var(--radius-sm);
   transition: all 0.25s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 
-  /* 非ホバー時：グラデーション枚線 */
+  /* 非ホバー時：グラデーション枠線 */
   background:
     linear-gradient(#fff, #fff) padding-box,
     var(--accent-gradient) border-box;
   color: #1e90ff;
 }
 
+#filter-reset::before {
+  content: "\f2ed";
+  /* FontAwesome trash-can */
+  font-family: "Font Awesome 7 Free";
+  font-weight: 900;
+  font-size: 0.9rem;
+}
+
 #filter-reset:hover {
-  /* ホバー時：全体グラデーション＋白文字 */
+  /* ホバー時：全体グラデーション＋白文字（浮き上がりは無し） */
   background: var(--accent-gradient);
   color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+#filter-reset:active {
+  /* クリックした瞬間の沈み込み演出 */
+  transform: translateY(1px);
+  box-shadow: none;
 }
 
 /* =========================

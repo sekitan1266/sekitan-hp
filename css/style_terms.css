@@ -159,34 +159,51 @@ main section a:hover {
 .terms-item {
   display: flex;
   gap: 20px;
-  padding: 20px 24px;
-  background: #fafafa;
+  padding: 24px;
+  background: #fff;
   border: 1px solid #eee;
   border-radius: var(--radius-md);
   transition: all 0.25s ease;
-  align-items: flex-start;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ニュースアイテムと同様の左アクセントバー */
+.terms-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 6px;
+  height: 100%;
+  background: var(--accent-gradient);
+  transition: width 0.3s ease;
 }
 
 .terms-item:hover {
   border-color: transparent;
-  background:
-    linear-gradient(#fff, #fff) padding-box,
-    var(--accent-gradient) border-box;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
   transform: translateY(-2px);
 }
 
+.terms-item:hover::before {
+  width: 10px;
+  /* ホバー時にバーを太くする演出 */
+}
+
 .terms-icon {
-  width: 48px;
-  height: 48px;
+  width: 52px;
+  height: 52px;
   display: flex;
   align-items: center;
   justify-content: center;
   background: var(--accent-gradient);
-  border-radius: 50%;
+  border-radius: 12px;
   color: #fff;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   flex-shrink: 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .terms-content {
@@ -194,10 +211,11 @@ main section a:hover {
 }
 
 .terms-title {
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   font-weight: 600;
   color: var(--text-main);
-  margin-bottom: 4px;
+  margin-bottom: 6px;
+  transition: color 0.3s ease;
 }
 
 .terms-item:hover .terms-title {

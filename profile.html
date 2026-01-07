@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" />
 
   <link rel="stylesheet" href="css/style_common.css">
+  <link rel="stylesheet" href="css/style_profile.css">
 
   <!-- header用スタイル -->
   <link rel="stylesheet" href="css/style_header.css">
@@ -23,39 +24,58 @@
 
   <main>
     <h1>Profile</h1>
-    <h2>自己紹介</h2>
-    <p>ようこそ。<br>
-      せきたん と申します。<br>
-      昔から真岡線が好きで、SLの魅力にハマっていました。<br>
-      2025年に、ある方の論に触れ、完全自覚者であることを実感し、SLが好きであるとか、真岡線を愛しているとか、そんなものもすべて幻想の類であったことを理解しました。<br>
-      それでも、鉄道、特に真岡線については、物心がついたときにはすでに好きだったと記憶しており、もはや理屈を超えた私の本能的に興味のあることなのかもしれないとも感じています。<br>
-      本能の赴くまま、なんとなく、あるいは惰性で、真岡線について情報を集めたり、まとめたり、しなかったりします。<br>
-      悩んでいる時間は何も生み出さないので、あまり考えずにデタラメ速やかに判断して創作することにしています。<br>
-      物事を十分に「理解」することもまた難しいので、中途半端に作ることもあるでしょう。<br>
-      全くの嘘が紛れ込むことが有るかもしれませんが、本当も嘘も同じようなものですから、別にいいんです。
-    </p>
-    <h2>保有資格</h2>
-    <ul>
-      <li>実用英語技能検定2級</li>
-      <li>危険物取扱者乙種第3類</li>
-      <li>危険物取扱者乙種第4類</li>
-      <li>危険物取扱者乙種第5類</li>
-      <li>危険物取扱者乙種第6類</li>
+
+    <div class="profile-container">
+      <section class="profile-section">
+        <h2><i class="fa-solid fa-user"></i> 自己紹介</h2>
+        <div class="profile-text">
+          <p>
+            ようこそ。<br>
+            せきたん と申します。<br>
+            昔から真岡線が好きで、SLの魅力にハマっていました。
+          </p>
+          <p>
+            2025年に、ある方の論に触れ、完全自覚者であることを実感し、SLが好きであるとか、真岡線を愛しているとか、そんなものもすべて幻想の類であったことを理解しました。
+          </p>
+          <p>
+            それでも、鉄道、特に真岡線については、物心がついたときにはすでに好きだったと記憶しており、もはや理屈を超えた私の本能的に興味のあることなのかもしれないとも感じています。
+          </p>
+          <p>
+            本能の赴くまま、なんとなく、あるいは惰性で、真岡線について情報を集めたり、まとめたり、しなかったりします。<br>
+            悩んでいる時間は何も生み出さないので、あまり考えずにデタラメ速やかに判断して創作することにしています。
+          </p>
+          <p>
+            物事を十分に「理解」することもまた難しいので、中途半端に作ることもあるでしょう。<br>
+            全くの嘘が紛れ込むことが有るかもしれませんが、本当も嘘も同じようなものですから、別にいいんです。
+          </p>
+        </div>
+      </section>
+
+      <section class="profile-section">
+        <h2><i class="fa-solid fa-award"></i> 保有資格</h2>
+        <ul class="qualification-list">
+          <li class="qualification-item"><i class="fa-solid fa-check"></i> 実用英語技能検定2級</li>
+          <li class="qualification-item"><i class="fa-solid fa-check"></i> 危険物取扱者乙種第3類</li>
+          <li class="qualification-item"><i class="fa-solid fa-check"></i> 危険物取扱者乙種第4類</li>
+          <li class="qualification-item"><i class="fa-solid fa-check"></i> 危険物取扱者乙種第5類</li>
+          <li class="qualification-item"><i class="fa-solid fa-check"></i> 危険物取扱者乙種第6類</li>
+          <!-- 
+          <li class="qualification-item"><i class="fa-solid fa-check"></i> ボイラー技士2級</li>
+          <li class="qualification-item"><i class="fa-solid fa-check"></i> 総合旅行業務取扱管理者</li>
+          -->
+        </ul>
+      </section>
+    </div>
   </main>
+
+  <div id="footer-placeholder"></div>
+
+  <!-- 共通ヘッダー・フッター読み込み用JS -->
+  <script>const relPath = "./";</script>
+  <script src="./js/script_header-load.js" defer></script>
+  <script src="./js/script_header.js" defer></script> <!-- ヘッダー制御用（ハンバーガーメニュー等） -->
+  <script src="./js/script_footer-load.js"></script>
+
 </body>
 
-<div id="footer-placeholder"></div>
-
-<!-- 共通ヘッダー・フッター読み込み用JS -->
-<script>const relPath = "./";</script>
-<script src="./js/script_header-load.js" defer></script>
-<script src="./js/script_header.js" defer></script> <!-- ヘッダー制御用（ハンバーガーメニュー等） -->
-<script src="./js/script_footer-load.js"></script>
-
 </html>
-
-
-<!--
-      <li>ボイラー技士2級</li>
-      <li>総合旅行業務取扱管理者</li>
-  -->
