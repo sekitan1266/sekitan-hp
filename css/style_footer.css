@@ -7,10 +7,10 @@
   background-color: #f5f5f5;
   color: var(--text-main);
   /* 上下の余白のみ。左右は inner で制御 */
-  padding: 40px 0 20px; 
+  padding: 40px 0 20px;
   margin-top: 60px;
   border-top: 1px solid var(--border-color);
-  
+
   font-family: "Yu Gothic", "游ゴシック体", "Noto Sans JP", sans-serif;
 }
 
@@ -25,8 +25,8 @@
   margin-left: auto;
   margin-right: auto;
   /* padding ではなく、計算された幅で制御 */
-  width: calc(100% - 40px); 
-  
+  width: calc(100% - 40px);
+
   /* 念のため padding を 0 にリセットして競合を防ぐ */
   padding: 0 !important;
 }
