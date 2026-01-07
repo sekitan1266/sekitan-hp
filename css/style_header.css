@@ -185,30 +185,40 @@ main {
 .mobile-nav-links {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 0;
 }
 
 .mobile-nav-links a {
   display: block;
-  padding: 14px;
-  font-size: 1.1rem;
-  font-weight: 600;
+  padding: 16px 20px;
+  font-size: 1.05rem;
+  font-weight: 500;
   color: var(--text-main);
   text-decoration: none;
-  border-radius: var(--radius-sm);
   text-align: center;
   transition: all 0.25s ease;
+  position: relative;
 }
 
-/* タップ/ホバー時：ヘッダーと同じグラデーション演出 */
+/* リンク間に区切り線を追加（最後のリンク以外） */
+.mobile-nav-links a:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #ccc 20%, #ccc 80%, transparent);
+}
+
+/* タップ/ホバー時：ヘッダーと同じグラデーション文字 */
 .mobile-nav-links a:hover,
 .mobile-nav-links a:active {
   background: var(--accent-gradient);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  transform: scale(1.05);
-  /* わずかに大きくしてタップ感重出 */
 }
 
 /* モーダル表示時に背後のハンバーガーボタンを消すための設定 */

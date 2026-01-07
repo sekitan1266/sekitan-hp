@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <title>規約・ポリシー一覧 | sekitan</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" />
+
+  <link rel="stylesheet" href="../css/style_common.css">
+  <!-- header用スタイル -->
+  <link rel="stylesheet" href="../css/style_header.css">
+  <!-- footer用スタイル -->
+  <link rel="stylesheet" href="../css/style_footer.css">
+
+  <style>
+    .terms-list {
+      list-style: none;
+      padding: 0;
+      margin: 24px 0;
+    }
+
+    .terms-list li {
+      margin-bottom: 16px;
+    }
+
+    .terms-list a {
+      display: block;
+      padding: 20px 24px;
+      background: #fafafa;
+      border: 1px solid #eee;
+      border-radius: var(--radius-md);
+      transition: all 0.2s ease;
+    }
+
+    .terms-list a:hover {
+      border-color: transparent;
+      background:
+        linear-gradient(#fff, #fff) padding-box,
+        var(--accent-gradient) border-box;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .terms-list .terms-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 4px;
+    }
+
+    .terms-list a:hover .terms-title {
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .terms-list .terms-desc {
+      font-size: 0.9rem;
+      color: var(--text-sub);
+    }
+  </style>
+</head>
+
+<body>
+  <div id="header-placeholder"></div>
+
+  <main>
+    <h1>規約・ポリシー</h1>
+
+    <p>当サイトの利用に関する規約とポリシーは以下のページでご確認いただけます。</p>
+
+    <ul class="terms-list">
+      <li>
+        <a href="website.html">
+          <div class="terms-title">サイト利用規約</div>
+          <div class="terms-desc">当サイトをご利用いただくにあたっての利用条件を定めています。</div>
+        </a>
+      </li>
+      <li>
+        <a href="privacy-policy.html">
+          <div class="terms-title">プライバシーポリシー</div>
+          <div class="terms-desc">個人情報の取り扱いについて定めています。</div>
+        </a>
+      </li>
+    </ul>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <!-- 共通ヘッダー・フッター読み込み用JS -->
+  <script>const relPath = "../";</script>
+  <script src="../js/script_header-load.js" defer></script>
+  <script src="../js/script_header.js" defer></script> <!-- ヘッダー制御用（ハンバーガーメニュー等） -->
+  <script src="../js/script_footer-load.js" defer></script>
+
+</body>
+
+</html>

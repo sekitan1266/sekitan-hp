@@ -99,29 +99,37 @@ h1 {
 }
 
 .filter-hint {
-  margin: 0 0 10px;
-  font-size: 0.75rem;
-  color: #888;
+  margin: 0 0 8px;
+  padding: 4px 8px;
+  font-size: 0.7rem;
+  color: #666;
+  background: #f8f8f8;
+  border-radius: 4px;
+  display: inline-block;
 }
 
 .date-selects {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  /* 折り返さない */
   align-items: center;
-  gap: 4px;
+  gap: 2px;
 }
 
 .date-selects select {
-  padding: 6px 8px;
-  font-size: 0.85rem;
+  padding: 5px 6px;
+  font-size: 0.8rem;
   border: 1px solid #ccc;
   border-radius: var(--radius-sm);
   background: #fff;
+  min-width: 0;
+  flex-shrink: 1;
 }
 
 .date-selects span {
-  font-size: 0.85rem;
-  margin-right: 6px;
+  font-size: 0.8rem;
+  margin-right: 4px;
+  white-space: nowrap;
 }
 
 #filter-category {
@@ -136,16 +144,20 @@ h1 {
   font-size: 0.85rem;
   font-weight: 500;
   background: #fff;
-  border: 1px solid #ddd;
+  border: 2px solid #ddd;
   border-radius: 20px;
   cursor: pointer;
   transition: all 0.2s ease;
   color: var(--text-main);
+  position: relative;
 }
 
+/* ホバー時：グラデーション枚線 */
 .category-btn:hover {
-  border-color: #1e90ff;
-  background: #f0f8ff;
+  border-color: transparent;
+  background:
+    linear-gradient(#fff, #fff) padding-box,
+    var(--accent-gradient) border-box;
 }
 
 .category-btn.is-selected {
@@ -154,6 +166,7 @@ h1 {
   border-color: transparent;
 }
 
+/* クリアボタン：非ホバー時はグラデーション枚線、ホバー時は全体グラデーション */
 #filter-reset {
   width: 100%;
   margin-top: 10px;
@@ -161,16 +174,21 @@ h1 {
   font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
-  background: var(--accent-gradient);
-  color: #fff;
-  border: none;
+  border: 2px solid transparent;
   border-radius: var(--radius-sm);
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition: all 0.25s ease;
+
+  /* 非ホバー時：グラデーション枚線 */
+  background:
+    linear-gradient(#fff, #fff) padding-box,
+    var(--accent-gradient) border-box;
+  color: #1e90ff;
 }
 
 #filter-reset:hover {
-  opacity: 0.9;
-  transform: translateY(-1px);
+  /* ホバー時：全体グラデーション＋白文字 */
+  background: var(--accent-gradient);
+  color: #fff;
 }
 
 /* =========================
