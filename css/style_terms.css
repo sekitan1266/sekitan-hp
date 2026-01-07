@@ -1,0 +1,214 @@
+/* =========================
+   Terms Pages Styles
+   規約・ポリシーページ用スタイル
+========================= */
+
+/* リスト番号のカスタマイズ */
+/* 一番上層（ol直下）：1. 2. 3. */
+main ol {
+  list-style: none;
+  counter-reset: top-counter;
+  padding-left: 0;
+}
+
+main ol>li {
+  counter-increment: top-counter;
+  padding-left: 1.5em;
+  position: relative;
+  margin-bottom: 12px;
+}
+
+main ol>li::before {
+  content: counter(top-counter) ".";
+  position: absolute;
+  left: 0;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+/* 二番目の層：(1) (2) (3) */
+main ol ol {
+  counter-reset: second-counter;
+  margin-top: 8px;
+}
+
+main ol ol>li {
+  counter-increment: second-counter;
+}
+
+main ol ol>li::before {
+  content: "(" counter(second-counter) ")";
+}
+
+/* 三番目の層：1. 2. 3. に戻す */
+main ol ol ol {
+  counter-reset: third-counter;
+}
+
+main ol ol ol>li {
+  counter-increment: third-counter;
+}
+
+main ol ol ol>li::before {
+  content: counter(third-counter) ".";
+}
+
+/* ul リストのスタイル */
+main ul {
+  padding-left: 1.5em;
+  margin: 12px 0;
+}
+
+main ul li {
+  margin-bottom: 8px;
+  position: relative;
+}
+
+/* セクション（各条文）のスタイル */
+main section {
+  margin-bottom: 32px;
+  padding: 20px 24px;
+  background: #fafafa;
+  border-radius: var(--radius-md);
+  border-left: 4px solid;
+  border-image: var(--accent-gradient) 1;
+}
+
+main section h2 {
+  margin: 0 0 16px;
+  padding-bottom: 0;
+  border-bottom: none;
+  font-size: 1.1rem;
+}
+
+main section p {
+  margin: 0 0 12px;
+  line-height: 1.8;
+}
+
+/* 強調テキスト */
+main section strong {
+  background: linear-gradient(transparent 60%, rgba(30, 144, 255, 0.15) 60%);
+}
+
+/* リンクのスタイル */
+main section a {
+  color: #1e90ff;
+  text-decoration: underline;
+  text-decoration-color: rgba(30, 144, 255, 0.3);
+  text-underline-offset: 3px;
+}
+
+main section a:hover {
+  text-decoration-color: #1e90ff;
+}
+
+/* 制定日・更新日 */
+.policy-date {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #ddd;
+  font-size: 0.9rem;
+  color: var(--text-sub);
+}
+
+/* CTAボタン（お問い合わせフォームへ等） */
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  margin-top: 16px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: 2px solid transparent;
+  border-radius: var(--radius-sm);
+  transition: all 0.25s ease;
+
+  /* 非ホバー時：グラデーション枠線 */
+  background:
+    linear-gradient(#fff, #fff) padding-box,
+    var(--accent-gradient) border-box;
+  color: #1e90ff;
+}
+
+.cta-button:hover {
+  background: var(--accent-gradient);
+  color: #fff;
+}
+
+.cta-button i {
+  font-size: 1rem;
+}
+
+/* =========================
+   Terms Index (一覧ページ) 用
+========================= */
+
+.terms-list {
+  list-style: none;
+  padding: 0;
+  margin: 24px 0;
+}
+
+.terms-list li {
+  margin-bottom: 16px;
+}
+
+.terms-item {
+  display: flex;
+  gap: 20px;
+  padding: 20px 24px;
+  background: #fafafa;
+  border: 1px solid #eee;
+  border-radius: var(--radius-md);
+  transition: all 0.25s ease;
+  align-items: flex-start;
+}
+
+.terms-item:hover {
+  border-color: transparent;
+  background:
+    linear-gradient(#fff, #fff) padding-box,
+    var(--accent-gradient) border-box;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+.terms-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent-gradient);
+  border-radius: 50%;
+  color: #fff;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.terms-content {
+  flex: 1;
+}
+
+.terms-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 4px;
+}
+
+.terms-item:hover .terms-title {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.terms-desc {
+  font-size: 0.9rem;
+  color: var(--text-sub);
+  line-height: 1.6;
+}

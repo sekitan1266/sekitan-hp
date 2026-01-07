@@ -13,54 +13,8 @@
   <link rel="stylesheet" href="../css/style_header.css">
   <!-- footer用スタイル -->
   <link rel="stylesheet" href="../css/style_footer.css">
-
-  <style>
-    .terms-list {
-      list-style: none;
-      padding: 0;
-      margin: 24px 0;
-    }
-
-    .terms-list li {
-      margin-bottom: 16px;
-    }
-
-    .terms-list a {
-      display: block;
-      padding: 20px 24px;
-      background: #fafafa;
-      border: 1px solid #eee;
-      border-radius: var(--radius-md);
-      transition: all 0.2s ease;
-    }
-
-    .terms-list a:hover {
-      border-color: transparent;
-      background:
-        linear-gradient(#fff, #fff) padding-box,
-        var(--accent-gradient) border-box;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    }
-
-    .terms-list .terms-title {
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: var(--text-main);
-      margin-bottom: 4px;
-    }
-
-    .terms-list a:hover .terms-title {
-      background: var(--accent-gradient);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .terms-list .terms-desc {
-      font-size: 0.9rem;
-      color: var(--text-sub);
-    }
-  </style>
+  <!-- terms用スタイル -->
+  <link rel="stylesheet" href="../css/style_terms.css">
 </head>
 
 <body>
@@ -73,15 +27,25 @@
 
     <ul class="terms-list">
       <li>
-        <a href="website.html">
-          <div class="terms-title">サイト利用規約</div>
-          <div class="terms-desc">当サイトをご利用いただくにあたっての利用条件を定めています。</div>
+        <a href="website.html" class="terms-item">
+          <div class="terms-icon">
+            <i class="fa-solid fa-file-contract"></i>
+          </div>
+          <div class="terms-content">
+            <div class="terms-title">サイト利用規約</div>
+            <div class="terms-desc">当サイトをご利用いただくにあたっての利用条件を定めています。</div>
+          </div>
         </a>
       </li>
       <li>
-        <a href="privacy-policy.html">
-          <div class="terms-title">プライバシーポリシー</div>
-          <div class="terms-desc">個人情報の取り扱いについて定めています。</div>
+        <a href="privacy-policy.html" class="terms-item">
+          <div class="terms-icon">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+          <div class="terms-content">
+            <div class="terms-title">プライバシーポリシー</div>
+            <div class="terms-desc">個人情報の取り扱いについて定めています。</div>
+          </div>
         </a>
       </li>
     </ul>

@@ -6,15 +6,167 @@
   <title>Support | sekitan</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" />
+
   <link rel="stylesheet" href="css/style_common.css">
   <!-- header用スタイル -->
   <link rel="stylesheet" href="css/style_header.css">
-
   <!-- 共通フッター用スタイル -->
   <link rel="stylesheet" href="css/style_footer.css">
 
-</head>
+  <style>
+    /* =========================
+       Support Page Styles
+    ========================= */
 
+    .support-section {
+      margin-bottom: 40px;
+    }
+
+    .support-section h2 {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .support-section h2 i {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--accent-gradient);
+      border-radius: 50%;
+      color: #fff;
+      font-size: 1rem;
+    }
+
+    /* FAQ */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .faq-item {
+      background: #fafafa;
+      border-radius: var(--radius-md);
+      padding: 20px 24px;
+      border-left: 4px solid;
+      border-image: var(--accent-gradient) 1;
+    }
+
+    .faq-question {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .faq-question::before {
+      content: "Q";
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      background: var(--accent-gradient);
+      color: #fff;
+      border-radius: 50%;
+      font-size: 0.8rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .faq-answer {
+      font-size: 0.95rem;
+      color: var(--text-sub);
+      line-height: 1.7;
+      padding-left: 32px;
+    }
+
+    /* Contact Methods */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .contact-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 24px;
+      background: #fafafa;
+      border: 2px solid transparent;
+      border-radius: var(--radius-md);
+      transition: all 0.25s ease;
+      text-decoration: none;
+    }
+
+    .contact-card:hover {
+      background:
+        linear-gradient(#fff, #fff) padding-box,
+        var(--accent-gradient) border-box;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .contact-icon {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--accent-gradient);
+      border-radius: 50%;
+      color: #fff;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+
+    .contact-info {
+      flex: 1;
+    }
+
+    .contact-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 4px;
+    }
+
+    .contact-card:hover .contact-title {
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .contact-desc {
+      font-size: 0.85rem;
+      color: var(--text-sub);
+    }
+
+    .contact-note {
+      margin-top: 20px;
+      padding: 16px 20px;
+      background: #f0f8ff;
+      border-radius: var(--radius-sm);
+      font-size: 0.9rem;
+      color: var(--text-sub);
+    }
+
+    .contact-note i {
+      color: #1e90ff;
+      margin-right: 8px;
+    }
+  </style>
+</head>
 
 <body>
   <div id="header-placeholder"></div>
@@ -22,25 +174,66 @@
   <main>
     <h1>Support</h1>
 
-    <section id="faq">
-      <h2>FAQ</h2>
-      <dl>
-        <dt>Q1: よくある質問の例</dt>
-        <dd>A1: 回答の例です。</dd>
-
-        <dt>Q2: サイトの使い方について</dt>
-        <dd>A2: indexページやNewsページを参照してください。</dd>
-      </dl>
+    <section class="support-section" id="faq">
+      <h2>
+        <i class="fa-solid fa-circle-question"></i>
+        よくある質問
+      </h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-question">よくある質問の例</div>
+          <div class="faq-answer">回答の例です。ここに詳しい説明が入ります。</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">サイトの使い方について</div>
+          <div class="faq-answer">トップページやNewsページをご参照ください。各ページでは、最新の情報やお知らせを掲載しています。</div>
+        </div>
+      </div>
     </section>
 
-    <section id="contact">
-      <h2>Contact</h2>
-      <p>お問い合わせは以下の方法で受け付けています。<br>お問い合わせの際には、</p>
-      <ul>
-        <li><a href="https://forms.gle/cwymoc3pBTKMRLgx7" target="_blank">専用フォームから問い合わせる</a></li>
-        <li><a href="https://x.gd/KUW4n" target="_blank">XのDMで問い合わせる</a></li>
-        <li><a href="mailto:sekitan.info@gmail.com">メールで問い合わせる</a></li>
-      </ul>
+    <section class="support-section" id="contact">
+      <h2>
+        <i class="fa-solid fa-envelope"></i>
+        お問い合わせ
+      </h2>
+      <p>お問い合わせは以下の方法で受け付けています。</p>
+
+      <div class="contact-grid">
+        <a href="https://forms.gle/cwymoc3pBTKMRLgx7" target="_blank" class="contact-card">
+          <div class="contact-icon">
+            <i class="fa-solid fa-paper-plane"></i>
+          </div>
+          <div class="contact-info">
+            <div class="contact-title">専用フォーム</div>
+            <div class="contact-desc">Googleフォームからお問い合わせ</div>
+          </div>
+        </a>
+
+        <a href="https://x.gd/KUW4n" target="_blank" class="contact-card">
+          <div class="contact-icon">
+            <i class="fa-brands fa-x-twitter"></i>
+          </div>
+          <div class="contact-info">
+            <div class="contact-title">X (Twitter) DM</div>
+            <div class="contact-desc">ダイレクトメッセージで問い合わせ</div>
+          </div>
+        </a>
+
+        <a href="mailto:sekitan.info@gmail.com" class="contact-card">
+          <div class="contact-icon">
+            <i class="fa-solid fa-at"></i>
+          </div>
+          <div class="contact-info">
+            <div class="contact-title">メール</div>
+            <div class="contact-desc">sekitan.info@gmail.com</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="contact-note">
+        <i class="fa-solid fa-info-circle"></i>
+        お問い合わせの内容によっては、回答までにお時間をいただく場合があります。
+      </div>
     </section>
 
   </main>
