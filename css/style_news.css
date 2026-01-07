@@ -43,101 +43,150 @@ h1 {
 }
 
 /* =========================
-   News Filter
+   News Layout (2-Column)
 ========================= */
 
-#news-filter {
-  max-width: 960px;
-  margin: 0 auto 24px;
-  padding: 16px;
-
-  background:
-    linear-gradient(#fff, #fff) padding-box,
-    var(--accent-gradient) border-box;
-  border-top: 3px solid transparent;
+.news-layout {
+  display: flex;
+  gap: 32px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
 }
 
-#news-filter fieldset {
-  margin-bottom: 12px;
-  padding: 12px;
-  border: 1px solid #ccc;
-}
-
-#news-filter legend {
-  padding: 0 6px;
-  font-size: 0.9rem;
-  font-weight: 500;
-}
-
-#news-filter select,
-#news-filter button {
-  font-family: inherit;
-  font-size: 0.9rem;
-  padding: 6px 10px;
+.news-main {
+  flex: 1;
+  min-width: 0;
 }
 
 /* =========================
-   Filter Reset Button（完全固定版）
+   Filter Panel (Sidebar)
 ========================= */
 
-#filter-reset {
-  margin-top: 8px;
+.filter-panel {
+  width: 280px;
+  flex-shrink: 0;
+}
+
+.filter-panel-inner {
+  position: sticky;
+  top: 90px;
+  padding: 20px;
+  background: #fafafa;
+  border-radius: var(--radius-md);
+  border: 1px solid #e0e0e0;
+}
+
+.filter-title {
+  margin: 0 0 16px;
+  padding-bottom: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-bottom: 2px solid;
+  border-image: var(--accent-gradient) 1;
+}
+
+.filter-group {
+  margin-bottom: 20px;
+}
+
+.filter-label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-sub);
+}
+
+.date-selects {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+}
+
+.date-selects select {
+  padding: 6px 8px;
+  font-size: 0.85rem;
+  border: 1px solid #ccc;
+  border-radius: var(--radius-sm);
+  background: #fff;
+}
+
+.date-selects span {
+  font-size: 0.85rem;
+  margin-right: 6px;
+}
+
+#filter-category {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+#filter-category label {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
   padding: 4px 10px;
   font-size: 0.8rem;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+#filter-category label:hover {
+  border-color: #1e90ff;
+}
+
+#filter-category input[type="checkbox"]:checked+span,
+#filter-category label:has(input:checked) {
+  background: var(--accent-gradient);
+  color: #fff;
+  border-color: transparent;
+}
+
+#filter-reset {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px 16px;
+  font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
-
-  /* 通常時：枠線領域まで含めてグラデーションで塗る */
-  background: var(--accent-gradient) border-box; 
-  color: #fff;
-
-  /* サイズ固定のための設定 */
-  border: var(--border-w) solid transparent;
-  border-radius: var(--radius-sm);
-
-  position: relative;
-  transition: background 0.25s ease, color 0.25s ease;
-}
-
-/* グラデーション枠線 */
-#filter-reset::before {
-  content: "";
-  position: absolute;
-  /* 親のボーダー領域（-2px）にぴったり合わせる */
-  inset: calc(var(--border-w) * -1);
-
-  padding: var(--border-w);
-  /* 親の角丸をそのまま継承 */
-  border-radius: inherit; 
-
   background: var(--accent-gradient);
-
-  -webkit-mask:
-    linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.25s ease;
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm);
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
-/* ホバー時 */
 #filter-reset:hover {
-  /* 背景を白にする（padding-boxのみ白くし、枠線部分は::beforeに任せる） */
-  background: #fff padding-box;
-  
-  /* テキストをグラデーションにする */
-  color: transparent;
-  background-image: var(--accent-gradient);
-  -webkit-background-clip: text;
-  background-clip: text;
+  opacity: 0.9;
+  transform: translateY(-1px);
 }
 
-#filter-reset:hover::before {
-  opacity: 1;
+/* =========================
+   Responsive: Filter on top for mobile
+========================= */
+
+@media (max-width: 768px) {
+  .news-layout {
+    flex-direction: column-reverse;
+  }
+
+  .filter-panel {
+    width: 100%;
+    margin-bottom: 24px;
+  }
+
+  .filter-panel-inner {
+    position: static;
+  }
 }
+
+/* 古いフィルターリセットボタンのスタイルは削除済み */
 
 
 /* =========================
@@ -145,9 +194,6 @@ h1 {
 ========================= */
 
 #news-list {
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 0 16px;
   transition: opacity 0.2s ease;
 }
 

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <meta charset="UTF-8">
   <title>News | sekitan</title>
@@ -25,81 +26,101 @@
 <body>
   <div id="header-placeholder"></div>
 
-<main>
+  <main>
 
-<h1>News</h1>
+    <h1>News</h1>
 
-<section id="news-filter">
+    <div class="news-layout">
+      <!-- 左側：ニュースリスト -->
+      <div class="news-main">
+        <div id="news-list"></div>
+        <div id="no-news" style="display:none;">該当するお知らせはありません。</div>
+        <div id="pagination"></div>
+      </div>
 
-  <!-- 表示件数（現時点では未使用・完全封印） -->
+      <!-- 右側：フィルターパネル -->
+      <aside class="filter-panel">
+        <div class="filter-panel-inner">
+          <h2 class="filter-title">絞り込み</h2>
 
-  <fieldset>
-    <legend>カテゴリ</legend>
-    <div id="filter-category"></div>
-  </fieldset>
+          <div class="filter-group">
+            <label class="filter-label">カテゴリ</label>
+            <div id="filter-category"></div>
+          </div>
 
-  <fieldset>
-    <legend>から</legend>
-    <select id="filter-year"><option value="">--</option></select>年
-    <select id="filter-month">
-      <option value="">--</option>
-      <option value="01">1</option>
-      <option value="02">2</option>
-      <option value="03">3</option>
-      <option value="04">4</option>
-      <option value="05">5</option>
-      <option value="06">6</option>
-      <option value="07">7</option>
-      <option value="08">8</option>
-      <option value="09">9</option>
-      <option value="10">10</option>
-      <option value="11">11</option>
-      <option value="12">12</option>
-    </select>月
-    <select id="filter-day"><option value="">--</option></select>日
-  </fieldset>
+          <div class="filter-group">
+            <label class="filter-label">期間（から）</label>
+            <div class="date-selects">
+              <select id="filter-year">
+                <option value="">--</option>
+              </select><span>年</span>
+              <select id="filter-month">
+                <option value="">--</option>
+                <option value="01">1</option>
+                <option value="02">2</option>
+                <option value="03">3</option>
+                <option value="04">4</option>
+                <option value="05">5</option>
+                <option value="06">6</option>
+                <option value="07">7</option>
+                <option value="08">8</option>
+                <option value="09">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+              </select><span>月</span>
+              <select id="filter-day">
+                <option value="">--</option>
+              </select><span>日</span>
+            </div>
+          </div>
 
-  <fieldset>
-    <legend>〜まで</legend>
-    <select id="until-year"><option value="">--</option></select>年
-    <select id="until-month">
-      <option value="">--</option>
-      <option value="01">1</option>
-      <option value="02">2</option>
-      <option value="03">3</option>
-      <option value="04">4</option>
-      <option value="05">5</option>
-      <option value="06">6</option>
-      <option value="07">7</option>
-      <option value="08">8</option>
-      <option value="09">9</option>
-      <option value="10">10</option>
-      <option value="11">11</option>
-      <option value="12">12</option>
-    </select>月
-    <select id="until-day"><option value="">--</option></select>日
-  </fieldset>
+          <div class="filter-group">
+            <label class="filter-label">期間（まで）</label>
+            <div class="date-selects">
+              <select id="until-year">
+                <option value="">--</option>
+              </select><span>年</span>
+              <select id="until-month">
+                <option value="">--</option>
+                <option value="01">1</option>
+                <option value="02">2</option>
+                <option value="03">3</option>
+                <option value="04">4</option>
+                <option value="05">5</option>
+                <option value="06">6</option>
+                <option value="07">7</option>
+                <option value="08">8</option>
+                <option value="09">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+              </select><span>月</span>
+              <select id="until-day">
+                <option value="">--</option>
+              </select><span>日</span>
+            </div>
+          </div>
 
-  <button id="filter-reset" type="button">フィルタをすべて解除</button>
-</section>
-
-<div id="news-list"></div>
-<div id="no-news" style="display:none;">該当するお知らせはありません。</div>
-<div id="pagination"></div>
+          <button id="filter-reset" type="button">すべてクリア</button>
+        </div>
+      </aside>
+    </div>
 
 
-</main>
+  </main>
 
   <div id="footer-placeholder"></div>
 
-<!-- ニュース読み込み用JS -->
-<script src="js/script_news-constants.js"></script>
-<script src="js/script_news.js"></script>
+  <!-- ニュース読み込み用JS -->
+  <script src="js/script_news-constants.js"></script>
+  <script src="js/script_news.js"></script>
 
-<!-- 共通ヘッダー・フッター読み込み用JS -->
-<script>const relPath = "./";</script>
-<script src="./js/script_header-load.js" defer></script>
-<script src="./js/script_footer-load.js"></script>
+  <!-- 共通ヘッダー・フッター読み込み用JS -->
+  <script>const relPath = "./";</script>
+  <script src="./js/script_header-load.js" defer></script>
+  <script src="./js/script_footer-load.js"></script>
 
 </body>
+
 </html>
