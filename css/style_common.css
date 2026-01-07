@@ -50,10 +50,12 @@ body {
 /* mainタグや、左右中央に寄せたい要素にこのクラスを付与するか、
    直接 main { ... } に指定します。
 */
-main, .container {
+main,
+.container {
   max-width: var(--content-width);
   margin: 0 auto;
-  padding: 0 16px; /* 画面端ギリギリにならないための余白 */
+  padding: 0 16px;
+  /* 画面端ギリギリにならないための余白 */
 }
 
 /* =========================
@@ -85,7 +87,7 @@ a {
 }
 
 a:hover {
-  opacity: 0.7;
+  opacity: 1;
 }
 
 /* =========================
@@ -107,7 +109,9 @@ a:hover {
   background-clip: text;
   color: transparent;
   font-weight: bold;
-}/* =========================
+}
+
+/* =========================
     Design Tokens / Variables
 ========================= */
 
@@ -157,10 +161,11 @@ body {
 ========================= */
 
 /* mainタグや、中央寄せにしたい要素に適用。左右に適切な余白を確保します。 */
-main, .container {
+main,
+.container {
   max-width: var(--content-width);
   margin: 0 auto;
-  padding: 0 16px; 
+  padding: 0 16px;
 }
 
 /* =========================
@@ -190,9 +195,9 @@ a {
   transition: opacity 0.3s, filter 0.3s;
 }
 
-/* 通常のリンクはホバーで少し薄くする */
+/* 通常のリンクはホバーで薄くしない */
 a:hover {
-  opacity: 0.7;
+  opacity: 1;
 }
 
 /* グラデーション文字、ヘッダーのリンク、SNSボタンなどは
@@ -203,7 +208,8 @@ a:hover {
 .sns-btn:hover,
 #filter-reset:hover {
   opacity: 1;
-  filter: brightness(1.2); /* 少し明るくする */
+  filter: brightness(1.2);
+  /* 少し明るくする */
 }
 
 /* =========================
@@ -225,5 +231,6 @@ a:hover {
   background-clip: text;
   color: transparent;
   font-weight: bold;
-  display: inline-block; /* 確実にグラデーションを描画させる */
+  display: inline-block;
+  /* 確実にグラデーションを描画させる */
 }
