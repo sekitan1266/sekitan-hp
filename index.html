@@ -3,42 +3,86 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>sekitan</title>
+  <title>sekitan.net | 真岡線ファンサイト</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="真岡鐵道真岡線のファンサイト「sekitan.net」。BVEデータ制作や資料の公開を行っています。">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" />
 
   <!-- 共通スタイル -->
   <link rel="stylesheet" href="css/style_common.css">
-
-  <!-- header用スタイル -->
   <link rel="stylesheet" href="css/style_header.css">
-
-  <!-- 共通フッター用スタイル -->
   <link rel="stylesheet" href="css/style_footer.css">
+  <!-- Top Page Specific Style -->
+  <link rel="stylesheet" href="css/style_index.css">
 </head>
-
 
 <body>
   <div id="header-placeholder"></div>
 
   <main>
 
-    <h1>sekitan</h1>
+    <!-- Hero Section -->
+    <section class="index-hero">
+      <h1 class="hero-logo">sekitan.net</h1>
+      <p class="hero-p">真岡鐡道真岡線 調査・研究・BVE制作</p>
+    </section>
 
-    <div id="news-list"></div>
-    <a href="news.html">もっと見る</a>
+    <!-- Navigation Cards -->
+    <section class="nav-grid">
+      <a href="project-moka.html" class="nav-card">
+        <div class="nav-icon"><i class="fa-solid fa-train"></i></div>
+        <div class="nav-title">Project Moka</div>
+        <div class="nav-desc">BVEデータ制作・真岡線資料ハブ</div>
+      </a>
+
+      <a href="news.html" class="nav-card">
+        <div class="nav-icon"><i class="fa-solid fa-newspaper"></i></div>
+        <div class="nav-title">News</div>
+        <div class="nav-desc">活動記録・更新のお知らせ</div>
+      </a>
+
+      <a href="profile.html" class="nav-card">
+        <div class="nav-icon"><i class="fa-solid fa-id-card"></i></div>
+        <div class="nav-title">Profile</div>
+        <div class="nav-desc">運営者(せきたん)について</div>
+      </a>
+
+      <a href="support.html" class="nav-card">
+        <div class="nav-icon"><i class="fa-solid fa-headset"></i></div>
+        <div class="nav-title">Support</div>
+        <div class="nav-desc">お問い合わせ・FAQ</div>
+      </a>
+    </section>
+
+    <!-- Latest News Update (Simplified) -->
+    <section class="top-news">
+      <div class="top-news-header">
+        <h2><i class="fa-solid fa-bullhorn" style="color:#1e90ff; margin-right:8px;"></i>Latest News</h2>
+        <a href="news.html">お知らせ一覧 <i class="fa-solid fa-chevron-right"></i></a>
+      </div>
+
+      <!-- Javascript will populate this -->
+      <div id="news-list" class="news-list-simple">
+        <p style="text-align:center; color:#999;">読み込み中...</p>
+      </div>
+    </section>
 
   </main>
 
   <div id="footer-placeholder"></div>
 
+  <!-- News script - needs to be adapted or check if script_index-news.js works with new classes -->
   <script src="js/script_index-news.js"></script>
 
-  <!-- 共通ヘッダー・フッター読み込み用JS -->
+  <!-- 共通ヘッダー・フッター -->
   <script>const relPath = "./";</script>
   <script src="./js/script_header-load.js" defer></script>
-  <script src="./js/script_header.js" defer></script> <!-- ヘッダー制御用（ハンバーガーメニュー等） -->
+  <script src="./js/script_header.js" defer></script>
   <script src="./js/script_footer-load.js"></script>
 
 </body>

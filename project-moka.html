@@ -3,56 +3,118 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Project Moka</title>
+  <title>Project Moka | sekitan</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="BVE Trainsim用真岡線データ制作プロジェクト「Project Moka」の公式サイトです。">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" />
 
   <link rel="stylesheet" href="css/style_common.css">
-  <!-- header用スタイル -->
   <link rel="stylesheet" href="css/style_header.css">
-
-  <!-- 共通フッター用スタイル -->
   <link rel="stylesheet" href="css/style_footer.css">
+  <link rel="stylesheet" href="css/style_project.css">
 </head>
 
+<body>
+  <div id="header-placeholder"></div>
 
-<div id="header-placeholder"></div>
+  <main>
+    <!-- Hero Section -->
+    <section class="project-hero">
+      <h1>Project Moka</h1>
+      <p>BVE Trainsim 真岡線データ制作 & 総合情報ハブ</p>
+    </section>
 
-<main>
+    <!-- About -->
+    <section class="project-section">
+      <p style="text-align: center; line-height: 2;">
+        Project Mokaは、真岡鐵道真岡線のデータを集約し、<br>
+        BVE Trainsim用の路線データを制作・公開することを目指す個人プロジェクトです。<br>
+        "公式感"と"親しみやすさ"を大切に、真岡ファンのためのデータ拠点を作ります。
+      </p>
+    </section>
 
-  <!-- 概要 -->
-  <section id="about">
-    <h2>Project概要</h2>
-    <p>
-      BVE真岡線 Projectは、BVE Trainsim用の真岡線データ制作を目的とした個人プロジェクトです。<br>
-    </p>
-  </section>
+    <!-- Content Hub Grid -->
+    <section class="project-section">
+      <h2><i class="fa-solid fa-layer-group"></i> Project Contents</h2>
+      <div class="hub-grid">
 
-  <!-- 研究・方針 -->
-  <section id="policy">
-    <h2>制作方針</h2>
-    <p>上り線（茂木→下館）の制作を行っています。<br>
-      現時点では線形データを形にしようする段階です。<br>
-      駅のストラクチャについては自作のものを使用する予定です。<br>
-      その他沿線のストラクチャに関しては、検討中です。
-    </p>
-  </section>
+        <!-- Vehicles -->
+        <div class="hub-card">
+          <div class="hub-icon"><i class="fa-solid fa-train"></i></div>
+          <h3 class="hub-title">使用車両</h3>
+          <p class="hub-desc">真岡線で活躍する車両（モオカ14形、C12、DE10など）の詳細データ。</p>
+          <span class="status-badge wip">準備中</span>
+        </div>
 
-  <!-- クレジット -->
-  <section id="credit">
-    <h2>クレジット</h2>
-    <p>企画・制作：せきたん</p>
-  </section>
+        <!-- Timetable -->
+        <div class="hub-card">
+          <div class="hub-icon"><i class="fa-regular fa-clock"></i></div>
+          <h3 class="hub-title">時刻表・ダイヤ</h3>
+          <p class="hub-desc">列車運行ダイヤ、交換駅の情報などのまとめ。</p>
+          <span class="status-badge wip">準備中</span>
+        </div>
 
-</main>
+        <!-- Operation -->
+        <div class="hub-card">
+          <div class="hub-icon"><i class="fa-solid fa-retweet"></i></div>
+          <h3 class="hub-title">車両運用</h3>
+          <p class="hub-desc">日々の車両の運用ローテーション情報の集積。</p>
+          <span class="status-badge wip">準備中</span>
+        </div>
 
-<div id="footer-placeholder"></div>
+        <!-- Crew -->
+        <div class="hub-card">
+          <div class="hub-icon"><i class="fa-solid fa-user-tie"></i></div>
+          <h3 class="hub-title">乗務員仕業</h3>
+          <p class="hub-desc">運転士の乗務シフト（行路）に関するデータ。</p>
+          <span class="status-badge wip">準備中</span>
+        </div>
 
-<!-- 共通ヘッダー・フッター読み込み用JS -->
-<script>const relPath = "./";</script>
-<script src="./js/script_header-load.js" defer></script>
-<script src="./js/script_header.js" defer></script> <!-- ヘッダー制御用（ハンバーガーメニュー等） -->
-<script src="./js/script_footer-load.js"></script>
+        <!-- Track / Alignment -->
+        <div class="hub-card">
+          <div class="hub-icon"><i class="fa-solid fa-road"></i></div>
+          <h3 class="hub-title">線形・ストラクチャ</h3>
+          <p class="hub-desc">勾配、曲線半径、および沿線風景の再現に関する資料。</p>
+          <span class="status-badge wip">設計・検討中</span>
+        </div>
+
+        <!-- BVE Download (Future) -->
+        <div class="hub-card">
+          <div class="hub-icon"><i class="fa-solid fa-download"></i></div>
+          <h3 class="hub-title">データダウンロード</h3>
+          <p class="hub-desc">制作したBVEデータの配布について。</p>
+          <span class="status-badge wip">未定</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Policy / Status -->
+    <section class="project-section">
+      <h2><i class="fa-solid fa-clipboard-check"></i> 制作状況・方針</h2>
+      <div style="background: #fafafa; padding: 20px; border-radius: 12px;">
+        <p><strong>現在の進捗：</strong><br>
+          主に上り線（茂木 → 下館）のデータ制作を進めています。現在は線形データの入力段階です。</p>
+        <p style="margin-top: 10px;">
+          <strong>ストラクチャについて：</strong><br>
+          主要駅や特徴的な施設は自作ストラクチャを使用予定です。
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script>const relPath = "./";</script>
+  <script src="./js/script_header-load.js" defer></script>
+  <script src="./js/script_header.js" defer></script>
+  <script src="./js/script_footer-load.js"></script>
+</body>
 
 </html>

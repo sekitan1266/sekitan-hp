@@ -1,0 +1,183 @@
+/* =========================
+   Support Page Styles
+========================= */
+
+.support-section {
+  margin-bottom: 40px;
+}
+
+.support-section h2 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  font-size: 1.4rem;
+}
+
+.support-section h2 i {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent-gradient);
+  border-radius: 50%;
+  color: #fff;
+  font-size: 1rem;
+}
+
+/* FAQ */
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.faq-item {
+  background: #fafafa;
+  border-radius: var(--radius-md);
+  padding: 24px;
+  border-left: 6px solid;
+  border-image: var(--accent-gradient) 1;
+  transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+  background: #fff;
+}
+
+.faq-question {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  /* タイトルと記号を揃える */
+  gap: 12px;
+}
+
+.faq-question::before {
+  content: "Q";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: var(--accent-gradient);
+  color: #fff;
+  border-radius: 50%;
+  font-size: 0.85rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.faq-answer {
+  font-size: 0.95rem;
+  color: var(--text-sub);
+  line-height: 1.8;
+  padding-left: 40px;
+}
+
+/* Contact Methods */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.contact-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 24px;
+  background: #fff;
+  border: 1px solid #eee;
+  /* デフォルトは薄い枠線 */
+  border-radius: var(--radius-md);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 統一感のための左アクセントバー */
+.contact-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 6px;
+  height: 100%;
+  background: var(--accent-gradient);
+  transition: width 0.3s ease;
+}
+
+.contact-card:hover {
+  border-color: transparent;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transform: translateY(-4px);
+}
+
+.contact-card:hover::before {
+  width: 10px;
+}
+
+.contact-icon {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent-gradient);
+  border-radius: 12px;
+  color: #fff;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.contact-card:hover .contact-icon {
+  transform: rotate(-10deg) scale(1.1);
+}
+
+.contact-info {
+  flex: 1;
+}
+
+.contact-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 4px;
+}
+
+.contact-card:hover .contact-title {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.contact-desc {
+  font-size: 0.85rem;
+  color: var(--text-sub);
+}
+
+.contact-note {
+  margin-top: 20px;
+  padding: 16px 20px;
+  background: #f0f8ff;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  color: var(--text-sub);
+}
+
+.contact-note i {
+  color: #1e90ff;
+  margin-right: 8px;
+}
