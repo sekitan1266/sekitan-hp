@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <title>真岡鐡道研究アーカイブ | sekitan.net</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="真岡鐡道真岡線の車両、ダイヤ、運用、線形などの調査データを集約したデジタルアーカイブプロジェクト。">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" />
+
+  <link rel="stylesheet" href="../css/style_common.css">
+  <link rel="stylesheet" href="../css/style_header.css">
+  <link rel="stylesheet" href="../css/style_footer.css">
+  <link rel="stylesheet" href="css/style_archive.css">
+</head>
+
+<body>
+  <div id="header-placeholder"></div>
+
+  <main>
+    <!-- Header -->
+    <header class="archive-hero">
+      <h1>Moka Railway Archive</h1>
+      <p>真岡鐡道真岡線 調査・研究データ集積地</p>
+    </header>
+
+    <!-- Concept Section -->
+    <section class="archive-section">
+      <div style="background:#fff; border:1px solid #eee; padding:30px; border-radius:12px; line-height:1.8;">
+        <h2><i class="fa-solid fa-book-open-reader"></i> コンセプト</h2>
+        <p>
+          「真岡線ファン・せきたんによる、真岡線の総合データバンク」<br>
+          個人で長年調査・収集してきた膨大なデータを整理し、真岡線を愛するすべての人、<br>
+          そしてBVE等のシミュレータ制作に携わる方々のためのリソースとして公開しています。
+        </p>
+      </div>
+    </section>
+
+    <!-- Category Grid -->
+    <section class="archive-section">
+      <h2><i class="fa-solid fa-folder-tree"></i> データカテゴリー</h2>
+      <div class="archive-grid">
+
+        <!-- Vehicles -->
+        <a href="vehicles.html" class="archive-card">
+          <div class="archive-card-icon"><i class="fa-solid fa-train"></i></div>
+          <div class="archive-card-content">
+            <h3 class="archive-card-title">車両図鑑</h3>
+            <p class="archive-card-desc">現役・歴代車両の詳細スペック、外観、主要諸元。DE10やSL、モオカ14形など。</p>
+          </div>
+        </a>
+
+        <!-- Timetable -->
+        <a href="timetable.html" class="archive-card">
+          <div class="archive-card-icon"><i class="fa-regular fa-calendar-days"></i></div>
+          <div class="archive-card-content">
+            <h3 class="archive-card-title">ダイヤ・時刻表</h3>
+            <p class="archive-card-desc">詳細な全駅時刻表、交換待ち合わせ情報。現行ダイヤの徹底解説。</p>
+          </div>
+        </a>
+
+        <!-- Operations -->
+        <a href="operations.html" class="archive-card">
+          <div class="archive-card-icon"><i class="fa-solid fa-arrows-spin"></i></div>
+          <div class="archive-card-content">
+            <h3 class="archive-card-title">運用・仕業データ</h3>
+            <p class="archive-card-desc">車両の運用ローテーション、および運転士・車掌の行路表（仕業）の再現。</p>
+          </div>
+        </a>
+
+        <!-- Track -->
+        <a href="track.html" class="archive-card">
+          <div class="archive-card-icon"><i class="fa-solid fa-ruler-combined"></i></div>
+          <div class="archive-card-content">
+            <h3 class="archive-card-title">路線データ（線形）</h3>
+            <p class="archive-card-desc">勾配、曲線半径、キロ程など、路線の構造に関する詳細な科学的データ。</p>
+          </div>
+        </a>
+
+        <!-- Reports -->
+        <a href="reports.html" class="archive-card">
+          <div class="archive-card-icon"><i class="fa-solid fa-file-lines"></i></div>
+          <div class="archive-card-content">
+            <h3 class="archive-card-title">調査レポート</h3>
+            <p class="archive-card-desc">特定の駅や歴史、特殊な運転形態などを深く掘り下げた研究資料。</p>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- Footer Note / Link to BVE -->
+    <section class="archive-section" style="text-align: center; margin-bottom: 80px;">
+      <p style="color:var(--text-sub); margin-bottom: 20px;">これらのデータを活用したシミュレータ制作プロジェクトはこちら</p>
+      <a href="../project-moka.html" class="archive-card"
+        style="display:inline-flex; max-width: 400px; margin: 0 auto; text-align: left;">
+        <div class="archive-card-icon" style="background:var(--accent-gradient); color:#fff;"><i
+            class="fa-solid fa-laptop-code"></i></div>
+        <div class="archive-card-content">
+          <h3 class="archive-card-title">Project Moka (BVE制作)</h3>
+          <p class="archive-card-desc">研究アーカイブの数値データを元にしたBVE制作プロジェクト。進捗や配布はこちら。</p>
+        </div>
+      </a>
+    </section>
+
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script>const relPath = "../";</script>
+  <script src="../js/script_header-load.js" defer></script>
+  <script src="../js/script_header.js" defer></script>
+  <script src="../js/script_footer-load.js"></script>
+</body>
+
+</html>

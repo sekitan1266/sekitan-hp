@@ -1,0 +1,150 @@
+/* =========================
+   Archive (Moka Railway) Styles
+========================= */
+
+:root {
+  --archive-accent: #2c3e50;
+  /* More serious, museum-like dark slate blue */
+  --archive-bg: #fdfdfd;
+  --table-border: #ddd;
+  --table-header: #f8f9fa;
+}
+
+/* Hero for Archive */
+.archive-hero {
+  background: var(--archive-accent);
+  color: #fff;
+  padding: 60px 20px;
+  text-align: center;
+  border-bottom: 4px solid #1a252f;
+}
+
+.archive-hero h1 {
+  font-size: 2.2rem;
+  margin: 0;
+  letter-spacing: 0.1em;
+}
+
+.archive-hero p {
+  opacity: 0.8;
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+/* Section Style */
+.archive-section {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.archive-section h2 {
+  font-size: 1.5rem;
+  margin-bottom: 24px;
+  border-bottom: 2px solid var(--archive-accent);
+  padding-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Category Grid (Museum Style) */
+.archive-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.archive-card {
+  display: flex;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.archive-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.archive-card-icon {
+  width: 80px;
+  background: #f4f6f8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--archive-accent);
+  font-size: 1.8rem;
+}
+
+.archive-card-content {
+  padding: 20px;
+  flex: 1;
+}
+
+.archive-card-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: var(--archive-accent);
+}
+
+.archive-card-desc {
+  font-size: 0.85rem;
+  color: var(--text-sub);
+  line-height: 1.5;
+}
+
+/* Table Styles for Data */
+.responsive-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 0.95rem;
+  background: #fff;
+}
+
+.responsive-table th,
+.responsive-table td {
+  padding: 12px 15px;
+  border: 1px solid var(--table-border);
+  text-align: left;
+}
+
+.responsive-table thead tr {
+  background-color: var(--table-header);
+  font-weight: bold;
+}
+
+.responsive-table tbody tr:nth-of-type(even) {
+  background-color: #fafafa;
+}
+
+/* Link to BVE */
+.bve-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  padding: 4px 12px;
+  background: #e8f5e9;
+  color: #2e7d32;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.bve-link:hover {
+  background: #c8e6c9;
+}
+
+/* Mobile responsive for tables - simple version: horizontal scroll */
+.table-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}

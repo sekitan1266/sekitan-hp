@@ -26,84 +26,79 @@
     <!-- Hero Section -->
     <section class="project-hero">
       <h1>Project Moka</h1>
-      <p>BVE Trainsim 真岡線データ制作 & 総合情報ハブ</p>
+      <p>BVE Trainsim 真岡線再現プロジェクト</p>
     </section>
 
-    <!-- About -->
+    <!-- About BVE Project -->
     <section class="project-section">
-      <p style="text-align: center; line-height: 2;">
-        Project Mokaは、真岡鐵道真岡線のデータを集約し、<br>
-        BVE Trainsim用の路線データを制作・公開することを目指す個人プロジェクトです。<br>
-        "公式感"と"親しみやすさ"を大切に、真岡ファンのためのデータ拠点を作ります。
-      </p>
+      <div style="text-align: center; max-width: 800px; margin: 0 auto; line-height: 1.8;">
+        <p>
+          BVE真岡線プロジェクトは、真岡鐡道真岡線の全線をBVE Trainsim上で忠実に再現することを目指す個人プロジェクトです。<br>
+          <a href="moka-railway/index.html" style="color: #1e90ff; font-weight: 700; text-decoration: none;">
+            <i class="fa-solid fa-box-archive"></i> 真岡鐡道研究アーカイブ
+          </a> で蓄積した高精度なデータを基に、リアリティのある運転体験を追求します。
+        </p>
+      </div>
     </section>
 
-    <!-- Content Hub Grid -->
+    <!-- BVE Production Progress -->
     <section class="project-section">
-      <h2><i class="fa-solid fa-layer-group"></i> Project Contents</h2>
+      <h2><i class="fa-solid fa-laptop-code"></i> 制作・配布ステータス</h2>
       <div class="hub-grid">
 
-        <!-- Vehicles -->
+        <!-- Scenario -->
+        <div class="hub-card">
+          <div class="hub-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+          <h3 class="hub-title">路線（茂木 → 下館）</h3>
+          <p class="hub-desc">上り線の線形入力完了。ストラクチャ配置作業中。</p>
+          <span class="status-badge wip">進捗 35%</span>
+        </div>
+
+        <!-- Train -->
         <div class="hub-card">
           <div class="hub-icon"><i class="fa-solid fa-train"></i></div>
-          <h3 class="hub-title">使用車両</h3>
-          <p class="hub-desc">真岡線で活躍する車両（モオカ14形、C12、DE10など）の詳細データ。</p>
-          <span class="status-badge wip">準備中</span>
+          <h3 class="hub-title">車両（モオカ14形）</h3>
+          <p class="hub-desc">プラグイン開発およびサウンド調整中。</p>
+          <span class="status-badge wip">進捗 60%</span>
         </div>
 
-        <!-- Timetable -->
-        <div class="hub-card">
-          <div class="hub-icon"><i class="fa-regular fa-clock"></i></div>
-          <h3 class="hub-title">時刻表・ダイヤ</h3>
-          <p class="hub-desc">列車運行ダイヤ、交換駅の情報などのまとめ。</p>
-          <span class="status-badge wip">準備中</span>
-        </div>
-
-        <!-- Operation -->
-        <div class="hub-card">
-          <div class="hub-icon"><i class="fa-solid fa-retweet"></i></div>
-          <h3 class="hub-title">車両運用</h3>
-          <p class="hub-desc">日々の車両の運用ローテーション情報の集積。</p>
-          <span class="status-badge wip">準備中</span>
-        </div>
-
-        <!-- Crew -->
-        <div class="hub-card">
-          <div class="hub-icon"><i class="fa-solid fa-user-tie"></i></div>
-          <h3 class="hub-title">乗務員仕業</h3>
-          <p class="hub-desc">運転士の乗務シフト（行路）に関するデータ。</p>
-          <span class="status-badge wip">準備中</span>
-        </div>
-
-        <!-- Track / Alignment -->
-        <div class="hub-card">
-          <div class="hub-icon"><i class="fa-solid fa-road"></i></div>
-          <h3 class="hub-title">線形・ストラクチャ</h3>
-          <p class="hub-desc">勾配、曲線半径、および沿線風景の再現に関する資料。</p>
-          <span class="status-badge wip">設計・検討中</span>
-        </div>
-
-        <!-- BVE Download (Future) -->
+        <!-- Download -->
         <div class="hub-card">
           <div class="hub-icon"><i class="fa-solid fa-download"></i></div>
-          <h3 class="hub-title">データダウンロード</h3>
-          <p class="hub-desc">制作したBVEデータの配布について。</p>
-          <span class="status-badge wip">未定</span>
+          <h3 class="hub-title">先行配布</h3>
+          <p class="hub-desc">β版の一般公開は現在未定です。</p>
+          <span class="status-badge">準備中</span>
         </div>
 
       </div>
     </section>
 
-    <!-- Policy / Status -->
+    <!-- Connection to Archive -->
     <section class="project-section">
-      <h2><i class="fa-solid fa-clipboard-check"></i> 制作状況・方針</h2>
-      <div style="background: #fafafa; padding: 20px; border-radius: 12px;">
-        <p><strong>現在の進捗：</strong><br>
-          主に上り線（茂木 → 下館）のデータ制作を進めています。現在は線形データの入力段階です。</p>
-        <p style="margin-top: 10px;">
-          <strong>ストラクチャについて：</strong><br>
-          主要駅や特徴的な施設は自作ストラクチャを使用予定です。
-        </p>
+      <h2><i class="fa-solid fa-magnifying-glass-chart"></i> 研究データとの連携</h2>
+      <div
+        style="background: #f0f8ff; padding: 25px; border-radius: 12px; display: flex; align-items: center; gap: 20px;">
+        <div style="font-size: 2.5rem; color: #1e90ff;"><i class="fa-solid fa-database"></i></div>
+        <div>
+          <h3 style="margin-bottom: 8px;">正確な再現のために</h3>
+          <p style="font-size: 0.95rem;">本プロジェクトでは、現地調査に基づいた勾配、曲線、運転操作の再現を行っています。使用している数値データは「Moka Railway
+            Archive」にて一般公開しています。</p>
+          <a href="moka-railway/index.html" class="cta-button" style="margin-top: 10px;">研究アーカイブを見る</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Policy -->
+    <section class="project-section">
+      <h2><i class="fa-solid fa-bullseye"></i> 制作方針</h2>
+      <div style="background: #fafafa; padding: 20px; border-radius: 12px; border-left: 5px solid #1e90ff;">
+        <ul style="list-style: none; padding: 0;">
+          <li style="margin-bottom: 10px;"><i class="fa-solid fa-check" style="color:#2ecc71;"></i> 自作ストラクチャによる主要駅の再現
+          </li>
+          <li style="margin-bottom: 10px;"><i class="fa-solid fa-check" style="color:#2ecc71;"></i> ATS-P等の保安システムの正確な挙動
+          </li>
+          <li><i class="fa-solid fa-check" style="color:#2ecc71;"></i> 実車録音をベースにした臨場感あるサウンド</li>
+        </ul>
       </div>
     </section>
 
