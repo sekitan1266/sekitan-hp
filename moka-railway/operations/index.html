@@ -33,21 +33,27 @@
     <div class="archive-grid">
 
       <!-- Vehicle Operations -->
-      <section class="archive-section" style="grid-column: 1 / -1;">
-        <h2><i class="fa-solid fa-train"></i> 車両運用 <span
-            style="font-size: 0.6em; font-weight: normal; margin-left: 10px; vertical-align: middle; background: #eee; padding: 2px 8px; border-radius: 4px;">2023/03/18
-            改正</span></h2>
+      <section class="archive-section" style="grid-column: span 1; width: 100%;">
+        <h2
+          style="display:flex; justify-content:space-between; align-items:center; border-bottom: 2px solid #1A214D; padding-bottom:8px;">
+          <span><i class="fa-solid fa-train"></i> 車両運用</span>
+          <span
+            style="font-size: 0.8rem; font-weight: normal; background: #eee; padding: 2px 8px; border-radius: 4px;">2023/03/18
+            改正</span>
+        </h2>
         <p>どの車両がどの列車を担当するかを示す運用表。</p>
-        <div class="archive-grid" style="margin-top:20px;">
+        <div class="archive-grid" style="margin-top:20px; grid-template-columns: 1fr;">
           <a href="2023-03-18/vehicle/weekday.html" class="archive-card">
-            <div class="archive-card-icon"><i class="fa-regular fa-calendar"></i></div>
+            <div class="archive-card-icon" style="color: #1976d2; background-color: #e3f2fd;"><i
+                class="fa-regular fa-calendar"></i></div>
             <div class="archive-card-content">
               <h3 class="archive-card-title">平日運用</h3>
               <p class="archive-card-desc">平日の車両運用パターン（運AXXなど）</p>
             </div>
           </a>
           <a href="2023-03-18/vehicle/holiday.html" class="archive-card">
-            <div class="archive-card-icon"><i class="fa-regular fa-calendar-check"></i></div>
+            <div class="archive-card-icon" style="color: #d32f2f; background-color: #ffebee;"><i
+                class="fa-regular fa-calendar-check"></i></div>
             <div class="archive-card-content">
               <h3 class="archive-card-title">休日運用</h3>
               <p class="archive-card-desc">土日祝日の車両運用パターン（運BXXなど）</p>
@@ -57,21 +63,27 @@
       </section>
 
       <!-- Crew Shifts -->
-      <section class="archive-section" style="grid-column: 1 / -1; margin-top:20px;">
-        <h2><i class="fa-solid fa-user-clock"></i> 乗務員仕業 <span
-            style="font-size: 0.6em; font-weight: normal; margin-left: 10px; vertical-align: middle; background: #eee; padding: 2px 8px; border-radius: 4px;">2023/03/18
-            改正</span></h2>
+      <section class="archive-section" style="grid-column: span 1; width: 100%; margin-top:0;">
+        <h2
+          style="display:flex; justify-content:space-between; align-items:center; border-bottom: 2px solid #1A214D; padding-bottom:8px;">
+          <span><i class="fa-solid fa-user-clock"></i> 乗務員仕業</span>
+          <span
+            style="font-size: 0.8rem; font-weight: normal; background: #eee; padding: 2px 8px; border-radius: 4px;">2023/03/18
+            改正</span>
+        </h2>
         <p>運転士・車掌の乗務スケジュール（行路）の自主研究・再現。</p>
-        <div class="archive-grid" style="margin-top:20px;">
+        <div class="archive-grid" style="margin-top:20px; grid-template-columns: 1fr;">
           <a href="2023-03-18/crew/weekday.html" class="archive-card">
-            <div class="archive-card-icon"><i class="fa-regular fa-calendar"></i></div>
+            <div class="archive-card-icon" style="color: #1976d2; background-color: #e3f2fd;"><i
+                class="fa-regular fa-calendar"></i></div>
             <div class="archive-card-content">
               <h3 class="archive-card-title">平日仕業</h3>
               <p class="archive-card-desc">平日の乗務行路（自作再現データ）</p>
             </div>
           </a>
           <a href="2023-03-18/crew/holiday.html" class="archive-card">
-            <div class="archive-card-icon"><i class="fa-regular fa-calendar-check"></i></div>
+            <div class="archive-card-icon" style="color: #d32f2f; background-color: #ffebee;"><i
+                class="fa-regular fa-calendar-check"></i></div>
             <div class="archive-card-content">
               <h3 class="archive-card-title">休日仕業</h3>
               <p class="archive-card-desc">土日祝日の乗務行路（自作再現データ）</p>
