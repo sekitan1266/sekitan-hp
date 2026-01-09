@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <title>運用・仕業データ | 真岡鐡道研究アーカイブ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" />
+  <link rel="stylesheet" href="../../css/style_common.css">
+  <link rel="stylesheet" href="../../css/style_header.css">
+  <link rel="stylesheet" href="../../css/style_footer.css">
+  <link rel="stylesheet" href="../css/style_archive.css">
+</head>
+
+<body>
+  <div id="header-placeholder"></div>
+
+  <main>
+    <div class="archive-breadcrumb">
+      <div class="breadcrumb-inner">
+        <a href="../index.html">Archive Top</a>
+        <i class="fa-solid fa-chevron-right"></i>
+        <span>Operations</span>
+      </div>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="archive-hero small-hero">
+      <h1><i class="fa-solid fa-arrows-spin"></i> 運用・仕業データ</h1>
+      <p>車両の運用ダイヤと、乗務員（運転士・車掌）の行路表に関する研究データ。</p>
+    </header>
+
+    <div class="archive-grid">
+
+      <!-- Vehicle Operations -->
+      <section class="archive-section" style="grid-column: 1 / -1;">
+        <h2><i class="fa-solid fa-train"></i> 車両運用</h2>
+        <p>どの車両がどの列車を担当するかを示す運用表。</p>
+        <div class="archive-grid" style="margin-top:20px;">
+          <a href="vehicle-weekday.html" class="archive-card">
+            <div class="archive-card-icon"><i class="fa-regular fa-calendar"></i></div>
+            <div class="archive-card-content">
+              <h3 class="archive-card-title">平日運用</h3>
+              <p class="archive-card-desc">平日の車両運用パターン（運AXXなど）</p>
+            </div>
+          </a>
+          <a href="vehicle-holiday.html" class="archive-card">
+            <div class="archive-card-icon"><i class="fa-regular fa-calendar-check"></i></div>
+            <div class="archive-card-content">
+              <h3 class="archive-card-title">休日運用</h3>
+              <p class="archive-card-desc">土日祝日の車両運用パターン（運BXXなど）</p>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <!-- Crew Shifts -->
+      <section class="archive-section" style="grid-column: 1 / -1; margin-top:20px;">
+        <h2><i class="fa-solid fa-user-clock"></i> 乗務員仕業</h2>
+        <p>運転士・車掌の乗務スケジュール（行路）の自主研究・再現。</p>
+        <div class="archive-grid" style="margin-top:20px;">
+          <a href="crew-weekday.html" class="archive-card">
+            <div class="archive-card-icon"><i class="fa-regular fa-calendar"></i></div>
+            <div class="archive-card-content">
+              <h3 class="archive-card-title">平日仕業</h3>
+              <p class="archive-card-desc">平日の乗務行路（自作再現データ）</p>
+            </div>
+          </a>
+          <a href="crew-holiday.html" class="archive-card">
+            <div class="archive-card-icon"><i class="fa-regular fa-calendar-check"></i></div>
+            <div class="archive-card-content">
+              <h3 class="archive-card-title">休日仕業</h3>
+              <p class="archive-card-desc">土日祝日の乗務行路（自作再現データ）</p>
+            </div>
+          </a>
+        </div>
+      </section>
+
+    </div>
+
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script>const relPath = "../../";</script>
+  <script src="../js/script_header.js" defer></script>
+  <script src="../../js/script_footer-load.js"></script>
+</body>
+
+</html>
