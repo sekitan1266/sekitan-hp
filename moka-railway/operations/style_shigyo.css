@@ -1,133 +1,213 @@
-/* Shigyo Table Styles (Authentic Railway Look) */
+/* Shigyo Table Styles (Detailed Railway Archive Style) */
+:root {
+  --archive-accent: #1A214D;
+  --sl-bg: #fff5f5;
+  --sl-text: #d32f2f;
+  --kaiso-bg: #f0f7ff;
+  --kaiso-text: #0056b3;
+  --normal-text: #333;
+}
+
 .shigyo-dataset {
   background: #fff;
-  margin-bottom: 50px;
-  font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+  margin-bottom: 60px;
+  font-family: "Noto Sans JP", sans-serif;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .shigyo-header-info {
   display: flex;
   align-items: center;
-  padding: 8px 0;
-  border-top: 2px solid #000;
-  gap: 15px;
+  padding: 12px 0;
+  border-top: 3px solid var(--archive-accent);
+  gap: 20px;
   font-weight: 700;
-  font-size: 1.1rem;
+  font-size: 1.25rem;
+  color: var(--archive-accent);
 }
 
 .shigyo-id-box {
   background: #eef200;
-  /* Yellow highlight from image */
-  padding: 2px 8px;
-  border-radius: 2px;
+  padding: 4px 14px;
+  border-radius: 4px;
   color: #000;
-}
-
-.shigyo-train-type {
-  flex: 1;
-  text-align: center;
-  color: #333;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.15);
+  font-family: inherit;
 }
 
 .shigyo-distance {
-  color: #333;
-  font-size: 1rem;
-}
-
-.shigyo-sub-notice {
-  padding: 10px;
-  font-size: 0.9rem;
-  color: #333;
-  border: 1px dotted #888;
-  background: #fdfdfd;
-  margin-bottom: 10px;
+  margin-left: auto;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #666;
+  background: #f8f9fa;
+  padding: 2px 10px;
+  border-radius: 4px;
 }
 
 .shigyo-display-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 1rem;
-  border-top: 2px solid #000;
-  border-bottom: 2px solid #000;
+  font-size: 0.95rem;
+  border-top: 2px solid #333;
+  border-bottom: 2px solid #333;
+  table-layout: auto;
 }
 
 .shigyo-display-table th {
-  background: #f0f0f0;
-  padding: 6px 10px;
+  background: #f2f4f6;
+  padding: 12px;
   text-align: left;
   font-weight: 700;
-  border-bottom: 1px solid #333;
+  border-bottom: 2px solid #444;
+  color: #333;
+  white-space: nowrap;
 }
 
 .shigyo-display-table td {
-  padding: 8px 10px;
+  padding: 10px 12px;
   vertical-align: middle;
+  border-bottom: 1px solid #eee;
 }
 
-/* Row Specifics from Image */
-.shigyo-display-table tr.row-kaiso {
-  background-color: #cccccc !important;
-  /* Stronger gray as in image */
-  color: #000 !important;
-}
-
-.shigyo-display-table tr.row-sl {
-  background-color: #ffeef8 !important;
-  /* Pink for SL/Special */
-  color: #d32f2f !important;
-}
-
-.shigyo-display-table tr.row-special {
-  background-color: #c9ffc9 !important;
-  /* Bright green as in image */
-  color: #006400 !important;
-}
-
-/* Specific Column Styles */
+/* Column Specific Widths */
 .col-no {
+  white-space: nowrap;
+  width: 1%;
+  min-width: 90px;
   font-weight: 700;
-  width: 60px;
+  font-family: 'Consolas', 'Monaco', monospace;
 }
 
 .col-type {
-  width: 60px;
+  width: 1%;
+  white-space: nowrap;
+  text-align: center;
 }
 
 .col-station {
-  font-weight: 400;
-  padding-right: 5px !important;
+  width: 1%;
+  white-space: nowrap;
 }
 
 .col-time {
+  width: 1%;
+  white-space: nowrap;
   font-weight: 700;
   text-align: right;
-  width: 60px;
-  padding-left: 0 !important;
+  font-family: 'Consolas', 'Monaco', monospace;
+  font-size: 1.05rem;
 }
 
 .col-remarks {
-  color: #333;
+  width: auto;
+  color: #666;
+  font-size: 0.85rem;
+  padding-left: 24px !important;
+}
+
+/* Row Specific Styles */
+/* Default: Ordinary (Normal) */
+.shigyo-display-table tr {
+  background-color: #fff;
+  color: var(--normal-text);
+}
+
+/* SL Service - Pale Red Background, Red Text */
+.shigyo-display-table tr.row-sl {
+  background-color: var(--sl-bg) !important;
+  color: var(--sl-text) !important;
+}
+
+.shigyo-display-table tr.row-sl .col-time,
+.shigyo-display-table tr.row-sl .col-no {
+  color: var(--sl-text) !important;
+}
+
+/* Forwarding (Kaiso) - Light Blue Background, Blue Text */
+.shigyo-display-table tr.row-kaiso {
+  background-color: var(--kaiso-bg) !important;
+  color: var(--kaiso-text) !important;
+}
+
+.shigyo-display-table tr.row-kaiso .col-time,
+.shigyo-display-table tr.row-kaiso .col-no {
+  color: var(--kaiso-text) !important;
+}
+
+/* Layout and Side Margins */
+.archive-section {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+/* Breadcrumbs (Consistent with style_archive.css) */
+.archive-breadcrumb {
+  background: #f4f6f8;
+  padding: 15px 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.breadcrumb-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
   font-size: 0.9rem;
-  padding-left: 20px !important;
+  font-weight: 500;
 }
 
-/* Match row colors for time */
-.row-special .col-time {
-  color: #008000 !important;
+.breadcrumb-inner a {
+  color: var(--archive-accent);
+  text-decoration: none;
+  transition: color 0.2s;
 }
 
-.row-sl .col-time {
-  color: #ff0000 !important;
+.breadcrumb-inner a:hover {
+  color: #ff4500;
+  text-decoration: underline;
 }
 
-/* Responsive tweaks */
+.breadcrumb-inner i {
+  font-size: 0.75rem;
+  color: #999;
+}
+
+.breadcrumb-inner span {
+  color: #666;
+}
+
+/* Mobile responsive */
 @media (max-width: 768px) {
+  .archive-section {
+    padding: 0 15px;
+  }
+
+  .breadcrumb-inner {
+    padding: 0 15px;
+    font-size: 0.8rem;
+    gap: 8px;
+  }
+
   .shigyo-display-table {
     font-size: 0.85rem;
   }
 
-  .col-station,
+  .shigyo-header-info {
+    font-size: 1.1rem;
+    padding: 10px 0;
+  }
+
+  .col-no {
+    min-width: 70px;
+  }
+
   .col-time {
-    padding: 4px !important;
+    font-size: 0.9rem;
   }
 }
