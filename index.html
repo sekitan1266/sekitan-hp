@@ -3,9 +3,9 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>sekitan.net | 真岡線ファンサイト</title>
+  <title>真岡鐡道研究アーカイブ | sekitan.net</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="真岡鐵道真岡線のファンサイト「sekitan.net」。BVEデータ制作や資料の公開を行っています。">
+  <meta name="description" content="真岡鐡道真岡線の車両、ダイヤ、運用、線形などの調査データを集約したデジタルアーカイブプロジェクト。">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,84 +13,142 @@
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" />
 
-  <!-- 共通スタイル -->
-  <link rel="stylesheet" href="css/style_common.css">
-  <link rel="stylesheet" href="css/style_header.css">
-  <link rel="stylesheet" href="css/style_footer.css">
-  <!-- Top Page Specific Style -->
-  <link rel="stylesheet" href="css/style_index.css">
+  <link rel="stylesheet" href="../css/style_common.css">
+  <link rel="stylesheet" href="../css/style_header.css">
+  <link rel="stylesheet" href="../css/style_footer.css">
+  <link rel="stylesheet" href="css/style_archive.css">
 </head>
 
 <body>
   <div id="header-placeholder"></div>
 
   <main>
+    <!-- Header -->
+    <header class="archive-hero">
+      <h1>Moka Railway Archive</h1>
+      <p>真岡鐡道真岡線 調査・研究データ集積地</p>
+    </header>
 
-    <!-- Hero Section -->
-    <section class="index-hero">
-      <h1 class="hero-logo">sekitan.net</h1>
-      <p class="hero-p">真岡鐡道真岡線 調査・研究・BVE制作</p>
+    <!-- Concept Section -->
+    <section class="archive-section">
+      <div style="background:#fff; border:1px solid #eee; padding:30px; border-radius:12px; line-height:1.8;">
+        <h2><i class="fa-solid fa-book-open-reader"></i> コンセプト</h2>
+        <p>
+          「真岡線ファン・せきたんによる、真岡線の総合データバンク」<br>
+          個人で長年調査・収集してきた膨大なデータを整理し、真岡線を愛するすべての人、<br>
+          そしてBVE等のシミュレータ制作に携わる方々のためのリソースとして公開しています。
+        </p>
+      </div>
     </section>
 
-    <!-- Navigation Cards -->
-    <section class="nav-grid">
-      <a href="moka-railway/index.html" class="nav-card">
-        <div class="nav-icon"><i class="fa-solid fa-box-archive"></i></div>
-        <div class="nav-title">Archive</div>
-        <div class="nav-desc">真岡鐡道 調査データ・研究アーカイブ</div>
-      </a>
+    <!-- Category Grid -->
+    <section class="archive-section">
+      <h2><i class="fa-solid fa-folder-tree"></i> データカテゴリー</h2>
+      <div class="archive-grid">
 
-      <a href="project-moka.html" class="nav-card">
-        <div class="nav-icon"><i class="fa-solid fa-laptop-code"></i></div>
-        <div class="nav-title">Project Moka</div>
-        <div class="nav-desc">BVE 真岡線再現プロジェクト</div>
-      </a>
+        <!-- Vehicles -->
+        <a href="vehicles/" class="archive-card">
+          <div class="archive-card-icon"><i class="fa-solid fa-train"></i></div>
+          <div class="archive-card-content">
+            <h3 class="archive-card-title">車両</h3>
+            <p class="archive-card-desc">現役・歴代車両の詳細スペック、外観、主要諸元。</p>
+          </div>
+        </a>
 
-      <a href="news.html" class="nav-card">
-        <div class="nav-icon"><i class="fa-solid fa-newspaper"></i></div>
-        <div class="nav-title">News</div>
-        <div class="nav-desc">活動記録・更新のお知らせ</div>
-      </a>
+        <!-- Track / Level Crossings -->
+        <a href="track.html" class="archive-card">
+          <div class="archive-card-icon"><i class="fa-solid fa-ruler-combined"></i></div>
+          <div class="archive-card-content">
+            <h3 class="archive-card-title">線形・踏切</h3>
+            <p class="archive-card-desc">勾配、曲線半径、キロ程、および沿線の踏切に関するデータ。</p>
+          </div>
+        </a>
 
-      <a href="profile.html" class="nav-card">
-        <div class="nav-icon"><i class="fa-solid fa-id-card"></i></div>
-        <div class="nav-title">Profile</div>
-        <div class="nav-desc">運営者(せきたん)について</div>
-      </a>
+        <!-- Stations -->
+        <a href="stations/" class="archive-card">
+          <div class="archive-card-icon"><i class="fa-solid fa-house-chimney-window"></i></div>
+          <div class="archive-card-content">
+            <h3 class="archive-card-title">駅</h3>
+            <p class="archive-card-desc">各駅の構造、配線図、設備の詳細資料。</p>
+          </div>
+        </a>
 
-      <a href="support.html" class="nav-card">
-        <div class="nav-icon"><i class="fa-solid fa-headset"></i></div>
-        <div class="nav-title">Support</div>
-        <div class="nav-desc">お問い合わせ・FAQ</div>
-      </a>
+        <!-- Timetable -->
+        <a href="timetable.html" class="archive-card">
+          <div class="archive-card-icon"><i class="fa-regular fa-calendar-days"></i></div>
+          <div class="archive-card-content">
+            <h3 class="archive-card-title">ダイヤ</h3>
+            <p class="archive-card-desc">詳細な時刻表、列車交換情報、運行形態の解説。</p>
+          </div>
+        </a>
+
+        <!-- Operations -->
+        <a href="operations/" class="archive-card">
+          <div class="archive-card-icon"><i class="fa-solid fa-arrows-spin"></i></div>
+          <div class="archive-card-content">
+            <h3 class="archive-card-title">運用・仕業</h3>
+            <p class="archive-card-desc">車両運用表、および乗務員（運転士・車掌）の仕業表の再現データ。</p>
+          </div>
+        </a>
+
+        <!-- SL Moka -->
+        <a href="sl-moka.html" class="archive-card">
+          <div class="archive-card-icon"><i class="fa-solid fa-steam-symbol"
+              style="font-family: 'Font Awesome 7 Free'; font-weight: 900;"></i></div>
+          <div class="archive-card-content">
+            <h3 class="archive-card-title">SLもおか</h3>
+            <p class="archive-card-desc">運転日一覧、ヘッドマーク、各駅での入換作業等の詳細。</p>
+          </div>
+        </a>
+
+        <!-- Signals -->
+        <a href="signal.html" class="archive-card">
+          <div class="archive-card-icon"><i class="fa-solid fa-traffic-light"></i></div>
+          <div class="archive-card-content">
+            <h3 class="archive-card-title">信号制御</h3>
+            <p class="archive-card-desc">真岡線の信号システム、連動装置、保安設備に関する資料。</p>
+          </div>
+        </a>
+
+        <!-- Delay Records -->
+        <a href="delays.html" class="archive-card">
+          <div class="archive-card-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+          <div class="archive-card-content">
+            <h3 class="archive-card-title">遅延の記録</h3>
+            <p class="archive-card-desc">公式Xの情報等をもとにした、過去の輸送障害や遅延の記録。</p>
+          </div>
+        </a>
+
+        <!-- History -->
+        <a href="history.html" class="archive-card">
+          <div class="archive-card-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
+          <div class="archive-card-content">
+            <h3 class="archive-card-title">真岡線の歴史</h3>
+            <p class="archive-card-desc">真岡線の歩み、沿革、過去の出来事のまとめ。</p>
+          </div>
+        </a>
+
+      </div>
     </section>
 
-    <!-- Latest News Update (Simplified) -->
-    <section class="top-news">
-      <div class="top-news-header">
-        <h2><i class="fa-solid fa-bullhorn" style="color:#1e90ff; margin-right:8px;"></i>Latest News</h2>
-        <a href="news.html">お知らせ一覧 <i class="fa-solid fa-chevron-right"></i></a>
-      </div>
-
-      <!-- Javascript will populate this -->
-      <div id="news-list" class="news-list-simple">
-        <p style="text-align:center; color:#999;">読み込み中...</p>
-      </div>
+    <!-- Simple footer link -->
+    <section class="archive-section"
+      style="text-align: center; margin-bottom: 80px; padding-top: 40px; border-top: 1px solid #eee;">
+      <p style="font-size: 0.9rem; color: var(--text-sub);">
+        ※調査資料は原則として非公開（機密情報）として保管していますが、一部を本サイトにて公開しています。<br>
+        BVE制作プロジェクトに関しては <a href="../project-moka.html" style="color: var(--archive-accent); font-weight: 600;">こちら</a>
+        をご覧ください。
+      </p>
     </section>
 
   </main>
 
   <div id="footer-placeholder"></div>
 
-  <!-- News script - needs to be adapted or check if script_index-news.js works with new classes -->
-  <script src="js/script_index-news.js"></script>
-
-  <!-- 共通ヘッダー・フッター -->
-  <script>const relPath = "./";</script>
-  <script src="./js/script_header-load.js" defer></script>
-  <script src="./js/script_header.js" defer></script>
-  <script src="./js/script_footer-load.js"></script>
-
+  <script>const relPath = "../";</script>
+  <script src="js/script_header.js" defer></script>
+  <script src="../js/script_header.js" defer></script>
+  <script src="../js/script_footer-load.js"></script>
 </body>
 
 </html>
