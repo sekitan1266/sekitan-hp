@@ -113,28 +113,23 @@
 
 /* News Section on Top Page */
 .top-news {
-  max-width: 800px;
+  max-width: var(--content-width);
   margin: 60px auto 40px;
-  padding: 0 20px;
+  padding: 0 16px;
 }
 
 .top-news-header {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  margin-bottom: 24px;
-  border: none !important;
-  border-bottom: none !important;
-  border-image: none !important;
-  padding-bottom: 12px;
+  margin: 32px 16px 24px 0;
 }
 
 .top-news-header h2 {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
+  font-weight: 600;
   margin: 0;
   border: none !important;
-  border-bottom: none !important;
-  padding-bottom: 0;
 }
 
 .top-news-header a {
@@ -151,5 +146,4 @@
 #news-list.news-list-simple {
   display: flex;
   flex-direction: column;
-  gap: 4px;
 }
