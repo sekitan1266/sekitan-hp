@@ -123,13 +123,14 @@
   justify-content: space-between;
   align-items: baseline;
   margin-bottom: 24px;
+  border: none !important;
   padding-bottom: 12px;
 }
 
 .top-news-header h2 {
   font-size: 1.4rem;
   margin: 0;
-  border-bottom: none;
+  border: none !important;
   padding-bottom: 0;
 }
 
