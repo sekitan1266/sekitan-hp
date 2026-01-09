@@ -148,3 +148,47 @@
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
 }
+
+/* Breadcrumbs */
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px;
+  font-size: 0.9rem;
+  color: var(--text-sub);
+}
+
+.breadcrumb li {
+  display: flex;
+  align-items: center;
+}
+
+.breadcrumb li:not(:last-child)::after {
+  content: "\f054";
+  /* FontAwesome chevron-right */
+  font-family: "Font Awesome 7 Free";
+  font-weight: 900;
+  margin: 0 10px;
+  font-size: 0.7rem;
+  color: #ccc;
+}
+
+.breadcrumb a {
+  color: var(--archive-accent);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.breadcrumb a:hover {
+  color: #1e90ff;
+  text-decoration: underline;
+}
+
+.breadcrumb li:last-child {
+  color: var(--text-sub);
+  font-weight: 400;
+  pointer-events: none;
+}
