@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <title>2023年3月18日改正 時刻表データ | 真岡鐡道研究アーカイブ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" />
+  <link rel="stylesheet" href="../../../css/style_common.css">
+  <link rel="stylesheet" href="../../../css/style_header.css">
+  <link rel="stylesheet" href="../../../css/style_footer.css">
+  <link rel="stylesheet" href="../../css/style_archive.css">
+  <style>
+    /* Custom PDF Link Card Styles */
+    .pdf-download-card {
+      display: flex;
+      align-items: center;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 16px;
+      text-decoration: none;
+      color: #333;
+      transition: transform 0.2s, box-shadow 0.2s;
+      margin-bottom: 12px;
+    }
+
+    .pdf-download-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .pdf-icon {
+      font-size: 2rem;
+      margin-right: 16px;
+    }
+
+    .pdf-info h4 {
+      margin: 0 0 4px 0;
+      font-size: 1.1rem;
+    }
+
+    .pdf-info p {
+      margin: 0;
+      font-size: 0.85rem;
+      opacity: 0.7;
+    }
+
+    /* Blue Theme (Weekday) */
+    .section-blue h2 {
+      border-bottom-color: #1976d2;
+      color: #0d47a1;
+    }
+
+    .card-blue .pdf-icon {
+      color: #1976d2;
+    }
+
+    .card-blue {
+      border-left: 4px solid #1976d2;
+      background: #f0f7ff;
+    }
+
+    /* Red Theme (Holiday) */
+    .section-red h2 {
+      border-bottom-color: #d32f2f;
+      color: #b71c1c;
+    }
+
+    .card-red .pdf-icon {
+      color: #d32f2f;
+    }
+
+    .card-red {
+      border-left: 4px solid #d32f2f;
+      background: #fff5f5;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="header-placeholder"></div>
+
+  <main>
+    <div class="archive-breadcrumb">
+      <div class="breadcrumb-inner">
+        <a href="../../index.html">アーカイブトップ</a>
+        <i class="fa-solid fa-chevron-right"></i>
+        <a href="../index.html">ダイヤグラム・時刻詳細</a>
+        <i class="fa-solid fa-chevron-right"></i>
+        <span>2023-03-18 改正</span>
+      </div>
+    </div>
+
+    <header class="archive-hero small-hero">
+      <h1>2023年3月18日改正 時刻表データ</h1>
+      <p>詳細な各駅時刻データをPDF形式で公開しています。</p>
+    </header>
+
+    <div class="archive-section" style="max-width: 900px;">
+
+      <div class="archive-grid" style="grid-template-columns: 1fr 1fr; gap: 40px;">
+
+        <!-- Weekday Section -->
+        <section class="section-blue">
+          <h2><i class="fa-regular fa-calendar"></i> 平日ダイヤ</h2>
+          <p>月曜日～金曜日（祝日を除く）の運転ダイヤです。</p>
+
+          <div style="margin-top: 20px;">
+            <a href="weekday-down.pdf" class="pdf-download-card card-blue" target="_blank">
+              <div class="pdf-icon"><i class="fa-regular fa-file-pdf"></i></div>
+              <div class="pdf-info">
+                <h4>平日 下り（茂木方面）</h4>
+                <p>PDFファイル</p>
+              </div>
+            </a>
+            <a href="weekday-up.pdf" class="pdf-download-card card-blue" target="_blank">
+              <div class="pdf-icon"><i class="fa-regular fa-file-pdf"></i></div>
+              <div class="pdf-info">
+                <h4>平日 上り（下館方面）</h4>
+                <p>PDFファイル</p>
+              </div>
+            </a>
+          </div>
+        </section>
+
+        <!-- Holiday Section -->
+        <section class="section-red">
+          <h2><i class="fa-regular fa-calendar-check"></i> 休日ダイヤ</h2>
+          <p>土曜・日曜・祝日（SLもおか運転日を含む）の運転ダイヤです。</p>
+
+          <div style="margin-top: 20px;">
+            <a href="holiday-down.pdf" class="pdf-download-card card-red" target="_blank">
+              <div class="pdf-icon"><i class="fa-regular fa-file-pdf"></i></div>
+              <div class="pdf-info">
+                <h4>休日 下り（茂木方面）</h4>
+                <p>PDFファイル</p>
+              </div>
+            </a>
+            <a href="holiday-up.pdf" class="pdf-download-card card-red" target="_blank">
+              <div class="pdf-icon"><i class="fa-regular fa-file-pdf"></i></div>
+              <div class="pdf-info">
+                <h4>休日 上り（下館方面）</h4>
+                <p>PDFファイル</p>
+              </div>
+            </a>
+          </div>
+        </section>
+
+      </div>
+    </div>
+
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script>const relPath = "../../../";</script>
+  <script src="../../js/script_header.js" defer></script>
+  <script src="../../../js/script_footer-load.js"></script>
+</body>
+
+</html>
