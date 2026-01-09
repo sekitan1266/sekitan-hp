@@ -3,6 +3,21 @@
    規約・ポリシーページ用スタイル
 ========================= */
 
+/* Intro text */
+.terms-intro {
+  margin-bottom: 32px;
+  padding: 24px;
+  background: #fdfdfd;
+  border: 1px solid #eee;
+  border-radius: var(--radius-md);
+  line-height: 1.8;
+  color: #444;
+}
+
+.terms-intro p {
+  margin: 0;
+}
+
 /* リスト番号のカスタマイズ */
 /* 一番上層（ol直下）：1. 2. 3. */
 main ol {
@@ -140,6 +155,12 @@ main section a:hover {
 
 .cta-button i {
   font-size: 1rem;
+}
+
+.terms-footer {
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid #eee;
 }
 
 /* =========================

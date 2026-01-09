@@ -282,13 +282,17 @@ h1 {
   gap: 16px;
   padding: 16px;
 
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid #f0f0f0;
   border-radius: var(--radius-md);
   overflow: hidden;
 
   transition:
     transform 0.4s ease,
     box-shadow 0.4s ease;
+}
+
+.news-item-link:last-child .news-item {
+  border-bottom: none;
 }
 
 .news-item-link:hover .news-item {
