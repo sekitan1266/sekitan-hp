@@ -1,0 +1,87 @@
+@charset "UTF-8";
+
+/* 
+  Stations Index Styles
+  moka-railway/stations/css/style_stations.css
+*/
+
+/* 路線図クリッカブルマップ風ナビゲーション */
+.route-map-nav {
+  position: relative;
+  margin: 40px auto;
+  max-width: 1000px;
+  overflow-x: auto;
+  padding: 20px 0;
+}
+
+.route-map-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 800px;
+  /* 横スクロール対応 */
+  padding: 60px 20px 20px;
+}
+
+/* 路線状の線 */
+.route-line {
+  position: absolute;
+  top: 100px;
+  left: 40px;
+  right: 40px;
+  height: 8px;
+  background: var(--archive-accent);
+  z-index: 1;
+  border-radius: 4px;
+}
+
+.station-point {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: var(--text-main);
+  transition: transform 0.2s ease;
+  width: 40px;
+  cursor: pointer;
+}
+
+.station-point:hover {
+  transform: translateY(-5px);
+}
+
+.station-name-vertical {
+  writing-mode: vertical-rl;
+  font-weight: 700;
+  margin-bottom: 12px;
+  letter-spacing: 0.1em;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.station-marker {
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  border: 4px solid var(--archive-accent);
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+
+.station-point:hover .station-marker {
+  background: var(--archive-accent);
+  transform: scale(1.2);
+}
+
+.station-point:hover .station-name-vertical {
+  color: var(--archive-accent);
+}
+
+/* SL停車駅のマーカー強調 */
+.station-point.sl-stop .station-marker {
+  border-color: #C0392B;
+}
