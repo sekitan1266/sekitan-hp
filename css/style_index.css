@@ -146,4 +146,6 @@
 #news-list.news-list-simple {
   display: flex;
   flex-direction: column;
+  gap: 16px;
+  /* 記事間の隙間を追加 */
 }

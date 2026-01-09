@@ -286,6 +286,9 @@ h1 {
   border-radius: var(--radius-md);
   overflow: hidden;
 
+  /* 常時うっすら影をつける */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+
   transition:
     transform 0.4s ease,
     box-shadow 0.4s ease;
