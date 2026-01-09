@@ -124,6 +124,8 @@
   align-items: baseline;
   margin-bottom: 24px;
   border: none !important;
+  border-bottom: none !important;
+  border-image: none !important;
   padding-bottom: 12px;
 }
 
@@ -131,6 +133,7 @@
   font-size: 1.4rem;
   margin: 0;
   border: none !important;
+  border-bottom: none !important;
   padding-bottom: 0;
 }
 
