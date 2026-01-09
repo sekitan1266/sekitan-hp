@@ -1,0 +1,133 @@
+/* Shigyo Table Styles (Authentic Railway Look) */
+.shigyo-dataset {
+  background: #fff;
+  margin-bottom: 50px;
+  font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+}
+
+.shigyo-header-info {
+  display: flex;
+  align-items: center;
+  padding: 8px 0;
+  border-top: 2px solid #000;
+  gap: 15px;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.shigyo-id-box {
+  background: #eef200;
+  /* Yellow highlight from image */
+  padding: 2px 8px;
+  border-radius: 2px;
+  color: #000;
+}
+
+.shigyo-train-type {
+  flex: 1;
+  text-align: center;
+  color: #333;
+}
+
+.shigyo-distance {
+  color: #333;
+  font-size: 1rem;
+}
+
+.shigyo-sub-notice {
+  padding: 10px;
+  font-size: 0.9rem;
+  color: #333;
+  border: 1px dotted #888;
+  background: #fdfdfd;
+  margin-bottom: 10px;
+}
+
+.shigyo-display-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1rem;
+  border-top: 2px solid #000;
+  border-bottom: 2px solid #000;
+}
+
+.shigyo-display-table th {
+  background: #f0f0f0;
+  padding: 6px 10px;
+  text-align: left;
+  font-weight: 700;
+  border-bottom: 1px solid #333;
+}
+
+.shigyo-display-table td {
+  padding: 8px 10px;
+  vertical-align: middle;
+}
+
+/* Row Specifics from Image */
+.shigyo-display-table tr.row-kaiso {
+  background-color: #cccccc !important;
+  /* Stronger gray as in image */
+  color: #000 !important;
+}
+
+.shigyo-display-table tr.row-sl {
+  background-color: #ffeef8 !important;
+  /* Pink for SL/Special */
+  color: #d32f2f !important;
+}
+
+.shigyo-display-table tr.row-special {
+  background-color: #c9ffc9 !important;
+  /* Bright green as in image */
+  color: #006400 !important;
+}
+
+/* Specific Column Styles */
+.col-no {
+  font-weight: 700;
+  width: 60px;
+}
+
+.col-type {
+  width: 60px;
+}
+
+.col-station {
+  font-weight: 400;
+  padding-right: 5px !important;
+}
+
+.col-time {
+  font-weight: 700;
+  text-align: right;
+  width: 60px;
+  padding-left: 0 !important;
+}
+
+.col-remarks {
+  color: #333;
+  font-size: 0.9rem;
+  padding-left: 20px !important;
+}
+
+/* Match row colors for time */
+.row-special .col-time {
+  color: #008000 !important;
+}
+
+.row-sl .col-time {
+  color: #ff0000 !important;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .shigyo-display-table {
+    font-size: 0.85rem;
+  }
+
+  .col-station,
+  .col-time {
+    padding: 4px !important;
+  }
+}
