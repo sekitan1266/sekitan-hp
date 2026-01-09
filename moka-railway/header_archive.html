@@ -1,0 +1,63 @@
+<header id="site-header" class="archive-site-header">
+  <div class="header-inner">
+    <h1><a href="index.html" class="nav-link">Moka Railway Archive</a></h1>
+
+    <!-- デスクトップ用ナビ -->
+    <nav class="desktop-nav">
+      <a href="index.html">Archive Top</a>
+      <span class="nav-separator"></span>
+
+      <a href="vehicles/index.html">車両</a>
+      <span class="nav-separator"></span>
+
+      <a href="timetable.html">ダイヤ</a>
+      <span class="nav-separator"></span>
+
+      <a href="operations.html">運用</a>
+      <span class="nav-separator"></span>
+
+      <a href="../index.html" class="back-to-main"><i class="fa-solid fa-house"></i> Main Site</a>
+    </nav>
+
+    <!-- ハンバーガーボタン -->
+    <button class="hamburger-btn" id="hamburger-btn" aria-label="メニューを開く">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+  </div>
+
+  <!-- モバイル用ナビモーダル -->
+  <div class="mobile-nav-overlay" id="mobile-nav-overlay">
+    <div class="mobile-nav-modal">
+      <button class="mobile-nav-close" id="mobile-nav-close" aria-label="メニューを閉じる">×</button>
+      <nav class="mobile-nav-links">
+        <a href="index.html">Archive Top</a>
+        <a href="vehicles/index.html">車両諸元</a>
+        <a href="timetable.html">運行ダイヤ</a>
+        <a href="operations.html">運用・仕業</a>
+        <a href="track.html">線形・踏切</a>
+        <a href="sl-moka.html">SLもおか</a>
+        <hr style="border: 0; border-top: 1px solid #eee; margin: 10px 0;">
+        <a href="../index.html" style="color: #666;"><i class="fa-solid fa-house"></i> sekitan.net</a>
+      </nav>
+    </div>
+  </div>
+</header>
+<style>
+  /* アーカイブ専用ヘッダーの微調整 */
+  .archive-site-header h1 {
+    background: none !important;
+    color: #1A214D !important;
+  }
+
+  .archive-site-header h1 a {
+    background: none !important;
+    color: #1A214D !important;
+  }
+
+  .archive-site-header .back-to-main {
+    color: #666 !important;
+    font-size: 0.85rem !important;
+  }
+</style>
